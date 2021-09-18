@@ -17,4 +17,6 @@
     <!--  Цвет при наведении на кнопку  -->
     <SolidColorBrush x:Key="DopColorIsFocused" Color="#535365" />
 
+    
+
 </ResourceDictionary>

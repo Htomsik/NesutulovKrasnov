@@ -33,6 +33,10 @@
                 </BeginStoryboard>
             </EventTrigger>
 
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+
         </Style.Triggers>
     </Style>
 
@@ -69,6 +73,10 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
+
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
 
         </Style.Triggers>
 

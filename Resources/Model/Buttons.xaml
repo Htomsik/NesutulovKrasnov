@@ -2,20 +2,22 @@
 
     <!--  Для всех кнопок по умолчанию  -->
     <Style TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource DopColor}" />
         <Setter Property="Template">
             <Setter.Value>
+
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
+
             </Setter.Value>
         </Setter>
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="{DynamicResource DopColorIsFocused}" />
             </Trigger>
         </Style.Triggers>
 
@@ -23,7 +25,7 @@
 
     <!--  Для всех продинутых кнопок  -->
     <Style TargetType="{x:Type ToggleButton}">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource DopColor}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -36,9 +38,43 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="{DynamicResource DopColorIsFocused}" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+
+    <!--  Для кнопок c  image  -->
+    <Style
+        x:Key="IMGButton"
+        BasedOn="{StaticResource ResourceKey={x:Type Button}}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border Width="40" Height="40">
+                        <Image
+                            x:Name="Image"
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{DynamicResource ResourceKey=Img}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Image" Property="Width" Value="20" />
+                            <Setter TargetName="Image" Property="Height" Value="20" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
 
     </Style>
+
 </ResourceDictionary>

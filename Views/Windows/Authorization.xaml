@@ -24,23 +24,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Window.Triggers>
-
-
-
-        <!--  наведения мыши на кнопку  -->
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button">
-            <BeginStoryboard Storyboard="{StaticResource ButtonIsFocused}" />
-        </EventTrigger>
-
-        <!--  Убрать мышь с кнопки  -->
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="button">
-            <BeginStoryboard Storyboard="{StaticResource ButtonUnfocused}" />
-        </EventTrigger>
-
-
-
-    </Window.Triggers>
+    <Window.Triggers />
 
 
 
@@ -112,11 +96,7 @@
                 Stretch="Fill"
                 Stroke="{DynamicResource 10Color}" />
 
-            <Button
-                x:Name="button"
-                Grid.Row="3"
-                Margin="15,10"
-                Background="#1C1C22">
+            <Button Grid.Row="3" Margin="15,10">
                 <Label
                     x:Name="label"
                     Content="Вход"
@@ -131,14 +111,18 @@
             Background="Transparent"
             MouseLeftButtonDown="DragPanel">
 
-            <Button HorizontalAlignment="Right" Command="{StaticResource CommandCloseApplication}">
-                <fa:ImageAwesome
-                    Margin="3"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Icon="Solid_TimesCircle" />
+            <Button
+                HorizontalAlignment="Right"
+                Command="{StaticResource CommandCloseApplication}"
+                Style="{DynamicResource IMGButton}">
+
+                <Button.Resources>
+                    <ImageSource x:Key="Img">/Resources/Icons/CloseApp.png</ImageSource>
+                </Button.Resources>
+
+
             </Button>
-            
+
         </Grid>
 
     </Grid>

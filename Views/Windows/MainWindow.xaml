@@ -84,9 +84,11 @@
                 Height="40"
                 Margin="5,0,0,5"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom"
+                Background="Transparent">
 
                 <fa:ImageAwesome
+                    Foreground="{DynamicResource DopColor}"
                     x:Name="imageAwesome"
                     Icon="Solid_CaretRight"
                     RenderTransformOrigin="0.5,0.5">
@@ -111,12 +113,13 @@
             MouseLeftButtonDown="DragPanelMove">
 
 
-            <Button HorizontalAlignment="Right" Command="{StaticResource CommandCloseApplication}">
-                <fa:ImageAwesome
-                    Margin="3"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Icon="Solid_TimesCircle" />
+            <Button
+                HorizontalAlignment="Right"
+                Command="{StaticResource CommandCloseApplication}"
+                Style="{DynamicResource IMGButton}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">/Resources/Icons/CloseApp.png</ImageSource>
+                </Button.Resources>
             </Button>
 
 
