@@ -43,7 +43,7 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
         </EventTrigger>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" />
-        
+
         <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleButton">
             <BeginStoryboard x:Name="Closemenu_BeginStoryboard1" Storyboard="{StaticResource Closemenu}" />
         </EventTrigger>
@@ -67,7 +67,6 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
 
 
         <!--  Меню  -->
@@ -100,11 +99,11 @@
                         </TransformGroup>
                     </fa:ImageAwesome.RenderTransform>
                 </fa:ImageAwesome>
-                
+
             </ToggleButton>
 
         </Grid>
-        
+
         <!--  Верхняя панель  -->
         <Grid
             Grid.ColumnSpan="2"

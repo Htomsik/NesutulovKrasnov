@@ -9,10 +9,11 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml" />
                 <ResourceDictionary Source="/Resources/Model/Buttons.xaml" />
+                <ResourceDictionary Source="/Resources/Model/Faimage.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-    
+
 </Application>
 
-<!-- StartupUri="Views\Windows\MainWindow.xaml"> -->
+<!--  StartupUri="Views\Windows\MainWindow.xaml">  -->

@@ -70,6 +70,9 @@
     <Page Include="Resources\Model\Buttons.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Model\Faimage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Model\Labels.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

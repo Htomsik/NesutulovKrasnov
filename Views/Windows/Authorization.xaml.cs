@@ -23,5 +23,10 @@ namespace Praktika.Views.Windows
         {
             InitializeComponent();
         }
+
+        private void DragPanel(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
