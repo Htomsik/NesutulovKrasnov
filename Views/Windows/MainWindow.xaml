@@ -1,0 +1,128 @@
+﻿<Window
+    x:Class="Praktika.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:commands="clr-namespace:Praktika.Infrastructures.Commands"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.com/icons/"
+    xmlns:local="clr-namespace:Praktika"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Praktika.Viewmodels"
+    Width="1000"
+    Height="600"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <!--  Бинд датаконтекст к вьюмоделу viewmodel  -->
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+
+    <!--  Добавление ресурсов  -->
+    <Window.Resources>
+
+
+        <ResourceDictionary>
+            <commands:CloseApplicationCommand x:Key="CommandCloseApplication" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+
+
+
+    </Window.Resources>
+    <Window.Triggers>
+
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleButton">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" />
+        
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleButton">
+            <BeginStoryboard x:Name="Closemenu_BeginStoryboard1" Storyboard="{StaticResource Closemenu}" />
+        </EventTrigger>
+
+    </Window.Triggers>
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="0" Color="#FF3C4DB9" />
+                <GradientStop Offset="1" Color="#1C1D22" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+
+        <!--  Меню  -->
+        <Grid
+            x:Name="grid"
+            Grid.RowSpan="2"
+            Width="50"
+            HorizontalAlignment="Left"
+            Background="{DynamicResource 30Color}">
+
+
+            <ToggleButton
+                x:Name="toggleButton"
+                Width="40"
+                Height="40"
+                Margin="5,0,0,5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom">
+
+                <fa:ImageAwesome
+                    x:Name="imageAwesome"
+                    Icon="Solid_CaretRight"
+                    RenderTransformOrigin="0.5,0.5">
+                    <fa:ImageAwesome.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </fa:ImageAwesome.RenderTransform>
+                </fa:ImageAwesome>
+                
+            </ToggleButton>
+
+        </Grid>
+        
+        <!--  Верхняя панель  -->
+        <Grid
+            Grid.ColumnSpan="2"
+            Background="Transparent"
+            MouseLeftButtonDown="DragPanelMove">
+
+
+            <Button HorizontalAlignment="Right" Command="{StaticResource CommandCloseApplication}">
+                <fa:ImageAwesome
+                    Margin="3"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Icon="Solid_TimesCircle" />
+            </Button>
+
+
+        </Grid>
+
+    </Grid>
+
+</Window>

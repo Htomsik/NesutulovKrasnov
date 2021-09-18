@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+
+    <!--  Для фона  -->
+    <SolidColorBrush x:Key="60Color" Color="#3C4DB9" />
+
+    <!--  Для меню и больших кнопок  -->
+    <SolidColorBrush x:Key="30Color" Color="#C8B156" />
+
+    <!--  Текст  -->
+    <SolidColorBrush x:Key="10Color" Color="#D2D3DA" />
+
+    <!--  Дополнительный цвет  -->
+    <SolidColorBrush x:Key="DopColor" Color="#1C1C22" />
+
+    <!--  Цвет при наведении на кнопку  -->
+    <SolidColorBrush x:Key="DopColorIsFocused" Color="#535365" />
+
+</ResourceDictionary>

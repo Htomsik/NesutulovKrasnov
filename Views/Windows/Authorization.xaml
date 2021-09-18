@@ -1,0 +1,129 @@
+﻿<Window
+    x:Class="Praktika.Views.Windows.Authorization"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Praktika.Views.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="1000"
+    Height="600"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
+                <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
+                <ResourceDictionary Source="/Resources/Animations/AuthorizationAnimtion.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Triggers>
+
+
+
+        <!--  наведения мыши на кнопку  -->
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button">
+            <BeginStoryboard Storyboard="{StaticResource ButtonIsFocused}" />
+        </EventTrigger>
+
+        <!--  Убрать мышь с кнопки  -->
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="button">
+            <BeginStoryboard Storyboard="{StaticResource ButtonUnfocused}" />
+        </EventTrigger>
+
+
+
+    </Window.Triggers>
+
+
+
+    <Grid Background="{DynamicResource 30Color}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="156" />
+            <ColumnDefinition Width="156" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Path
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="4"
+            Width="1018"
+            Height="696.501"
+            Margin="-1,-21.333,-17,-75.168"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Data="M552,598 L-0.5,601.5 -0.5,-0.5 995.5,3.5 999.5,265.5 C999.5,265.5 991,635.5 889,344.5 787,53.5 838,722.5 731.5,461.5 625,200.5 695.5,742 607,554.5 518.5,367 605,712 552,598 z"
+            Fill="{DynamicResource 60Color}"
+            Stretch="Fill" />
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Логин" />
+
+            <TextBox Grid.Row="1" Text="никнейм" />
+            <PasswordBox Grid.Row="2"/>
+
+            <Path
+                Grid.Row="1"
+                Width="280"
+                Height="1"
+                Margin="15,50,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Data="M15,110 L297,110"
+                Fill="{DynamicResource 10Color}"
+                Stretch="Fill"
+                Stroke="{DynamicResource 10Color}" />
+
+            <Path
+                Grid.Row="2"
+                Width="280"
+                Height="1"
+                Margin="15,50,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Data="M15,110 L297,110"
+                Fill="{DynamicResource 10Color}"
+                Stretch="Fill"
+                Stroke="{DynamicResource 10Color}" />
+
+            <Button
+                x:Name="button"
+                Grid.Row="3"
+                Margin="15,10"
+                Background="#1C1C22">
+                <Label
+                    x:Name="label"
+                    Content="Вход"
+                    FontSize="24" />
+
+            </Button>
+
+
+
+
+        </Grid>
+
+    </Grid>
+</Window>
