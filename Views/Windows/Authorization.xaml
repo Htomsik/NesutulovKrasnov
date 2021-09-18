@@ -7,12 +7,17 @@
     xmlns:fa="http://schemas.fontawesome.com/icons/"
     xmlns:local="clr-namespace:Praktika.Views.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Praktika.Viewmodels"
     Width="1000"
     Height="600"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
+
+    <Window.DataContext>
+        <vm:AuthorizationWindowViewModel />
+    </Window.DataContext>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -69,7 +74,7 @@
             </Grid.RowDefinitions>
             <Label Content="Логин" />
 
-            <TextBox Grid.Row="1" Text="никнейм" />
+            <TextBox Grid.Row="1" Text="{Binding Nickname, UpdateSourceTrigger=PropertyChanged}" />
             <PasswordBox Grid.Row="2" />
 
             <Path

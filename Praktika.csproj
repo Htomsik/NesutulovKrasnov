@@ -94,6 +94,7 @@
     <Compile Include="Infrastructures\Commands\Base\BaseCommand.cs" />
     <Compile Include="Infrastructures\Commands\CloseApplicationCommand.cs" />
     <Compile Include="Infrastructures\Commands\LamdaCommand.cs" />
+    <Compile Include="Viewmodels\AuthorizationWindowViewModel.cs" />
     <Compile Include="Viewmodels\Base\BaseViewModel.cs" />
     <Compile Include="Viewmodels\MainWindowViewModel.cs" />
     <Compile Include="Views\Windows\Authorization.xaml.cs">

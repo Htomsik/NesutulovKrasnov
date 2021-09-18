@@ -13,8 +13,8 @@ namespace Praktika.Viewmodels
             get => _Title;
             set => Set(ref _Title, value);
         }
-
         #endregion
+
         public MainWindowViewModel()
         {
 
