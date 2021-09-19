@@ -12,7 +12,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-    
+
 </Application>
 
-<!-- StartupUri="Views\Windows\MainWindow.xaml"> -->
+<!--  StartupUri="Views\Windows\MainWindow.xaml">  -->
