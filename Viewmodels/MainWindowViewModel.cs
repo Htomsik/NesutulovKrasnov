@@ -1,11 +1,14 @@
 ﻿using Praktika.Viewmodels.Base;
 using System.Collections.ObjectModel;
+using Praktika.Models;
 
 
 namespace Praktika.Viewmodels
 {
     class MainWindowViewModel: BaseViewModel
     {
+        public ObservableCollection<Pages> Pages { get; set; }
+
         #region Title
         private string _Title = "Несутулов К.C";
         public string Title
@@ -17,7 +20,20 @@ namespace Praktika.Viewmodels
 
         public MainWindowViewModel()
         {
-
+            Pages = new ObservableCollection<Pages>
+            {
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+            };
         }
 
     }

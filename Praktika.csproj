@@ -73,11 +73,17 @@
     <Page Include="Resources\Model\Labels.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Model\MenuListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Model\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\DefaultTheme.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\Authorization.xaml">
@@ -94,6 +100,7 @@
     <Compile Include="Infrastructures\Commands\Base\BaseCommand.cs" />
     <Compile Include="Infrastructures\Commands\CloseApplicationCommand.cs" />
     <Compile Include="Infrastructures\Commands\LamdaCommand.cs" />
+    <Compile Include="Models\Pages.cs" />
     <Compile Include="Viewmodels\AuthorizationWindowViewModel.cs" />
     <Compile Include="Viewmodels\Base\BaseViewModel.cs" />
     <Compile Include="Viewmodels\MainWindowViewModel.cs" />
@@ -134,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\CloseApp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\MainMenu\Calc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

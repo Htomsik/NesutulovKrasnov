@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!--  Для всех label  -->
     <Style TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{DynamicResource 10Color}" />
         <Setter Property="FontSize" Value="28" />
@@ -8,4 +9,12 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
 
+    <!--  Для меню  -->
+    <Style
+        x:Key="MainMenuLabelStyle"
+        BasedOn="{StaticResource {x:Type Label}}"
+        TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{DynamicResource 10Color}" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
 </ResourceDictionary> 

@@ -17,6 +17,21 @@
     <!--  Цвет при наведении на кнопку  -->
     <SolidColorBrush x:Key="DopColorIsFocused" Color="#535365" />
 
-    
+    <SolidColorBrush x:Key="Menucolor" Color="#1C1C22" />
+
+    <!--  ......................... раздел на случай где нельзя использовать солиды .........................  -->
+
+    <Color x:Key="60Color(color)">#3C4DB9</Color>
+
+    <Color x:Key="30Color(color)">#C8B156</Color>
+
+    <Color x:Key="10Color(color)">#D2D3DA</Color>
+
+    <Color x:Key="DopColor(color)">#1C1C22</Color>
+
+    <Color x:Key="DopColorIsFocused(color)">#535365</Color>
+
+
+
 
 </ResourceDictionary>

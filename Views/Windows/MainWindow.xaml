@@ -29,6 +29,10 @@
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
+                <ResourceDictionary Source="/Resources/Model/MenuListView.xaml" />
+                <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
+
+
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
@@ -36,7 +40,9 @@
 
 
 
+
     </Window.Resources>
+
     <Window.Triggers>
 
         <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleButton">
@@ -53,8 +59,8 @@
 
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                <GradientStop Offset="0" Color="#FF3C4DB9" />
-                <GradientStop Offset="1" Color="#1C1D22" />
+                <GradientStop Offset="0" Color="{DynamicResource 60Color(color)}" />
+                <GradientStop Offset="1" Color="{DynamicResource DopColor(color)}" />
             </LinearGradientBrush>
         </Grid.Background>
 
@@ -73,13 +79,66 @@
         <Grid
             x:Name="grid"
             Grid.RowSpan="2"
-            Width="50"
+            Width="250"
             HorizontalAlignment="Left"
-            Background="{DynamicResource 30Color}">
+            Background="{DynamicResource Menucolor}">
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <ListView
+                x:Name="MenuListview"
+                Grid.Row="1"
+                ItemsSource="{Binding Pages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel
+                            Width="240"
+                            Height="40"
+                            Background="Transparent"
+                            Orientation="Horizontal">
+
+
+                            <Image
+                                Width="35"
+                                Height="35"
+                                Source="{Binding URLicon}">
+                                <Image.Effect>
+
+                                    <DropShadowEffect
+                                        BlurRadius="25"
+                                        Direction="0"
+                                        ShadowDepth="0"
+                                        Color="{DynamicResource 30Color(color)}" />
+
+                                </Image.Effect>
+                            </Image>
+
+
+                            <Label
+                                Margin="5,0,0,0"
+                                Content="{Binding NamePage}"
+                                Style="{DynamicResource MainMenuLabelStyle}" />
+                        </StackPanel>
+
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
 
 
             <ToggleButton
                 x:Name="toggleButton"
+                Grid.Row="2"
                 Width="40"
                 Height="40"
                 Margin="5,0,0,5"
@@ -88,10 +147,11 @@
                 Background="Transparent">
 
                 <fa:ImageAwesome
-                    Foreground="{DynamicResource DopColor}"
                     x:Name="imageAwesome"
+                    Foreground="{DynamicResource 10Color}"
                     Icon="Solid_CaretRight"
-                    RenderTransformOrigin="0.5,0.5">
+                    RenderTransformOrigin="0.5,0.5"
+                    ToolTip="Свернуть/развернуть меню">
                     <fa:ImageAwesome.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform />
@@ -101,7 +161,6 @@
                         </TransformGroup>
                     </fa:ImageAwesome.RenderTransform>
                 </fa:ImageAwesome>
-
             </ToggleButton>
 
         </Grid>
