@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
+    xmlns:viewsPage="clr-namespace:Praktika.Views.Pages"
+    xmlns:viewsWindows="clr-namespace:Praktika.Views.Windows">
+
+
+    <DataTemplate DataType="{x:Type viewmodels:HomapageViewmodel}">
+        <viewsPage:HomePage />
+    </DataTemplate>
+
+
+
+
+
+</ResourceDictionary>

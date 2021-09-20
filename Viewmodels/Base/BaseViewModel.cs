@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Praktika.Viewmodels.Base
+namespace Praktika.Viewmodels
 {
-    public abstract class BaseViewModel
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
@@ -18,5 +18,6 @@ namespace Praktika.Viewmodels.Base
             OnPropertyChanged(PropertyName);
             return true;
         }
+
     }
 }

@@ -18,6 +18,11 @@ namespace Praktika.Models
         /// </summary>
         public string NamePage { get; set; }
 
+        /// <summary>
+        /// Укащывает на номер страницы в массиве
+        /// </summary>
+        public short Number { get; set; }
+
 
 
     }

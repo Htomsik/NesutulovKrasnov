@@ -1,11 +1,12 @@
-﻿using Praktika.Viewmodels.Base;
+﻿
 using System.Collections.ObjectModel;
 using Praktika.Models;
-
+using System.Windows.Input;
+using Praktika.Infrastructures.Commands;
 
 namespace Praktika.Viewmodels
 {
-    class MainWindowViewModel: BaseViewModel
+    public class MainWindowViewModel: BaseViewModel
     {
         public ObservableCollection<Pages> Pages { get; set; }
 
@@ -18,19 +19,30 @@ namespace Praktika.Viewmodels
         }
         #endregion
 
+        #region Выбор страниц
+        private BaseViewModel _selectedViewModel;
+        public BaseViewModel SelectedViewModel
+        {
+            get { return _selectedViewModel; }
+            set
+            {
+                _selectedViewModel = value;
+                OnPropertyChanged(nameof(SelectedViewModel));
+            }
+        }
+
+        public ICommand UpdateViewCommand { get; set; }
+
+        #endregion
+
         public MainWindowViewModel()
         {
+
+            UpdateViewCommand = new UpdateViewCommand(this);
+
             Pages = new ObservableCollection<Pages>
             {
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
-
+                new Pages{URLicon="Solid_home",NamePage="Главная страница", Number=0},
             };
         }
 

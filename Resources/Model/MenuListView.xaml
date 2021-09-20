@@ -42,7 +42,11 @@
 
                         </Border>
 
-
+                        <Border
+                            x:Name="stripborder"
+                            BorderBrush="#FF00AEFF"
+                            BorderThickness="3,0,0,0"
+                            Visibility="Hidden" />
 
                     </Grid>
 
@@ -55,6 +59,7 @@
                         </Trigger>
 
                         <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="stripborder" Property="Visibility" Value="Visible" />
                             <Setter TargetName="OpBorder" Property="Opacity" Value="0.30" />
                             <Setter TargetName="OpBorder" Property="DocumentViewerBase.Background" Value="{DynamicResource 60Color}" />
                         </Trigger>
