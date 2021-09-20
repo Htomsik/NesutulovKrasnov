@@ -13,7 +13,7 @@
         <Setter Property="MinHeight" Value="53" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Margin" Value="1 1 1 1"/>
+        <Setter Property="Margin" Value="1,1,1,1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">

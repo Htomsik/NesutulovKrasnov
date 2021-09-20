@@ -28,26 +28,39 @@ namespace Praktika.Views.Windows
         public Calculator()
         {
             InitializeComponent();
-            foreach (UIElement el in Calc.Children)
+            foreach (UIElement el in nav_pnll.Children)
             {
                 if (el is Button)
                 {
                     ((Button)el).Click += Button_Click;
                 }
             }
+            
         }
-
+        bool flag;
+        private static void Check(object text,out string Text)
+        {
+            Text = "";
+            if (string.IsNullOrEmpty(text as string)) return;
+            Text=text.ToString().Replace(",", ".");
+            Text = new DataTable().Compute(Text, null).ToString();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string vvod = (string)((Button)e.OriginalSource).Content;
+            if (flag == false)
+            {
+                LabelCalc.Content = String.Empty;
+                flag = true;
+            }
+            string number="";
+            string input = (string)((Button)e.OriginalSource).Content;
 
-            switch (vvod)
+            switch (input)
             {
                 case "CE":
                     {
-                        string number = LabelCalc.Content.ToString();
 
+                        Check(LabelCalc.Content,out number);
 
                         int index = 0;
                         for (int i = 0; i < number.Length; i++)
@@ -57,8 +70,13 @@ namespace Praktika.Views.Windows
                                 index = i;
                             }
                         }
-                        number=number.Remove(index+1);
-                        LabelCalc.Content = number;
+                        if (index == 0) LabelCalc.Content = "";
+                        else
+                        {
+                            number = number.Remove(index + 1);
+                            LabelCalc.Content = number;
+                        }
+                       
                         break;
                     }
                 case "C":
@@ -68,80 +86,80 @@ namespace Praktika.Views.Windows
                     }
                 case "=":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString().Replace(",", "."), null).ToString();
-                        LabelCalc.Content = chislo;
+                        Check(LabelCalc.Content, out number);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "x²":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString().Replace(",", "."), null).ToString();
-                        var kvadrat = Convert.ToDouble(chislo);
+                        Check(LabelCalc.Content, out number);
+                        var kvadrat = Convert.ToDouble(number);
                         kvadrat = Math.Pow(kvadrat, 2);
-                        chislo = Convert.ToString(kvadrat);
-                        LabelCalc.Content = chislo;
+                        number = Convert.ToString(kvadrat);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "x³":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var kub = Convert.ToDouble(chislo);
+                        Check(LabelCalc.Content, out number);
+                        var kub = Convert.ToDouble(number);
                         kub = Math.Pow(kub, 3);
-                        chislo = Convert.ToString(kub);
-                        LabelCalc.Content = chislo;
+                        number = Convert.ToString(kub);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "±":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var plus_minus = Convert.ToDouble(chislo);
+                        Check(LabelCalc.Content, out number);
+                        var plus_minus = Convert.ToDouble(number);
                         plus_minus = -plus_minus;
-                        chislo = Convert.ToString(plus_minus);
-                        LabelCalc.Content = chislo;
+                        number = Convert.ToString(plus_minus);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case ",":
                     {
-                        // string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        LabelCalc.Content = LabelCalc.Content.ToString() + ',';
+                        Check(LabelCalc.Content, out number);
+                        LabelCalc.Content = number + ',';
                        
                         break;
                     }
                 case "√":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var koren = Convert.ToDouble(chislo);
+                        Check(LabelCalc.Content, out number);
+                        var koren = Convert.ToDouble(number);
                         koren = Math.Sqrt(koren);
-                        chislo = Convert.ToString(koren);
-                        LabelCalc.Content = chislo;
+                        number = Convert.ToString(koren);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "1/x":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var x = Convert.ToDouble(chislo);
+                        Check(LabelCalc.Content, out number);
+                        var x = Convert.ToDouble(number);
                         x = 1 / x;
-                        chislo = Convert.ToString(x);
-                        LabelCalc.Content = chislo;
+                        number = Convert.ToString(x);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "⌫":
                     {
-                        if (string.IsNullOrEmpty(LabelCalc.Content as string))return;
-                        string chislo = LabelCalc.Content.ToString();
-                        chislo=chislo.Remove(chislo.Length - 1);
-                        LabelCalc.Content = chislo;
+                        Check(LabelCalc.Content, out number);
+  
+                        number=number.Remove(number.Length - 1);
+                        LabelCalc.Content = number;
                         break;
                     }
                 case "%":
                     {
-                        string chislo = LabelCalc.Content.ToString();
-                        string a = chislo;
-                        double[] numbers = Regex.Matches(a, @"(\d+(?:\,\d+)?)")
+                        
+                        string s = LabelCalc.Content.ToString();
+                        double[] numbers = Regex.Matches(s, @"(\d+(?:\,\d+)?)")
                         .OfType<Match>()
                         .Select(m => double.Parse(m.Groups[1].Value, CultureInfo.GetCultureInfo("ru-RU")) * (m.Groups[1].Value.StartsWith("0,0") ? 10 : 1))
                         .ToArray();
 
-                        string s = chislo;
+                        
                         string str = "";
                         for (int i = 0; i < s.Length; i++)
                         {
@@ -160,10 +178,40 @@ namespace Praktika.Views.Windows
                     }
                 default:
                     {
-                        LabelCalc.Content += vvod;
+                        LabelCalc.Content += input;
                         break;
                     }
             }
+        }
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Tg_Btn.IsChecked = false;
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Calc_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Tg_Btn.IsChecked = false;
         }
     }
 }

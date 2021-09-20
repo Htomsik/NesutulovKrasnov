@@ -146,5 +146,15 @@
   <ItemGroup>
     <Folder Include="Views\Page\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Assets\tgBtn_default.png" />
+    <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Assets\icons_calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Assets\engineer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
