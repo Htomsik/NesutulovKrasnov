@@ -22,17 +22,15 @@ namespace Praktika.Viewmodels
         {
             Pages = new ObservableCollection<Pages>
             {
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
-                      new Pages{URLicon="/Resources/Icons/MainMenu/Calc.png",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+                      new Pages{URLicon="Solid_Calculator",NamePage="Калькулятор"},
+
             };
         }
 

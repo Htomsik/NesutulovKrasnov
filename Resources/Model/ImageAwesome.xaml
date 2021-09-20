@@ -1,21 +1,19 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fa="http://schemas.fontawesome.com/icons/">
 
-    <!--  Для всех label  -->
-    <Style TargetType="{x:Type Label}">
+    <!--  Стандартный стиль  -->
+    <Style TargetType="{x:Type fa:ImageAwesome}">
         <Setter Property="Foreground" Value="{DynamicResource 10Color}" />
-        <Setter Property="FontSize" Value="28" />
-        <Setter Property="FontFamily" Value="Segoe UI Black" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
 
-    <!--  Для меню  -->
-    <Style
-        x:Key="MainMenuLabelStyle"
-        BasedOn="{StaticResource {x:Type Label}}"
-        TargetType="{x:Type Label}">
+    <!--  Стиль для главного меню  -->
+    <Style x:Key="MenuFaImageStyle" TargetType="{x:Type fa:ImageAwesome}">
+
         <Setter Property="Foreground" Value="{DynamicResource 10Color}" />
-        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Height" Value="35" />
 
         <Style.Triggers>
 
@@ -28,12 +26,11 @@
 
 
             <!--  Изменение цвета на белый при наведении страницы  -->
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}, Path= IsMouseOver}" Value="true">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}, Path=IsMouseOver}" Value="true">
                 <DataTrigger.Setters>
                     <Setter Property="Foreground" Value="White" />
                 </DataTrigger.Setters>
             </DataTrigger>
         </Style.Triggers>
-
     </Style>
-</ResourceDictionary> 
+</ResourceDictionary>

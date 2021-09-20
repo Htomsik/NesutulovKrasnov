@@ -31,8 +31,7 @@
                 <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
                 <ResourceDictionary Source="/Resources/Model/MenuListView.xaml" />
                 <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
-
-
+                <ResourceDictionary Source="/Resources/Model/ImageAwesome.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
@@ -97,29 +96,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
 
+
                         <StackPanel
                             Width="240"
                             Height="40"
                             Background="Transparent"
-                            Orientation="Horizontal">
-
-
-                            <Image
-                                Width="35"
-                                Height="35"
-                                Source="{Binding URLicon}">
-                                <Image.Effect>
-
-                                    <DropShadowEffect
-                                        BlurRadius="25"
-                                        Direction="0"
-                                        ShadowDepth="0"
-                                        Color="{DynamicResource 30Color(color)}" />
-
-                                </Image.Effect>
-                            </Image>
-
-
+                            Orientation="Horizontal"
+                            ToolTip="{Binding NamePage}">
+                            <fa:ImageAwesome Icon="{Binding URLicon}" Style="{DynamicResource MenuFaImageStyle}" />
                             <Label
                                 Margin="5,0,0,0"
                                 Content="{Binding NamePage}"
@@ -128,6 +112,7 @@
 
 
                     </DataTemplate>
+
 
                 </ListView.ItemTemplate>
 

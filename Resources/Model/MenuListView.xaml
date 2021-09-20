@@ -17,6 +17,15 @@
 
                     <Grid>
                         <Border
+                            x:Name="OpBorder"
+                            Background="{DynamicResource 30Color}"
+                            Opacity="0">
+                            <Border.Effect>
+                                <BlurEffect Radius="3" />
+                            </Border.Effect>
+                        </Border>
+
+                        <Border
                             x:Name="Bd"
                             Padding="{TemplateBinding Padding}"
                             Background="Transparent"
@@ -33,23 +42,7 @@
 
                         </Border>
 
-                        <Border Name="IsMouseOverBorder" Opacity="0">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <GradientStop Offset="0" Color="{DynamicResource DopColor(color)}" />
-                                    <GradientStop Offset="1" Color="{DynamicResource DopColorIsFocused(color)}" />
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
 
-                        <Border Name="IsSelectedBorder" Opacity="0">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <GradientStop Offset="0" Color="{DynamicResource 10Color(color)}" />
-                                    <GradientStop Offset="1" Color="{DynamicResource 60Color(color)}" />
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
 
                     </Grid>
 
@@ -58,12 +51,16 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="IsMouseOverBorder" Property="Effect" />
+                            <Setter TargetName="OpBorder" Property="Opacity" Value="0.15" />
                         </Trigger>
 
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="IsSelectedBorder" Property="Opacity" Value="0.2" />
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="OpBorder" Property="Opacity" Value="0.30" />
+                            <Setter TargetName="OpBorder" Property="DocumentViewerBase.Background" Value="{DynamicResource 60Color}" />
                         </Trigger>
+
+
+
 
 
 

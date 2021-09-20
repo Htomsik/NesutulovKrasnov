@@ -70,6 +70,9 @@
     <Page Include="Resources\Model\Buttons.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Model\ImageAwesome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Model\Labels.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,9 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\CloseApp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\MainMenu\Calc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
