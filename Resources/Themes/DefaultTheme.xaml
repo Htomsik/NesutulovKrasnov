@@ -9,7 +9,7 @@
     <SolidColorBrush x:Key="30Color" Color="#C8B156" />
 
     <!--  Текст  -->
-    <SolidColorBrush x:Key="10Color" Color="#D2D3DA" />
+    <SolidColorBrush x:Key="10Color" Color="#D6D3DA" />
 
     <!--  Дополнительный цвет  -->
     <SolidColorBrush x:Key="DopColor" Color="#1C1C22" />
