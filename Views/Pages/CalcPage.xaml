@@ -1,15 +1,16 @@
 ﻿<UserControl
-    x:Class="Praktika.Views.Windows.Calculator"
+    x:Class="Praktika.Views.Pages.CalcPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Praktika.Views.Windows"
+    xmlns:local="clr-namespace:Praktika.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="500"
-    Height="473"
+    xmlns:vm="clr-namespace:Praktika.Viewmodels"
     mc:Ignorable="d">
 
-
+    <UserControl.DataContext>
+        <vm:CalcPageViewModel />
+    </UserControl.DataContext>
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -337,8 +338,4 @@
         </Grid>
 
     </Grid>
-
-
-
-
 </UserControl>

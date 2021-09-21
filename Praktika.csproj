@@ -103,14 +103,13 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\CalcPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\Authorization.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Windows\Calculator.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
@@ -129,15 +128,16 @@
     <Compile Include="Viewmodels\AuthorizationWindowViewModel.cs" />
     <Compile Include="Viewmodels\Base\BaseViewModel.cs" />
     <Compile Include="Viewmodels\MainWindowViewModel.cs" />
+    <Compile Include="Viewmodels\pages\CalcPageViewModel.cs" />
     <Compile Include="Viewmodels\pages\HomapageViewmodel.cs" />
+    <Compile Include="Views\Pages\CalcPage.xaml.cs">
+      <DependentUpon>CalcPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Windows\Calculator.xaml.cs">
-      <DependentUpon>Calculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -172,14 +172,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\CloseApp.png" />
+    <Resource Include="Resources\Assets\Icons\CloseApp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\dots.png" />
+    <Resource Include="Resources\Assets\Icons\dots.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Page\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Assets\tgBtn_default.png" />
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />

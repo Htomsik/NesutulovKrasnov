@@ -122,7 +122,7 @@
                 Style="{DynamicResource IMGButton}">
 
                 <Button.Resources>
-                    <ImageSource x:Key="Img">/Resources/Icons/CloseApp.png</ImageSource>
+                    <ImageSource x:Key="Img">/Resources/Assets/Icons/CloseApp.png</ImageSource>
                 </Button.Resources>
 
 

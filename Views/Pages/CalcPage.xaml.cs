@@ -18,14 +18,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Praktika.Views.Windows
+namespace Praktika.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Calculator.xaml
+    /// Логика взаимодействия для CalcPage.xaml
     /// </summary>
-    public partial class Calculator : UserControl
+    public partial class CalcPage : UserControl
     {
-        public Calculator()
+        public CalcPage()
         {
             InitializeComponent();
             foreach (UIElement el in nav_pnll.Children)
@@ -35,14 +35,14 @@ namespace Praktika.Views.Windows
                     ((Button)el).Click += Button_Click;
                 }
             }
-            
+
         }
         bool flag;
-        private static void Check(object text,out string Text)
+        private static void Check(object text, out string Text)
         {
             Text = "";
             if (string.IsNullOrEmpty(text as string)) return;
-            Text=text.ToString().Replace(",", ".");
+            Text = text.ToString().Replace(",", ".");
             Text = new DataTable().Compute(Text, null).ToString();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace Praktika.Views.Windows
                 LabelCalc.Content = String.Empty;
                 flag = true;
             }
-            string number="";
+            string number = "";
             string input = (string)((Button)e.OriginalSource).Content;
 
             switch (input)
@@ -60,12 +60,12 @@ namespace Praktika.Views.Windows
                 case "CE":
                     {
 
-                        Check(LabelCalc.Content,out number);
+                        Check(LabelCalc.Content, out number);
 
                         int index = 0;
                         for (int i = 0; i < number.Length; i++)
                         {
-                            if (!char.IsDigit(number[i]) && number[i]!=',')
+                            if (!char.IsDigit(number[i]) && number[i] != ',')
                             {
                                 index = i;
                             }
@@ -76,7 +76,7 @@ namespace Praktika.Views.Windows
                             number = number.Remove(index + 1);
                             LabelCalc.Content = number;
                         }
-                       
+
                         break;
                     }
                 case "C":
@@ -121,7 +121,7 @@ namespace Praktika.Views.Windows
                     {
                         Check(LabelCalc.Content, out number);
                         LabelCalc.Content = number + ',';
-                       
+
                         break;
                     }
                 case "√":
@@ -145,21 +145,21 @@ namespace Praktika.Views.Windows
                 case "⌫":
                     {
                         Check(LabelCalc.Content, out number);
-  
-                        number=number.Remove(number.Length - 1);
+
+                        number = number.Remove(number.Length - 1);
                         LabelCalc.Content = number;
                         break;
                     }
                 case "%":
                     {
-                        
+
                         string s = LabelCalc.Content.ToString();
                         double[] numbers = Regex.Matches(s, @"(\d+(?:\,\d+)?)")
                         .OfType<Match>()
                         .Select(m => double.Parse(m.Groups[1].Value, CultureInfo.GetCultureInfo("ru-RU")) * (m.Groups[1].Value.StartsWith("0,0") ? 10 : 1))
                         .ToArray();
 
-                        
+
                         string str = "";
                         for (int i = 0; i < s.Length; i++)
                         {
@@ -191,12 +191,12 @@ namespace Praktika.Views.Windows
 
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -122,12 +122,16 @@
                                 Style="{DynamicResource MainMenuLabelStyle}" />
 
                             <StackPanel.InputBindings>
+                                
                                 <MouseBinding
                                     Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
                                     CommandParameter="{Binding Number}"
                                     MouseAction="LeftClick" />
+                                
                             </StackPanel.InputBindings>
+
                         </StackPanel>
+
 
 
                     </DataTemplate>
@@ -177,7 +181,7 @@
                 Command="{StaticResource CommandCloseApplication}"
                 Style="{DynamicResource IMGButton}">
                 <Button.Resources>
-                    <ImageSource x:Key="Img">/Resources/Icons/CloseApp.png</ImageSource>
+                    <ImageSource x:Key="Img">/Resources/Assets/Icons/CloseApp.png</ImageSource>
                 </Button.Resources>
             </Button>
 
@@ -186,7 +190,7 @@
                 HorizontalAlignment="Left"
                 Style="{DynamicResource IMGButton}">
                 <Button.Resources>
-                    <ImageSource x:Key="Img">/Resources/Icons/dots.png</ImageSource>
+                    <ImageSource x:Key="Img">/Resources/Assets/Icons/dots.png</ImageSource>
                 </Button.Resources>
             </Button>
 

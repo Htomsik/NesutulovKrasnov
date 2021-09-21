@@ -21,7 +21,7 @@ namespace Praktika.Infrastructures.Commands
         Praktika.Viewmodels.BaseViewModel[] _ViewModelArray = new Praktika.Viewmodels.BaseViewModel[]
            {
                 new HomapageViewmodel(),
-                new HomapageViewmodel()
+                new CalcPageViewModel()
            };
 
         public override void Execute(object parameter)
