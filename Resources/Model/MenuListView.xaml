@@ -16,8 +16,10 @@
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
 
                     <Grid>
+
+                        <!--  Задний фон при наведении  -->
                         <Border
-                            x:Name="OpBorder"
+                            x:Name="IsMouseOverBorder"
                             Background="{DynamicResource 30Color}"
                             Opacity="0">
                             <Border.Effect>
@@ -25,8 +27,19 @@
                             </Border.Effect>
                         </Border>
 
+                        <!--  Задний фон при нажатии  -->
                         <Border
-                            x:Name="stripborder"
+                            x:Name="IsSelectedBorder"
+                            Background="{DynamicResource 60Color}"
+                            Opacity="0">
+                            <Border.Effect>
+                                <BlurEffect Radius="3" />
+                            </Border.Effect>
+                        </Border>
+
+                        <!--  Полоска слева при нажатии  -->
+                        <Border
+                            x:Name="IsSelectedStripBorder"
                             BorderBrush="#FF00AEFF"
                             BorderThickness="3,0,0,0"
                             Visibility="Hidden" />
@@ -38,27 +51,86 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="true">
-                            
+
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                         </Border>
-                        
+
                     </Grid>
 
+                    <!--  Плавное выделение при isselected  -->
                     <ControlTemplate.Triggers>
 
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="OpBorder" Property="Opacity" Value="0.15" />
+                        <Trigger Property="IsSelected" Value="true">
+
+                            <Setter TargetName="IsSelectedStripBorder" Property="Visibility" Value="Visible" />
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="IsSelectedBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0.3"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="IsSelectedBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
                         </Trigger>
 
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter TargetName="stripborder" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="OpBorder" Property="Opacity" Value="0.30" />
-                            <Setter TargetName="OpBorder" Property="DocumentViewerBase.Background" Value="{DynamicResource 60Color}" />
-                        </Trigger>
+
+                        <!--  Плавное выделение при наведении мыши  -->
+                        <MultiTrigger>
+
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true" />
+                                <Condition Property="IsSelected" Value="false" />
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="IsMouseOverBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0.15"
+                                            Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="IsMouseOverBorder"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+
+
+
+                        </MultiTrigger>
+
 
                     </ControlTemplate.Triggers>
 

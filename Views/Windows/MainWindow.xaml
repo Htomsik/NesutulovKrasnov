@@ -117,6 +117,7 @@
                             Orientation="Horizontal"
                             ToolTip="{Binding NamePage}">
                             <fa:ImageAwesome Icon="{Binding URLicon}" Style="{DynamicResource MenuFaImageStyle}" />
+                            
                             <Label
                                 Margin="5,0,0,0"
                                 Content="{Binding NamePage}"
