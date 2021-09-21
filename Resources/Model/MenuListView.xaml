@@ -26,31 +26,27 @@
                         </Border>
 
                         <Border
+                            x:Name="stripborder"
+                            BorderBrush="#FF00AEFF"
+                            BorderThickness="3,0,0,0"
+                            Visibility="Hidden" />
+
+                        <Border
                             x:Name="Bd"
                             Padding="{TemplateBinding Padding}"
                             Background="Transparent"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="true">
-
-
-
+                            
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                         </Border>
-
-                        <Border
-                            x:Name="stripborder"
-                            BorderBrush="#FF00AEFF"
-                            BorderThickness="3,0,0,0"
-                            Visibility="Hidden" />
-
+                        
                     </Grid>
-
-
 
                     <ControlTemplate.Triggers>
 
@@ -63,12 +59,6 @@
                             <Setter TargetName="OpBorder" Property="Opacity" Value="0.30" />
                             <Setter TargetName="OpBorder" Property="DocumentViewerBase.Background" Value="{DynamicResource 60Color}" />
                         </Trigger>
-
-
-
-
-
-
 
                     </ControlTemplate.Triggers>
 

@@ -43,6 +43,8 @@ namespace Praktika.Viewmodels
             Pages = new ObservableCollection<Pages>
             {
                 new Pages{URLicon="Solid_home",NamePage="Главная страница", Number=0},
+                new Pages{URLicon="Solid_home",NamePage="Главная страница", Number=0},
+
             };
         }
 

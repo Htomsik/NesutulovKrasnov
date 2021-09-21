@@ -181,6 +181,15 @@
                 </Button.Resources>
             </Button>
 
+            <Button
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                Style="{DynamicResource IMGButton}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">/Resources/Icons/dots.png</ImageSource>
+                </Button.Resources>
+            </Button>
+
 
         </Grid>
 
