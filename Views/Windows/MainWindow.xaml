@@ -38,11 +38,13 @@
 
         </ResourceDictionary>
     </Window.Resources>
+
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">
             <ia:InvokeCommandAction Command="{Binding UpdateViewCommand}" CommandParameter="0" />
         </ia:EventTrigger>
     </ia:Interaction.Triggers>
+
     <Window.Triggers>
 
         <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleButton">
@@ -108,7 +110,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
 
-
                         <StackPanel
                             Width="240"
                             Height="40"
@@ -121,20 +122,19 @@
                                 Content="{Binding NamePage}"
                                 Style="{DynamicResource MainMenuLabelStyle}" />
 
-                            <StackPanel.InputBindings>
-                                
-                                <MouseBinding
-                                    Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
-                                    CommandParameter="{Binding Number}"
-                                    MouseAction="LeftClick" />
-                                
-                            </StackPanel.InputBindings>
+                            <!--  Тригер для переключения страниц  -->
+                            <ia:Interaction.Triggers>
+                                <ia:EventTrigger EventName="MouseLeftButtonDown">
+                                    <ia:InvokeCommandAction Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Number}" />
+                                </ia:EventTrigger>
+                            </ia:Interaction.Triggers>
 
                         </StackPanel>
 
-
-
                     </DataTemplate>
+
+
+
 
 
                 </ListView.ItemTemplate>
