@@ -75,7 +75,7 @@
                                             Storyboard.TargetName="IsSelectedBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             To="0.3"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.45" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -87,7 +87,7 @@
                                             Storyboard.TargetName="IsSelectedBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             To="0"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.45" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -110,7 +110,7 @@
                                             Storyboard.TargetName="IsMouseOverBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             To="0.15"
-                                            Duration="0:0:0.15" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
@@ -122,7 +122,7 @@
                                             Storyboard.TargetName="IsMouseOverBorder"
                                             Storyboard.TargetProperty="Opacity"
                                             To="0"
-                                            Duration="0:0:0.15" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.ExitActions>

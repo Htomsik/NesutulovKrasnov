@@ -6,19 +6,30 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="250" />
         </DoubleAnimationUsingKeyFrames>
+        
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-180" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="YellowBorder" Storyboard.TargetProperty="Opacity">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 
     <Storyboard x:Key="Closemenu">
+        
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
             <EasingDoubleKeyFrame KeyTime="0" Value="-180" />
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-360" />
         </DoubleAnimationUsingKeyFrames>
+        
         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
             <EasingDoubleKeyFrame KeyTime="0" Value="250" />
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="50" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="YellowBorder" Storyboard.TargetProperty="Opacity">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
 

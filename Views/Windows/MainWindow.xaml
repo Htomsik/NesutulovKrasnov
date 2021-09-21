@@ -60,12 +60,31 @@
 
     <Grid>
 
+
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+
+
+            <!-- <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                 <GradientStop Offset="0" Color="{DynamicResource 60Color(color)}" />
                 <GradientStop Offset="1" Color="{DynamicResource DopColor(color)}" />
             </LinearGradientBrush>
+            -->
+            <VisualBrush Viewbox="0.05,0.05,0.9,0.9">
+                <VisualBrush.Visual>
+                    <Image Source="/Resources/Assets/Bonk.jpg">
+                        <Image.Effect>
+                            <BlurEffect Radius="5" />
+
+                        </Image.Effect>
+                    </Image>
+                </VisualBrush.Visual>
+            </VisualBrush>
+
         </Grid.Background>
+
+
+
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -103,6 +122,8 @@
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
+
+
             <ListView
                 x:Name="MenuListview"
                 Grid.Row="1"
@@ -117,7 +138,7 @@
                             Orientation="Horizontal"
                             ToolTip="{Binding NamePage}">
                             <fa:ImageAwesome Icon="{Binding URLicon}" Style="{DynamicResource MenuFaImageStyle}" />
-                            
+
                             <Label
                                 Margin="5,0,0,0"
                                 Content="{Binding NamePage}"
@@ -133,11 +154,6 @@
                         </StackPanel>
 
                     </DataTemplate>
-
-
-
-
-
                 </ListView.ItemTemplate>
 
             </ListView>
@@ -168,6 +184,13 @@
                 </fa:ImageAwesome>
             </ToggleButton>
 
+            <Border
+                x:Name="YellowBorder"
+                Grid.RowSpan="3"
+                BorderBrush="{DynamicResource 30Color}"
+                BorderThickness="0,0,2,0"
+                Opacity="0" />
+
         </Grid>
 
         <!--  Верхняя панель  -->
@@ -175,10 +198,8 @@
             Grid.ColumnSpan="3"
             Background="Transparent"
             MouseLeftButtonDown="DragPanelMove">
-
-
             <Button
-                HorizontalAlignment="Right"
+                HorizontalAlignment="Right" 
                 Command="{StaticResource CommandCloseApplication}"
                 Style="{DynamicResource IMGButton}">
                 <Button.Resources>
