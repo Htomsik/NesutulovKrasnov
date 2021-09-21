@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fa="http://schemas.fontawesome.com/icons/"
     xmlns:ia="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:local="clr-namespace:Praktika"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Praktika.Viewmodels"
     Width="1000"
@@ -83,9 +82,6 @@
         </Grid.Background>
 
 
-
-
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="200" />
@@ -123,7 +119,6 @@
             </Grid.RowDefinitions>
 
 
-
             <ListView
                 x:Name="MenuListview"
                 Grid.Row="1"
@@ -147,7 +142,9 @@
                             <!--  Тригер для переключения страниц  -->
                             <ia:Interaction.Triggers>
                                 <ia:EventTrigger EventName="MouseLeftButtonDown">
-                                    <ia:InvokeCommandAction Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Number}" />
+                                    <ia:InvokeCommandAction
+                                        Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding Number}" />
                                 </ia:EventTrigger>
                             </ia:Interaction.Triggers>
 
@@ -188,7 +185,7 @@
                 x:Name="YellowBorder"
                 Grid.RowSpan="3"
                 BorderBrush="{DynamicResource 30Color}"
-                BorderThickness="0,0,2,0"
+                BorderThickness="0,0,4,0"
                 Opacity="0" />
 
         </Grid>
@@ -199,11 +196,10 @@
             Background="Transparent"
             MouseLeftButtonDown="DragPanelMove">
             <Button
-                HorizontalAlignment="Right" 
+                HorizontalAlignment="Right"
                 Command="{StaticResource CommandCloseApplication}"
                 Style="{DynamicResource IMGButton}">
                 <Button.Resources>
-                    <ImageSource x:Key="Img">/Resources/Assets/Icons/CloseApp.png</ImageSource>
                 </Button.Resources>
             </Button>
 
@@ -212,7 +208,6 @@
                 HorizontalAlignment="Left"
                 Style="{DynamicResource IMGButton}">
                 <Button.Resources>
-                    <ImageSource x:Key="Img">/Resources/Assets/Icons/dots.png</ImageSource>
                 </Button.Resources>
             </Button>
 

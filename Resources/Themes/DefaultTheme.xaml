@@ -1,5 +1,5 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
     <!--  Для фона  -->
@@ -33,8 +33,6 @@
     <Color x:Key="DopColorIsFocused(color)">#535365</Color>
 
     <Color x:Key="Menucolor(color)">#1C1C22</Color>
-
-
 
 
 </ResourceDictionary>

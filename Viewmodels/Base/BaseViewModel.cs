@@ -6,6 +6,7 @@ namespace Praktika.Viewmodels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
@@ -18,6 +19,5 @@ namespace Praktika.Viewmodels
             OnPropertyChanged(PropertyName);
             return true;
         }
-
     }
 }

@@ -1,12 +1,12 @@
-﻿using Praktika.Infrastructures.Commands.Base;
-using System;
+﻿using System;
+using Praktika.Infrastructures.Commands.Base;
 
 namespace Praktika.Infrastructures.Commands
 {
     public class LambdaCommand : BaseCommand
     {
-        private readonly Action<object> _Execute;
         private readonly Func<object, bool> _CanExecute;
+        private readonly Action<object> _Execute;
 
         public LambdaCommand(Action<object> Execute, Func<object, bool> CanExecute = null)
         {
@@ -14,7 +14,10 @@ namespace Praktika.Infrastructures.Commands
             _CanExecute = CanExecute;
         }
 
-        public override bool CanExecute(object parameter) => _CanExecute?.Invoke(parameter) ?? true;
+        public override bool CanExecute(object parameter)
+        {
+            return _CanExecute?.Invoke(parameter) ?? true;
+        }
 
         public override void Execute(object parameter)
         {

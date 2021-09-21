@@ -1,13 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
     <Storyboard x:Key="OpenMenu">
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid"
+                                       Storyboard.TargetProperty="(FrameworkElement.Width)">
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="250" />
         </DoubleAnimationUsingKeyFrames>
-        
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-180" />
         </DoubleAnimationUsingKeyFrames>
 
@@ -17,13 +19,15 @@
     </Storyboard>
 
     <Storyboard x:Key="Closemenu">
-        
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="imageAwesome"
+                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
             <EasingDoubleKeyFrame KeyTime="0" Value="-180" />
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-360" />
         </DoubleAnimationUsingKeyFrames>
-        
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid"
+                                       Storyboard.TargetProperty="(FrameworkElement.Width)">
             <EasingDoubleKeyFrame KeyTime="0" Value="250" />
             <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="50" />
         </DoubleAnimationUsingKeyFrames>

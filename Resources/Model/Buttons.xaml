@@ -1,4 +1,5 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--  Для всех кнопок по умолчанию  -->
     <Style TargetType="{x:Type Button}">
@@ -72,7 +73,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
 
 
     </Style>

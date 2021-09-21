@@ -1,14 +1,10 @@
-﻿
-using System.Windows;
-
+﻿using System.Windows;
 using System.Windows.Input;
-
-using Praktika.Views.Windows;
 
 namespace Praktika
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    ///     Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {

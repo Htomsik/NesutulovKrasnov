@@ -1,11 +1,14 @@
-﻿using Praktika.Infrastructures.Commands.Base;
-using System.Windows;
+﻿using System.Windows;
+using Praktika.Infrastructures.Commands.Base;
 
 namespace Praktika.Infrastructures.Commands
 {
-    class CloseApplicationCommand : BaseCommand
+    internal class CloseApplicationCommand : BaseCommand
     {
-        public override bool CanExecute(object parameter) => true;
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
 
 
         public override void Execute(object parameter)
