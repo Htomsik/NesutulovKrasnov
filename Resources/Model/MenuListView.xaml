@@ -35,6 +35,8 @@
                             <Border.Effect>
                                 <BlurEffect Radius="3" />
                             </Border.Effect>
+
+
                         </Border>
 
                         <!--  Полоска слева при нажатии  -->
