@@ -4,7 +4,7 @@ using Praktika.Viewmodels;
 
 namespace Praktika.Infrastructures.Commands
 {
-    public class UpdateViewCommand : BaseCommand
+    public class UpdatePagesViewCommand : BaseCommand
     {
         private readonly BaseViewModel[] _ViewModelArray =
         {
@@ -12,9 +12,9 @@ namespace Praktika.Infrastructures.Commands
             new CalcPageViewModel()
         };
 
-        private readonly MainWindowViewModel viewModel;
+        private readonly MainContentControlViewModel viewModel;
 
-        public UpdateViewCommand(MainWindowViewModel viewModel)
+        public UpdatePagesViewCommand(MainContentControlViewModel viewModel)
         {
             this.viewModel = viewModel;
         }
@@ -33,4 +33,38 @@ namespace Praktika.Infrastructures.Commands
                 viewModel.SelectedViewModel = _ViewModelArray[0];
         }
     }
+
+
+
+    public class UpdateWindowViewCommand : BaseCommand
+    {
+        private readonly BaseViewModel[] _ViewModelArray =
+        {
+            new MainContentControlViewModel()
+
+        };
+
+        private  readonly  MainWindowViewModel viewModel;
+
+        public UpdateWindowViewCommand(MainWindowViewModel viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public override void Execute(object parameter)
+        {
+            var IntParametr = Convert.ToInt32(parameter);
+            if (IntParametr != -1)
+                viewModel.SelectedViewModel = _ViewModelArray[IntParametr];
+            else
+                viewModel.SelectedViewModel = _ViewModelArray[0];
+        }
+    }
+
+    
 }

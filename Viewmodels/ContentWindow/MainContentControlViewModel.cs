@@ -6,11 +6,11 @@ using Praktika.Models;
 
 namespace Praktika.Viewmodels
 {
-    public class MainWindowViewModel : BaseViewModel
+    public class MainContentControlViewModel : BaseViewModel
     {
-        public MainWindowViewModel()
+        public MainContentControlViewModel()
         {
-            UpdateViewCommand = new UpdateViewCommand(this);
+            UpdatePagesViewCommand = new UpdatePagesViewCommand(this);
 
             Pages = new ObservableCollection<Pages>
             {
@@ -33,12 +33,6 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-        #region ContetMenuVisibility
-
-        
-
-        #endregion
-
         #region Выбор страниц
 
         private BaseViewModel _selectedViewModel;
@@ -53,7 +47,7 @@ namespace Praktika.Viewmodels
             }
         }
 
-        public ICommand UpdateViewCommand { get; set; }
+        public ICommand UpdatePagesViewCommand { get; set; }
 
         #endregion
     }

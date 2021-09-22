@@ -2,15 +2,24 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
-    xmlns:viewsPage="clr-namespace:Praktika.Views.Pages">
+    xmlns:viewsPage="clr-namespace:Praktika.Views.Pages"
+    xmlns:ContentWindow="clr-namespace:Praktika.Views.ContentWindow">
+    
+    
 
 
+    <!-- Страницы -->
     <DataTemplate DataType="{x:Type viewmodels:HomapageViewmodel}">
         <viewsPage:HomePage />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewmodels:CalcPageViewModel}">
         <viewsPage:CalcPage />
+    </DataTemplate>
+
+    <!-- Главные окна (авторизация/Окно с меню)-->
+    <DataTemplate DataType="{x:Type viewmodels:MainContentControlViewModel}">
+        <ContentWindow:MainWindow></ContentWindow:MainWindow>
     </DataTemplate>
 
 

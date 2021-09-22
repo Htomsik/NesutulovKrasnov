@@ -1,10 +1,8 @@
 ﻿<Window
-    x:Class="Praktika.MainWindow"
+    x:Class="Praktika.Views.Windows.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:commands="clr-namespace:Praktika.Infrastructures.Commands"
-    xmlns:custom="simpl"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fa="http://schemas.fontawesome.com/icons/"
     xmlns:ia="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,8 +12,7 @@
     Background="Transparent"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
-    mc:Ignorable="d">
+    WindowStyle="None">
     <!--  Бинд датаконтекст к вьюмоделу viewmodel  -->
     <Window.DataContext>
         <vm:MainWindowViewModel />
@@ -23,68 +20,21 @@
 
     <!--  Добавление ресурсов  -->
     <Window.Resources>
-
         <ResourceDictionary>
             <commands:CloseApplicationCommand x:Key="CommandCloseApplication" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/ViewResources/ViewResources.xaml" />
                 <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
-                <ResourceDictionary Source="/Resources/Model/MenuListView.xaml" />
-                <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
-                <ResourceDictionary Source="/Resources/Model/ImageAwesome.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </Window.Resources>
 
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">
-            <ia:InvokeCommandAction Command="{Binding UpdateViewCommand}" CommandParameter="0" />
+            <ia:InvokeCommandAction Command="{Binding UpdateWindowViewCommand}" CommandParameter="0" />
         </ia:EventTrigger>
     </ia:Interaction.Triggers>
-
-    <Window.Triggers>
-
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleButton">
-            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded" />
-
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleButton">
-            <BeginStoryboard x:Name="Closemenu_BeginStoryboard" Storyboard="{StaticResource Closemenu}" />
-        </EventTrigger>
-
-    </Window.Triggers>
-
     <Grid>
-
-        <Grid.Background>
-
-            <!--
-            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                <GradientStop Offset="0" Color="{DynamicResource 60Color(color)}" />
-                <GradientStop Offset="1" Color="{DynamicResource DopColor(color)}" />
-            </LinearGradientBrush>
-            -->
-
-            <VisualBrush Viewbox="0.05,0.05,0.9,0.9">
-                <VisualBrush.Visual>
-                    <Image Source="/Resources/Assets/Bonk.jpg">
-                        <Image.Effect>
-                            <BlurEffect Radius="5" />
-
-                        </Image.Effect>
-                    </Image>
-                </VisualBrush.Visual>
-            </VisualBrush>
-
-        </Grid.Background>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
@@ -92,105 +42,16 @@
         </Grid.RowDefinitions>
 
         <ContentControl
-            Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
+            Width="1000"
+            Height="600"
+            Grid.RowSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="Transparent"
             Content="{Binding SelectedViewModel}" />
 
-        <!--  Меню  -->
-        <Grid
-            x:Name="grid"
-            Grid.RowSpan="2"
-            Grid.ColumnSpan="2"
-            Width="50"
-            HorizontalAlignment="Left"
-            Background="{DynamicResource Menucolor}">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-
-            <ListView
-                x:Name="MenuListview"
-                Grid.Row="1"
-                ItemsSource="{Binding Pages}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-
-                        <StackPanel
-                            Width="240"
-                            Height="40"
-                            Background="Transparent"
-                            Orientation="Horizontal"
-                            ToolTip="{Binding NamePage}">
-                            <fa:ImageAwesome Icon="{Binding URLicon}" Style="{DynamicResource MenuFaImageStyle}" />
-
-                            <Label
-                                Margin="5,0,0,0"
-                                Content="{Binding NamePage}"
-                                Style="{DynamicResource MainMenuLabelStyle}" />
-
-                            <!--  Тригер для переключения страниц  -->
-                            <ia:Interaction.Triggers>
-                                <ia:EventTrigger EventName="MouseLeftButtonDown">
-                                    <ia:InvokeCommandAction Command="{Binding DataContext.UpdateViewCommand, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding Number}" />
-                                </ia:EventTrigger>
-                            </ia:Interaction.Triggers>
-
-                        </StackPanel>
-
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-
-            </ListView>
-
-            <ToggleButton
-                x:Name="toggleButton"
-                Grid.Row="2"
-                Width="40"
-                Height="40"
-                Margin="5,0,0,5"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Background="Transparent">
-
-                <fa:ImageAwesome
-                    x:Name="imageAwesome"
-                    Icon="Solid_CaretRight"
-                    RenderTransformOrigin="0.5,0.5"
-                    ToolTip="Свернуть/развернуть меню">
-                    <fa:ImageAwesome.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform />
-                            <SkewTransform />
-                            <RotateTransform />
-                            <TranslateTransform />
-                        </TransformGroup>
-                    </fa:ImageAwesome.RenderTransform>
-                </fa:ImageAwesome>
-            </ToggleButton>
-
-            <Border
-                x:Name="YellowBorder"
-                Grid.RowSpan="3"
-                BorderBrush="{DynamicResource 30Color}"
-                BorderThickness="0,0,4,0"
-                Opacity="0" />
-
-        </Grid>
-
-        
 
         <!--  Верхняя панель  -->
-        <Grid
-            Grid.ColumnSpan="3"
-            Background="Transparent"
-            MouseLeftButtonDown="DragPanelMove">
+        <Grid Grid.ColumnSpan="3" Background="Transparent">
             <Button
                 HorizontalAlignment="Right"
                 Command="{StaticResource CommandCloseApplication}"
@@ -212,5 +73,4 @@
         </Grid>
 
     </Grid>
-
 </Window>
