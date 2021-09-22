@@ -112,6 +112,7 @@
             </ToggleButton>
 
         </Grid>
+
         <Grid
             x:Name="nav_pnl"
             Width="68"
