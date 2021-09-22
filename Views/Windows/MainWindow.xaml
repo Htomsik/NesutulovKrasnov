@@ -26,7 +26,6 @@
 
         <ResourceDictionary>
             <commands:CloseApplicationCommand x:Key="CommandCloseApplication" />
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/ViewResources/ViewResources.xaml" />
                 <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
@@ -52,13 +51,12 @@
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" />
 
         <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleButton">
-            <BeginStoryboard x:Name="Closemenu_BeginStoryboard1" Storyboard="{StaticResource Closemenu}" />
+            <BeginStoryboard x:Name="Closemenu_BeginStoryboard" Storyboard="{StaticResource Closemenu}" />
         </EventTrigger>
 
     </Window.Triggers>
 
     <Grid>
-
 
         <Grid.Background>
 
@@ -69,7 +67,6 @@
             </LinearGradientBrush>
             -->
 
-            
             <VisualBrush Viewbox="0.05,0.05,0.9,0.9">
                 <VisualBrush.Visual>
                     <Image Source="/Resources/Assets/Bonk.jpg">
@@ -80,10 +77,8 @@
                     </Image>
                 </VisualBrush.Visual>
             </VisualBrush>
-            
 
         </Grid.Background>
-
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -114,13 +109,11 @@
             HorizontalAlignment="Left"
             Background="{DynamicResource Menucolor}">
 
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
                 <RowDefinition />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-
 
             <ListView
                 x:Name="MenuListview"
@@ -191,20 +184,7 @@
 
         </Grid>
 
-        <Border
-            x:Name="Contextmenu"
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Width="200"
-            Height="200"
-            Margin="15,15,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="{DynamicResource DopColor}"
-            BorderBrush="{DynamicResource DopColorIsFocused}"
-            BorderThickness="3"
-            Visibility="Hidden">
-        </Border>
+        
 
         <!--  Верхняя панель  -->
         <Grid
@@ -227,9 +207,6 @@
                 <Button.Resources>
                     <ImageSource x:Key="Img">/Resources/Assets/Icons/dots.png</ImageSource>
                 </Button.Resources>
-
-
-
             </Button>
 
         </Grid>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
 using Praktika.Models;
@@ -29,6 +30,12 @@ namespace Praktika.Viewmodels
             get => _Title;
             set => Set(ref _Title, value);
         }
+
+        #endregion
+
+        #region ContetMenuVisibility
+
+        
 
         #endregion
 
