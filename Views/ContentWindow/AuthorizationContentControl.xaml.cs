@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Praktika.Views.Windows
+namespace Praktika.Views.ContentWindow
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AuthorizationContentControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthorizationContentControl : UserControl
     {
-        public MainWindow()
+        public AuthorizationContentControl()
         {
             InitializeComponent();
-        }
-
-        private void DragPanel(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
     }
 }

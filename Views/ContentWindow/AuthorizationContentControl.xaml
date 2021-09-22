@@ -1,33 +1,31 @@
-﻿<Window
-    x:Class="Praktika.Views.Windows.Authorization"
+﻿<UserControl
+    x:Class="Praktika.Views.ContentWindow.AuthorizationContentControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:commands="clr-namespace:Praktika.Infrastructures.Commands"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Praktika.Views.ContentWindow"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Praktika.Viewmodels"
-    Width="1000"
-    Height="600"
-    ResizeMode="NoResize"
-    WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
+    xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    d:DesignHeight="600"
+    d:DesignWidth="1000"
     mc:Ignorable="d">
 
-    <Window.DataContext>
-        <vm:AuthorizationWindowViewModel />
-    </Window.DataContext>
+    <!--  Бинд датаконтекст к вьюмоделу viewmodel  -->
+    <UserControl.DataContext>
+        <viewmodels:MainWindowViewModel />
+    </UserControl.DataContext>
 
-    <Window.Resources>
+    <UserControl.Resources>
         <ResourceDictionary>
-            <commands:CloseApplicationCommand x:Key="CommandCloseApplication" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
                 <ResourceDictionary Source="/Resources/Animations/AuthorizationAnimtion.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
-
+    </UserControl.Resources>
 
     <Grid Background="{DynamicResource 30Color}">
 
@@ -97,7 +95,11 @@
                 Stretch="Fill"
                 Stroke="{DynamicResource 10Color}" />
 
-            <Button Grid.Row="3" Margin="15,10">
+            <Button
+                Grid.Row="3"
+                Margin="15,10"
+                Command="{Binding UpdateWindowViewCommand}"
+                CommandParameter="1">
                 <Label
                     x:Name="label"
                     Content="Вход"
@@ -106,24 +108,7 @@
             </Button>
         </Grid>
 
-        <Grid
-            Grid.Row="0"
-            Grid.ColumnSpan="4"
-            Background="Transparent"
-            MouseLeftButtonDown="DragPanel">
 
-            <Button
-                HorizontalAlignment="Right"
-                Command="{StaticResource CommandCloseApplication}"
-                Style="{DynamicResource IMGButton}">
-
-                <Button.Resources>
-                </Button.Resources>
-
-
-            </Button>
-
-        </Grid>
 
     </Grid>
-</Window>
+</UserControl>

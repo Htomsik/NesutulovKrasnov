@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
+    <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">
+      <DependentUpon>AuthorizationContentControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +110,10 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ContentWindow\AuthorizationContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ContentWindow\MainContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,9 +122,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ContentWindow\Authorization.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
@@ -128,7 +133,6 @@
     <Compile Include="Infrastructures\Commands\LamdaCommand.cs" />
     <Compile Include="Infrastructures\Commands\UpdateViewCommand.cs" />
     <Compile Include="Models\Pages.cs" />
-    <Compile Include="Viewmodels\ContentWindow\AuthorizationWindowViewModel.cs" />
     <Compile Include="Viewmodels\Base\BaseViewModel.cs" />
     <Compile Include="Viewmodels\WIndow\MainWindowViewModel.cs" />
     <Compile Include="Viewmodels\ContentWindow\MainContentControlViewModel.cs" />
@@ -142,9 +146,6 @@
     </Compile>
     <Compile Include="Views\Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentWindow\Authorization.xaml.cs">
-      <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>

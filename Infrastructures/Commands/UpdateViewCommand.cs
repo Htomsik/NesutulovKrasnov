@@ -40,12 +40,12 @@ namespace Praktika.Infrastructures.Commands
     {
         private readonly BaseViewModel[] _ViewModelArray =
         {
+            new AuthorizationContentcontrolViewModel(),
             new MainContentControlViewModel()
-
         };
 
         private  readonly  MainWindowViewModel viewModel;
-
+        
         public UpdateWindowViewCommand(MainWindowViewModel viewModel)
         {
             this.viewModel = viewModel;

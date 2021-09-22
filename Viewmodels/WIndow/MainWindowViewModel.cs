@@ -32,5 +32,7 @@ namespace Praktika.Viewmodels
         public ICommand UpdateWindowViewCommand { get; set; }
 
         #endregion
+
+        
     }
 }
