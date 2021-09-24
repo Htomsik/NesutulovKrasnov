@@ -91,15 +91,15 @@
     </UserControl.Resources>
 
 
-    <Grid>
+    <Grid Margin="0,0,0,-66">
 
-        <Grid  Panel.ZIndex="1" Margin="0,0,0,0">
+        <Grid Margin="0,0,0,-37" Panel.ZIndex="1">
 
             <ToggleButton
                 x:Name="Tg_Btn"
                 Width="32"
                 Height="32"
-                Margin="103,28,0,413"
+                Margin="113,30,0,514"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Panel.ZIndex="1"
@@ -138,7 +138,7 @@
                                     Storyboard.TargetName="nav_pnl"
                                     Storyboard.TargetProperty="Width"
                                     From="0"
-                                    To="200"
+                                    To="250"
                                     Duration="0:0:0.3" />
                             </Storyboard>
                         </BeginStoryboard>
@@ -150,39 +150,39 @@
 
         </Grid>
         <Grid
-            
             x:Name="nav_pnl"
             Width="0"
-            Margin="91,66,0,15"
+            Margin="100,74,0,80"
             HorizontalAlignment="Left"
             Panel.ZIndex="1"
             Background="#202020">
-            <StackPanel x:Name="st_pnl">
+            <StackPanel x:Name="st_pnl" Grid.RowSpan="2">
 
+                <Viewbox Stretch="Uniform">
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        FontSize="22"
+                        Foreground="White"
+                        Style="{StaticResource font_style}">
 
-                <TextBlock
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Background="Transparent"
-                    FontSize="22"
-                    Foreground="White"
-                    Style="{StaticResource font_style}">
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Direction="-90"
+                                ShadowDepth="1"
+                                Color="White" />
 
-                    <TextBlock.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Direction="-90"
-                            ShadowDepth="1"
-                            Color="White" />
-
-                    </TextBlock.Effect>
-                </TextBlock>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Viewbox>
                 <ListView
                     x:Name="LV"
-                    Height="403"
+                    Height="391"
+                    Margin="19,0,0,0"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -235,6 +235,7 @@
 
                             <TextBlock
                                 Margin="25,0,0,0"
+                                MouseDown="TextBlock_MouseDown_1"
                                 Style="{StaticResource font_style}"
                                 Text="Обычный" />
 
@@ -254,6 +255,7 @@
 
                             <TextBlock
                                 Margin="25,0,0,0"
+                                MouseDown="TextBlock_MouseDown"
                                 Style="{StaticResource font_style}"
                                 Text="Инженерный" />
                         </StackPanel>
@@ -266,13 +268,12 @@
 
         <Grid
             x:Name="nav_pnll"
-            Margin="91,10,92,15"
+            Margin="100,10,83,80"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Background="#202020"
             PreviewMouseLeftButtonDown="Calc_PreviewMouseLeftButtonDown">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -281,8 +282,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -290,7 +289,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+
             </Grid.ColumnDefinitions>
 
             <Label
@@ -301,38 +302,41 @@
                 MinHeight="110"
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Bottom"
+                Content="0"
                 FontSize="40"
                 Foreground="White" />
 
-            <Button Grid.Row="2" Grid.Column="1">%</Button>
-            <Button Grid.Row="2" Grid.Column="2">CE</Button>
-            <Button Grid.Row="2" Grid.Column="3">C</Button>
-            <Button Grid.Row="2" Grid.Column="4">⌫</Button>
-            <Button Grid.Row="3" Grid.Column="1">1/x</Button>
-            <Button Grid.Row="3" Grid.Column="2">x²</Button>
-            <Button Grid.Row="3" Grid.Column="3">√</Button>
-            <Button Grid.Row="3" Grid.Column="4">/</Button>
-            <Button Grid.Row="4" Grid.Column="1">7</Button>
-            <Button Grid.Row="4" Grid.Column="4">*</Button>
-            <Button Grid.Row="4" Grid.Column="1">7</Button>
-            <Button Grid.Row="4" Grid.Column="2">8</Button>
-            <Button Grid.Row="4" Grid.Column="3">9</Button>
-            <Button Grid.Row="5" Grid.Column="4">*</Button>
-            <Button Grid.Row="5" Grid.Column="1">4</Button>
-            <Button Grid.Row="5" Grid.Column="2">5</Button>
-            <Button Grid.Row="5" Grid.Column="3">6</Button>
-            <Button Grid.Row="5" Grid.Column="4">-</Button>
-            <Button Grid.Row="6" Grid.Column="1">1</Button>
-            <Button Grid.Row="6" Grid.Column="2">2</Button>
-            <Button Grid.Row="6" Grid.Column="3">3</Button>
-            <Button Grid.Row="6" Grid.Column="4">+</Button>
-            <Button Grid.Row="7" Grid.Column="1">±</Button>
-            <Button Grid.Row="7" Grid.Column="2">0</Button>
-            <Button Grid.Row="7" Grid.Column="3">,</Button>
+
+            <Button Grid.Row="2" Grid.Column="2">%</Button>
+            <Button Grid.Row="2" Grid.Column="3">CE</Button>
+            <Button Grid.Row="2" Grid.Column="4">C</Button>
+            <Button Grid.Row="2" Grid.Column="5">⌫</Button>
+            <Button Grid.Row="3" Grid.Column="2">1/x</Button>
+            <Button Grid.Row="3" Grid.Column="3">x²</Button>
+            <Button Grid.Row="3" Grid.Column="4">√</Button>
+            <Button Grid.Row="3" Grid.Column="5">/</Button>
+            <Button Grid.Row="4" Grid.Column="2">7</Button>
+            <Button Grid.Row="4" Grid.Column="5">*</Button>
+            <Button Grid.Row="4" Grid.Column="2">7</Button>
+            <Button Grid.Row="4" Grid.Column="3">8</Button>
+            <Button Grid.Row="4" Grid.Column="4">9</Button>
+            <Button Grid.Row="5" Grid.Column="5">*</Button>
+            <Button Grid.Row="5" Grid.Column="2">4</Button>
+            <Button Grid.Row="5" Grid.Column="3">5</Button>
+            <Button Grid.Row="5" Grid.Column="4">6</Button>
+            <Button Grid.Row="5" Grid.Column="5">-</Button>
+            <Button Grid.Row="6" Grid.Column="2">1</Button>
+            <Button Grid.Row="6" Grid.Column="3">2</Button>
+            <Button Grid.Row="6" Grid.Column="4">3</Button>
+            <Button Grid.Row="6" Grid.Column="5">+</Button>
+            <Button Grid.Row="7" Grid.Column="2">±</Button>
+            <Button Grid.Row="7" Grid.Column="3">0</Button>
+            <Button Grid.Row="7" Grid.Column="4">,</Button>
+
             <Button
                 x:Name="Ravno"
                 Grid.Row="7"
-                Grid.Column="4"
+                Grid.Column="5"
                 Background="#16466d">
                 =
             </Button>

@@ -36,12 +36,15 @@ namespace Praktika.Views.Windows
                 }
             }
 
+           
+            // this.nav_pnl.Children.Add(btn);
+
         }
         bool flag;
         private static void Check(object text, out string Text)
         {
             Text = "";
-            if (string.IsNullOrEmpty(text as string)) return;
+            
             Text = text.ToString().Replace(",", ".");
             Text = new DataTable().Compute(Text, null).ToString();
         }
@@ -162,6 +165,7 @@ namespace Praktika.Views.Windows
                         ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
                         IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
                         invokeProv.Invoke();
+                        
                         break;
                     }
                 case "⌫":
@@ -172,6 +176,7 @@ namespace Praktika.Views.Windows
                         LabelCalc.Content = number;
                         break;
                     }
+
                 default:
                     {
                         LabelCalc.Content += input;
@@ -181,9 +186,12 @@ namespace Praktika.Views.Windows
 
 
         }
+
+
+
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-
+            
         }
 
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
@@ -210,6 +218,58 @@ namespace Praktika.Views.Windows
         {
             Tg_Btn.IsChecked = false;
         }
+        Button[] butt = new Button[6];
+        bool Flag = false;
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Flag) return;
+            butt[0]=(ButtonAdd("n!", 2, 1));
+            butt[1] = (ButtonAdd("±", 3, 1));
+            butt[2] = (ButtonAdd("10x", 4, 1));
+            butt[3] = (ButtonAdd("ln", 5, 1));
+            butt[4] = (ButtonAdd("log", 6, 1));
+            butt[5] = (ButtonAdd("log", 7, 1));
+            
+            for(int q=0;q<6;q++)
+            {
+                nav_pnll.Children.Add(butt[q]);
+            }
+            Flag = true;
+            nav_pnll.Margin= new Thickness(27,10,83,80);
+            nav_pnl.Margin = new Thickness(42, 74, 0, 78);
+            Tg_Btn.Margin = new Thickness(42, 24, 0, 520);
+            Tg_Btn.IsChecked = false;
 
+        }
+        public static Button ButtonAdd(string _content, int row = 0, int column = 0)
+        {
+            Button btn = new Button { Content = _content,Name="Button"+row};
+            Grid.SetColumn(btn, column);
+            Grid.SetRow(btn, row);
+            return btn;
+        }
+
+        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (!Flag) return;
+            for (int i = 0; i < 6; i++)
+            {
+                butt[i].Visibility=Visibility.Collapsed;
+            }
+            Flag = false;
+            nav_pnll.Margin = new Thickness(100, 10, 83, 80);
+            nav_pnl.Margin = new Thickness(104, 74, 0, 78);
+            Tg_Btn.Margin = new Thickness(113, 30, 0, 514);
+            Tg_Btn.IsChecked = false;
+        }
+        public static Button ButtonVis(string _content, int row = 0, int column = 0)
+        {
+            Button btn = new Button { Content = _content };
+            Grid.SetColumn(btn, column);
+            Grid.SetRow(btn, row);
+            btn.Visibility = Visibility.Collapsed;
+            return btn;
+        }
     }
+
 }
