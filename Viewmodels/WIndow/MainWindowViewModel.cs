@@ -13,6 +13,7 @@ namespace Praktika.Viewmodels
         public MainWindowViewModel()
         {
             UpdateWindowViewCommand = new UpdateWindowViewCommand(this);
+            
         }
 
         #region Выбор страниц

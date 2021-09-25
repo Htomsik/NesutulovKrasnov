@@ -4,17 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:commands="clr-namespace:Praktika.Infrastructures.Commands"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:Praktika.Views.ContentWindow"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     d:DesignHeight="600"
     d:DesignWidth="1000"
     mc:Ignorable="d">
 
     <!--  Бинд датаконтекст к вьюмоделу viewmodel  -->
     <UserControl.DataContext>
-        <viewmodels:MainWindowViewModel />
+        <viewmodels:AuthorizationContentcontrolViewModel />
     </UserControl.DataContext>
 
     <UserControl.Resources>
@@ -95,11 +95,7 @@
                 Stretch="Fill"
                 Stroke="{DynamicResource 10Color}" />
 
-            <Button
-                Grid.Row="3"
-                Margin="15,10"
-                Command="{Binding UpdateWindowViewCommand}"
-                CommandParameter="1">
+            <Button Grid.Row="3" Margin="15,10">
                 <Label
                     x:Name="label"
                     Content="Вход"

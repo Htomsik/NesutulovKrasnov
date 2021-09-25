@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
 
+
 namespace Praktika.Viewmodels
 {
     public class AuthorizationContentcontrolViewModel:BaseViewModel
     {
+
        
     }
 }
