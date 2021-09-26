@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
-using Praktika.Stores;
+using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {

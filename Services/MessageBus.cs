@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Praktika.Stores
+namespace Praktika.Services
 {
     public static class MessageBus
     {

@@ -49,7 +49,7 @@
             Height="600"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Content="{Binding SelectedViewModel}" />
+            Content="{Binding SelectedViewModel, UpdateSourceTrigger=PropertyChanged}" />
 
 
         <!--  Верхняя панель  -->
