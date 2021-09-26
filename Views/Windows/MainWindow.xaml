@@ -32,6 +32,7 @@
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">
             <ia:InvokeCommandAction Command="{Binding UpdateWindowViewCommand}" CommandParameter="0" />
+            <ia:InvokeCommandAction Command="{Binding WindowLoadedMessabeBusCommand}" />
         </ia:EventTrigger>
     </ia:Interaction.Triggers>
 
@@ -65,7 +66,7 @@
                 </Button.Resources>
             </Button>
 
-           
+
             <Button
                 Margin="5,0,0,0"
                 HorizontalAlignment="Left"

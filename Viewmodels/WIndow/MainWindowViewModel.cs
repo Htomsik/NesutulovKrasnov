@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
+using Praktika.Stores;
 
 namespace Praktika.Viewmodels
 {
@@ -13,7 +14,10 @@ namespace Praktika.Viewmodels
         public MainWindowViewModel()
         {
             UpdateWindowViewCommand = new UpdateWindowViewCommand(this);
-            
+
+            WindowLoadedMessabeBusCommand =
+                new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
+
         }
 
         #region Выбор страниц
@@ -34,6 +38,25 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-        
+
+        #region привязка шины сообщений
+
+        public ICommand WindowLoadedMessabeBusCommand { get; }
+
+        private bool CanWindowLoadedMessabeBusExecute(object p) => true;
+
+        private void OnWindowLoadedMessabeBusExecuted(object p)
+        {
+            MessageBus.Bus += Receive;
+        }
+
+        private void Receive(object p)
+        {
+            UpdateWindowViewCommand.Execute(p);
+        }
+
+        #endregion
+
+
     }
 }

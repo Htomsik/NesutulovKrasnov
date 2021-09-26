@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Stores\MessageBus.cs" />
     <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
     <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">
       <DependentUpon>AuthorizationContentControl.xaml</DependentUpon>

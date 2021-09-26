@@ -95,7 +95,11 @@
                 Stretch="Fill"
                 Stroke="{DynamicResource 10Color}" />
 
-            <Button Grid.Row="3" Margin="15,10">
+            <Button
+                Grid.Row="3"
+                Margin="15,10"
+                Command="{Binding SendContentControlNumerCommand}"
+                CommandParameter="1">
                 <Label
                     x:Name="label"
                     Content="Вход"
