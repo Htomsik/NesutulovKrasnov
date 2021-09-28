@@ -55,6 +55,23 @@ namespace Praktika.Views.Windows
             if (Arefm(text[text.Length - 1].ToString()) && Arefm(input))
                 LabelCalc.Content = text.Remove(text.Length - 1);
             text = LabelCalc.Content.ToString();
+            string leftop, rightop = "";
+
+            double[] op = Regex.Matches(text+input, @"(?<!\d)-?\d*[.]?\d+")
+                
+            .OfType<Match>()
+            .Select(m => double.Parse(m.Value.Replace(".",",") ))
+            .ToArray();
+
+            double number = 0;
+            string operation = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (!char.IsDigit(text[i]) && text[i] != '.')
+                {
+                    operation = text[i].ToString();
+                }
+            }
             switch (input)
             {
                 case "CE":
@@ -77,7 +94,7 @@ namespace Praktika.Views.Windows
                 case "=":
                     {
 
-                        LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null)), 7);
+                        LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString().Replace(",", "."), null)), 7);
                         break;
                     }
                 case "C":
@@ -87,40 +104,104 @@ namespace Praktika.Views.Windows
                     }
                 case "x²":
                     {
-                        Double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        LabelCalc.Content = Math.Pow(num, 2);
+
+                        //Double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+
+
+                        if (op.Length == 2)
+                        {
+                            LabelCalc.Content = (op[0].ToString() + operation + Math.Round(Math.Pow(op[1], 2), 6).ToString());
+                            //ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            //invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            number = op[0];
+                            LabelCalc.Content = Math.Pow(number, 2);
+                        }
                         break;
                     }
                 case "x³":
                     {
-                        Double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        LabelCalc.Content = Math.Pow(num, 3);
+                        if (op.Length == 2)
+                        {
+                            LabelCalc.Content = (op[0].ToString() + operation + Math.Round(Math.Pow(op[1], 3), 6).ToString());
+                            //ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            //invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            number = op[0];
+                            LabelCalc.Content = Math.Pow(number, 3);
+                        }
                         break;
                     }
                 case "10^x":
                     {
-                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        LabelCalc.Content = Math.Pow(10, num);
+                        if (op.Length == 2)
+                        {
+                            LabelCalc.Content = (op[0].ToString() + operation + Math.Round(Math.Pow(10, op[1]), 6).ToString());
+                            //ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            //invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            number = op[0];
+                            LabelCalc.Content = Math.Pow(10, number);
+                        }
+                       
                         break;
                     }
                 case "n!":
                     {
+
                         double n = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
                       
                         int factorial = 1;   // значение факториала
 
-                        for (int i = 2; i <= n; i++) // цикл начинаем с 2, т.к. нет смысла начинать с 1
+
+                        if (op.Length == 2)
                         {
-                            factorial = factorial * i;
+                            for (int i = 2; i <= op[1]; i++) // цикл начинаем с 2, т.к. нет смысла начинать с 1
+                            {
+                                factorial = factorial * i;
+                            }
+                            LabelCalc.Content = (op[0].ToString() + operation + factorial.ToString());
+                            //ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            //invokeProv.Invoke();
                         }
-                        LabelCalc.Content = factorial;
+                        else
+                        {
+                            number = op[0];
+                            LabelCalc.Content = factorial;
+                        }
+
                         break;
                     }
                 case "±":
                     {
-                        double plus_minus = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        plus_minus = -plus_minus;
-                        LabelCalc.Content = plus_minus;
+
+
+                        if (op.Length == 2)
+                        {
+                            double plus_minus = op[1];
+                            plus_minus = -plus_minus;
+                            LabelCalc.Content = (op[0].ToString() + operation + plus_minus.ToString());
+                           // ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                           // invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            double plus_minus = op[0];
+                            plus_minus = -plus_minus;
+                            LabelCalc.Content = plus_minus;
+                        }
+                       
                         break;
                     }
                 case ".":
@@ -181,16 +262,39 @@ namespace Praktika.Views.Windows
                     }
                 case "log":
                     {
-                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        num = Math.Log(num);
-                        LabelCalc.Content = Math.Round(num,7);
+                        if (op.Length == 2)
+                        {
+                            double num = op[1];
+                            
+                            LabelCalc.Content = (op[0].ToString() + operation + Math.Round(Math.Log(op[1]), 7).ToString());
+                            // ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            // invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            LabelCalc.Content = Math.Round(Math.Log(op[0]), 7);
+                        }
+
+
+
                         break;
                     }
                 case "ln":
                     {
-                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        num = Math.Log10(num);
-                        LabelCalc.Content = Math.Round(num, 7);
+                        if (op.Length == 2)
+                        {
+                            double num = op[1];
+
+                            LabelCalc.Content = (op[0].ToString() + operation + Math.Round(Math.Log(op[1]), 7).ToString());
+                            // ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
+                            //IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            // invokeProv.Invoke();
+                        }
+                        else
+                        {
+                            LabelCalc.Content = Math.Round(Math.Log10(op[0]), 7);
+                        }
                         break;
                     }
 
@@ -206,14 +310,14 @@ namespace Praktika.Views.Windows
                         int index = 0;
                         for (int i = 0; i < textLocal.Length; i++)
                         {
-                            if (!char.IsDigit(textLocal[i]) && textLocal[i] != '.')
+                            if (!char.IsDigit(textLocal[i]) && textLocal[i] != '.'&&  textLocal[i] != ','&& char.IsDigit(textLocal[0]))
                             {
                                 index++;
                             }
                         }
                         if (index > 1)
                         {
-                            LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(text, null).ToString()), 7);
+                            LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(text.Replace(",", "."), null).ToString()),7);
                             LabelCalc.Content += input;
                         }
                         else LabelCalc.Content += input;
