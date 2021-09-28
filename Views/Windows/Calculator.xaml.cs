@@ -25,6 +25,9 @@ namespace Praktika.Views.Windows
     /// </summary>
     public partial class Calculator : UserControl
     {
+        string leftop = ""; 
+        string operation = ""; 
+        string rightop = ""; 
         public Calculator()
         {
             InitializeComponent();
@@ -35,160 +38,196 @@ namespace Praktika.Views.Windows
                     ((Button)el).Click += Button_Click;
                 }
             }
-
-           
-            // this.nav_pnl.Children.Add(btn);
-
+            leftop = "0";
         }
-        bool flag;
-        private static void Check(object text, out string Text)
-        {
-            Text = "";
-            
-            Text = text.ToString().Replace(",", ".");
-            Text = new DataTable().Compute(Text, null).ToString();
-        }
+        string lastoperation = "0";
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string number = "";
+
             string input = (string)((Button)e.OriginalSource).Content;
 
-
+            if (string.IsNullOrEmpty(LabelCalc.Content.ToString()))
+            {
+                LabelCalc.Content = "0";
+            }
+            string text = LabelCalc.Content.ToString();
+            input = input == "." ? "." : input;
+            if (Arefm(text[text.Length - 1].ToString()) && Arefm(input))
+                LabelCalc.Content = text.Remove(text.Length - 1);
+            text = LabelCalc.Content.ToString();
             switch (input)
             {
                 case "CE":
                     {
-
-
-
                         int index = 0;
-                        for (int i = 0; i < number.Length; i++)
+                        for (int i = 0; i < text.Length; i++)
                         {
-                            if (!char.IsDigit(number[i]) && number[i] != ',')
+                            if (!char.IsDigit(text[i]) && text[i] != '.')
                             {
                                 index = i;
                             }
                         }
-                        if (index == 0) LabelCalc.Content = "";
-                        else
+                        if (Arefm(text[text.Length - 1].ToString()))
                         {
-                            number = number.Remove(index + 1);
-                            LabelCalc.Content = number;
+                            LabelCalc.Content = "0";
                         }
-
+                        else if (index != 0) LabelCalc.Content = text.Remove(index + 1);
                         break;
                     }
                 case "=":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        LabelCalc.Content = chislo;
+
+                        LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null)), 7);
                         break;
                     }
                 case "C":
                     {
-                        LabelCalc.Content = "";
+                        LabelCalc.Content = "0";
                         break;
                     }
                 case "x²":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var kvadrat = Convert.ToDouble(chislo);
-                        kvadrat = Math.Pow(kvadrat, 2);
-                        chislo = Convert.ToString(kvadrat);
-                        LabelCalc.Content = chislo;
+                        Double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        LabelCalc.Content = Math.Pow(num, 2);
                         break;
                     }
                 case "x³":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var kub = Convert.ToDouble(chislo);
-                        kub = Math.Pow(kub, 3);
-                        chislo = Convert.ToString(kub);
-                        LabelCalc.Content = chislo;
+                        Double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        LabelCalc.Content = Math.Pow(num, 3);
+                        break;
+                    }
+                case "10^x":
+                    {
+                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        LabelCalc.Content = Math.Pow(10, num);
+                        break;
+                    }
+                case "n!":
+                    {
+                        double n = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                      
+                        int factorial = 1;   // значение факториала
+
+                        for (int i = 2; i <= n; i++) // цикл начинаем с 2, т.к. нет смысла начинать с 1
+                        {
+                            factorial = factorial * i;
+                        }
+                        LabelCalc.Content = factorial;
                         break;
                     }
                 case "±":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var plus_minus = Convert.ToDouble(chislo);
+                        double plus_minus = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
                         plus_minus = -plus_minus;
-                        chislo = Convert.ToString(plus_minus);
-                        LabelCalc.Content = chislo;
+                        LabelCalc.Content = plus_minus;
                         break;
                     }
-                case ",":
+                case ".":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        chislo = LabelCalc.Content.ToString() + ',';
-                        LabelCalc.Content = chislo;
+
+                        if (LabelCalc.Content.ToString().EndsWith(".")) return;
+                        LabelCalc.Content = LabelCalc.Content.ToString() + ".";
                         break;
                     }
                 case "√":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var koren = Convert.ToDouble(chislo);
-                        koren = Math.Sqrt(koren);
-                        chislo = Convert.ToString(koren);
-                        LabelCalc.Content = chislo;
+                        double koren = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        LabelCalc.Content = Math.Sqrt(koren);
                         break;
                     }
                 case "1/x":
                     {
-                        string chislo = new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString();
-                        var x = Convert.ToDouble(chislo);
+
+                        double x = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        if (x == 0) return;
                         x = 1 / x;
-                        chislo = Convert.ToString(x);
-                        LabelCalc.Content = chislo;
+                        LabelCalc.Content = x;
                         break;
                     }
                 case "%":
                     {
                         string chislo = LabelCalc.Content.ToString();
-                        string a = chislo;
-                        double[] numbers = Regex.Matches(a, @"(\d+(?:\,\d+)?)")
+
+                        double[] numbers = Regex.Matches(text, @"(\d+(?:\.\d+)?)")
                         .OfType<Match>()
-                        .Select(m => double.Parse(m.Groups[1].Value, CultureInfo.GetCultureInfo("ru-RU")) * (m.Groups[1].Value.StartsWith("0,0") ? 10 : 1))
+                        .Select(m => double.Parse(m.Groups[1].Value) * (m.Groups[1].Value.StartsWith("0.0") ? 10 : 1))
                         .ToArray();
 
-                        string s = chislo;
+
                         string str = "";
-                        for (int i = 0; i < s.Length; i++)
+                        for (int i = 0; i < text.Length; i++)
                         {
-                            if (!char.IsDigit(s[i]))
+                            if (!char.IsDigit(text[i]) && text[i] != '.')
                             {
-                                str += s[i];
+                                str += text[i];
                             }
                         }
 
                         double p = (numbers[0] - numbers[1] * numbers[0]) / 100;
-                        LabelCalc.Content = (numbers[0].ToString() + str.Replace(",", "") + (numbers[1] * numbers[0]) / 100).ToString();
+                        LabelCalc.Content = (numbers[0].ToString() + str + (numbers[1] * numbers[0]) / 100).ToString();
                         ButtonAutomationPeer peer = new ButtonAutomationPeer(Ravno);
                         IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
                         invokeProv.Invoke();
-                        
+
                         break;
                     }
                 case "⌫":
                     {
+                        LabelCalc.Content = text.Remove(text.Length - 1);
+                        if (LabelCalc.Content.ToString().Length == 0) LabelCalc.Content = "0";
 
-
-                        number = number.Remove(number.Length - 1);
-                        LabelCalc.Content = number;
+                        break;
+                    }
+                case "log":
+                    {
+                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        num = Math.Log(num);
+                        LabelCalc.Content = Math.Round(num,7);
+                        break;
+                    }
+                case "ln":
+                    {
+                        double num = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
+                        num = Math.Log10(num);
+                        LabelCalc.Content = Math.Round(num, 7);
                         break;
                     }
 
                 default:
                     {
-                        LabelCalc.Content += input;
+
+                        if (text[0].ToString() == "0" && char.IsDigit(Convert.ToChar(input)) && text.Length == 1)
+                        {
+                            LabelCalc.Content = text.Remove(0);
+                        }
+
+                        string textLocal = LabelCalc.Content.ToString() + input;
+                        int index = 0;
+                        for (int i = 0; i < textLocal.Length; i++)
+                        {
+                            if (!char.IsDigit(textLocal[i]) && textLocal[i] != '.')
+                            {
+                                index++;
+                            }
+                        }
+                        if (index > 1)
+                        {
+                            LabelCalc.Content = Math.Round(Convert.ToDouble(new DataTable().Compute(text, null).ToString()), 7);
+                            LabelCalc.Content += input;
+                        }
+                        else LabelCalc.Content += input;
                         break;
+
                     }
             }
 
-
         }
-
-
-
+        private bool Arefm(string c)
+        {
+            if (c == "+" || c == "-" || c == "/" || c == "*") return true;
+            else return false;
+        }
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             
@@ -225,20 +264,24 @@ namespace Praktika.Views.Windows
             if (Flag) return;
             butt[0]=(ButtonAdd("n!", 2, 1));
             butt[1] = (ButtonAdd("±", 3, 1));
-            butt[2] = (ButtonAdd("10x", 4, 1));
+            butt[2] = (ButtonAdd("10^x", 4, 1));
             butt[3] = (ButtonAdd("ln", 5, 1));
             butt[4] = (ButtonAdd("log", 6, 1));
-            butt[5] = (ButtonAdd("log", 7, 1));
+            butt[5] = (ButtonAdd("x³", 7, 1));
             
             for(int q=0;q<6;q++)
             {
                 nav_pnll.Children.Add(butt[q]);
+                butt[q].Click += Button_Click;
             }
             Flag = true;
-            nav_pnll.Margin= new Thickness(27,10,83,80);
-            nav_pnl.Margin = new Thickness(42, 74, 0, 78);
-            Tg_Btn.Margin = new Thickness(42, 24, 0, 520);
+            nav_pnll.Margin= new Thickness(40,10,70,80);
+            nav_pnl.Margin = new Thickness(42, 74, 0, 80);
+            Tg_Btn.Margin = new Thickness(50, 24, 0, 520);
             Tg_Btn.IsChecked = false;
+
+
+
 
         }
         public static Button ButtonAdd(string _content, int row = 0, int column = 0)

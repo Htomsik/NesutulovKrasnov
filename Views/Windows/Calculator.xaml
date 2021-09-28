@@ -297,13 +297,13 @@
             <Label
                 x:Name="LabelCalc"
                 Grid.Row="1"
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.ColumnSpan="4"
                 MinHeight="110"
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Bottom"
-                Content="0"
                 FontSize="40"
+                Content="0"
                 Foreground="White" />
 
 
@@ -331,7 +331,7 @@
             <Button Grid.Row="6" Grid.Column="5">+</Button>
             <Button Grid.Row="7" Grid.Column="2">±</Button>
             <Button Grid.Row="7" Grid.Column="3">0</Button>
-            <Button Grid.Row="7" Grid.Column="4">,</Button>
+            <Button Grid.Row="7" Grid.Column="4">.</Button>
 
             <Button
                 x:Name="Ravno"
