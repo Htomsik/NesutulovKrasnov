@@ -221,7 +221,11 @@ namespace Praktika.Views.Windows
                     {
 
                         double x = Convert.ToDouble(new DataTable().Compute(LabelCalc.Content.ToString(), null).ToString());
-                        if (x == 0) return;
+                        if (x == 0)
+                        {
+                            LabelCalc.Content = "";
+                            return;
+                        }
                         x = 1 / x;
                         LabelCalc.Content = x;
                         break;
@@ -300,6 +304,14 @@ namespace Praktika.Views.Windows
 
                 default:
                     {
+                        if (op.Length == 2)
+                        {
+                            if (op[1] == 0)
+                            {
+                                LabelCalc.Content = "";
+                                return;
+                            }
+                        }
 
                         if (text[0].ToString() == "0" && char.IsDigit(Convert.ToChar(input)) && text.Length == 1)
                         {
