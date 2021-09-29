@@ -79,7 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Data\AppDbCOntext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Services\DataWorker.cs" />
     <Compile Include="Services\MessageBus.cs" />
     <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
     <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">

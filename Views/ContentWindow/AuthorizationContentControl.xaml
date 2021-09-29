@@ -38,8 +38,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="120" />
-            <RowDefinition Height="300" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="360" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -66,16 +66,30 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Label Content="Логин" />
 
-            <TextBox Grid.Row="1" Text="{Binding Nickname, UpdateSourceTrigger=PropertyChanged}" />
-            <PasswordBox Grid.Row="2" />
+            <Label Grid.Row="1" Content="Логин" />
+
+            <Border
+                Margin="15,10"
+                CornerRadius="10"
+                Visibility="{Binding ErrorVisibility}">
+                <Grid>
+                    <Border
+                        Background="#EC0C09"
+                        CornerRadius="10"
+                        Opacity="0.4" />
+                    <Label Content="Неверный логин или пароль" Style="{DynamicResource AuthErrorLabel}" />
+                </Grid>
+            </Border>
+
+            <TextBox Grid.Row="2" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Row="3" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
 
             <Path
-                Grid.Row="1"
+                Grid.Row="3"
                 Width="280"
                 Height="1"
-                Margin="15,50,0,0"
+                Margin="15,61,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Data="M15,110 L297,110"
@@ -87,7 +101,7 @@
                 Grid.Row="2"
                 Width="280"
                 Height="1"
-                Margin="15,50,0,0"
+                Margin="15,61,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Data="M15,110 L297,110"
@@ -96,7 +110,8 @@
                 Stroke="{DynamicResource 10Color}" />
 
             <Button
-                Grid.Row="3"
+                
+                Grid.Row="4"
                 Margin="15,10"
                 Command="{Binding SendContentControlNumerCommand}"
                 CommandParameter="1">

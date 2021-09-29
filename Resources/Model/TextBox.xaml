@@ -15,30 +15,14 @@
 
         <Style.Triggers>
 
-            <EventTrigger RoutedEvent="MouseEnter">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation
-                            Storyboard.TargetProperty="Foreground.Color"
-                            To="White"
-                            Duration="0:0:0.1" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-
-            <EventTrigger RoutedEvent="MouseLeave">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
+            
 
             <Trigger Property="IsFocused" Value="True">
                 <Setter Property="Foreground" Value="White" />
             </Trigger>
 
         </Style.Triggers>
+
     </Style>
 
     <!--  PasswordBox  -->

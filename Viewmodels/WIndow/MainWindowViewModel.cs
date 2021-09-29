@@ -18,6 +18,8 @@ namespace Praktika.Viewmodels
             WindowLoadedMessabeBusCommand =
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
+            //  DataWorker.CreateUser("JessJake","evilet","Customer","Nesutulov K.C");
+            
         }
 
         #region Выбор страниц
@@ -38,7 +40,6 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-
         #region привязка шины сообщений
 
         public ICommand WindowLoadedMessabeBusCommand { get; }
@@ -57,6 +58,6 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-
+        
     }
 }

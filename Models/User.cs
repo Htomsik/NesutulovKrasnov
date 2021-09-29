@@ -11,7 +11,7 @@ namespace Praktika.Models
         /// <summary>
         /// Хранит id пользователя в byte формате (Не предпологается наличие более 200 юзеров)
         /// </summary>
-        public byte ID { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// Логин в базе данных (string)
