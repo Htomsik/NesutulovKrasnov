@@ -84,15 +84,16 @@
     <Compile Include="Services\DataWorker.cs" />
     <Compile Include="Services\MessageBus.cs" />
     <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
+    <Compile Include="Viewmodels\ContentWindow\RegistContentControlViewModel.cs" />
     <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">
       <DependentUpon>AuthorizationContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentWindow\RegistrContentControl.xaml.cs">
+      <DependentUpon>RegistrContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\Animations\AuthorizationAnimtion.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Animations\MainWindowAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContentWindow\MainContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentWindow\RegistrContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

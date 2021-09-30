@@ -22,7 +22,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
-                <ResourceDictionary Source="/Resources/Animations/AuthorizationAnimtion.xaml" />
+                <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -67,7 +67,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="1" Content="Логин" />
+            <Label Grid.Row="1" Content="Авторизация" />
 
             <Border
                 Margin="15,10"
@@ -82,8 +82,42 @@
                 </Grid>
             </Border>
 
-            <TextBox Grid.Row="2" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox Grid.Row="3" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+            <!--  при начале ввода символов пропадают  -->
+            <TextBlock Grid.Row="2" Text="Логин">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Logintb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock Grid.Row="3" Text="Пароль">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Passwordtb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBox
+                x:Name="Logintb"
+                Grid.Row="2"
+                Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox
+                x:Name="Passwordtb"
+                Grid.Row="3"
+                Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
 
             <Path
                 Grid.Row="3"
@@ -110,7 +144,6 @@
                 Stroke="{DynamicResource 10Color}" />
 
             <Button
-                
                 Grid.Row="4"
                 Margin="15,10"
                 Command="{Binding SendContentControlNumerCommand}"
