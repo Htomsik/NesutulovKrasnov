@@ -34,7 +34,7 @@ namespace Praktika.Viewmodels
         {
             
             //Если есть такой пользователь то открыть главную страницу
-            if (DataWorker.Authorization(_Login, _Password))
+            if (DataWorker.Authorization(Login, Password))
             {
                 
                 MessageBus.Send(p);
@@ -55,7 +55,6 @@ namespace Praktika.Viewmodels
 
         private void OnOpenRegistrationCommandExecuted(object p)
         {
-
             MessageBus.Send(p);
         }
         #endregion

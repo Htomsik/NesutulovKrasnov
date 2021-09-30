@@ -13,16 +13,16 @@ namespace Praktika.Services
 
         #region Пользователи
 
-        #region Создание
+        #region Создание пользователя
 
         /// <summary>
-        /// Создание пользователя
+        /// Создание пользователя true-пользователь успешно создан
         /// </summary>
         /// <param name="_Login"></param>
         /// <param name="_Password"></param>
         /// <param name="_Role"></param>
         /// <param name="_FIO"></param>
-        public static void CreateUser(string _Login, string _Password, string _Role, string _FIO)
+        public static void CreateUser(string _Login, string _Password,string _FIO, string _Role )
         {
 
             using (AppDbCOntext db = new AppDbCOntext())
@@ -41,8 +41,10 @@ namespace Praktika.Services
                     db.Users.Add(newUser);
                     db.SaveChanges();
                 }
+                
 
             }
+            
         }
 
         #endregion

@@ -140,6 +140,7 @@
             <StackPanel
                 Grid.Row="5"
                 Margin="15,10"
+                HorizontalAlignment="Center"
                 Orientation="Horizontal">
 
                 <TextBlock Style="{DynamicResource AuthRegTextbloc}">
@@ -148,7 +149,6 @@
 
                 <TextBlock Margin="5,0,0,0">
                     Зарегистрироваться
-                    
                     <TextBlock.Style>
                         <Style BasedOn="{StaticResource AuthRegTextbloc}" TargetType="{x:Type TextBlock}">
                             <Setter Property="Foreground" Value="{DynamicResource 30Color}" />
@@ -162,9 +162,12 @@
                     </TextBlock.Style>
 
                     <TextBlock.InputBindings>
-                        <MouseBinding Command="{Binding OpenRegistrationCommand}" CommandParameter="2" MouseAction="LeftClick"/>
+                        <MouseBinding
+                            Command="{Binding OpenRegistrationCommand}"
+                            CommandParameter="2"
+                            MouseAction="LeftClick" />
                     </TextBlock.InputBindings>
-                    
+
 
                 </TextBlock>
 

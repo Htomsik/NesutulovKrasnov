@@ -39,7 +39,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="432" />
+            <RowDefinition Height="504" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -60,6 +60,7 @@
             Grid.Column="1"
             ColumnSpan="2">
             <Grid.RowDefinitions>
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -138,7 +139,7 @@
             <TextBox
                 x:Name="FIOtb"
                 Grid.Row="3"
-                Text="{Binding FIO, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Fio, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBox
                 x:Name="Roletb"
@@ -153,7 +154,7 @@
             <Button
                 Grid.Row="5"
                 Margin="15,10"
-                Command="{Binding SendContentControlNumerCommand}"
+                Command="{Binding CreateNewUserCommand}"
                 CommandParameter="1">
                 <Label
                     x:Name="label"
@@ -162,11 +163,43 @@
 
             </Button>
 
+            <StackPanel
+                Grid.Row="6"
+                Margin="15,10"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+
+                <TextBlock Style="{DynamicResource AuthRegTextbloc}">
+                    Уже есть аккаунт?
+                </TextBlock>
+
+                <TextBlock Margin="5,0,0,0">
+                    Войти
+                    <TextBlock.Style>
+                        <Style BasedOn="{StaticResource AuthRegTextbloc}" TargetType="{x:Type TextBlock}">
+                            <Setter Property="Foreground" Value="{DynamicResource 30Color}" />
+                            <Style.Triggers>
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="TextDecorations" Value="UnderLine" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+
+                    <TextBlock.InputBindings>
+                        <MouseBinding
+                            Command="{Binding OpenAuthCommand}"
+                            CommandParameter="0"
+                            MouseAction="LeftClick" />
+                    </TextBlock.InputBindings>
+
+
+                </TextBlock>
+
+            </StackPanel>
+
         </Grid>
-
-
-
-
 
     </Grid>
 </UserControl>
