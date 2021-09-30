@@ -5,13 +5,47 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Praktika.Viewmodels"
+    MinWidth="700"
+    MinHeight="500"
+    d:DesignHeight="565"
+    d:DesignWidth="900"
     mc:Ignorable="d">
 
     <UserControl.DataContext>
         <vm:HomapageViewmodel />
     </UserControl.DataContext>
 
-    <Grid>
-        <TextBlock Text="Главная страница" />
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="Transparent">
+
+        <Border
+            Background="{DynamicResource 60Color}"
+            CornerRadius="15"
+            Opacity="0.7">
+            <Border.Effect>
+                <BlurEffect Radius="15" />
+
+            </Border.Effect>
+        </Border>
+
+        <TextBlock xml:space="preserve">
+Многооконное графическое приложение
+с использованием основных элементов управления
+интерфейса WPF
+на языке программирования С#
+студентов группы 4ПКС-418
+Несутулов Константин
+Краснов Артем
+
+        </TextBlock>
+
+
     </Grid>
 </UserControl>

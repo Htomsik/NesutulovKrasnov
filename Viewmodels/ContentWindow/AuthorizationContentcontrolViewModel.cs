@@ -33,7 +33,7 @@ namespace Praktika.Viewmodels
             //Если есть такой пользователь то открыть главную страницу
             if (DataWorker.Authorization(_Login, _Password))
             {
-                Thread.Sleep(150);
+                
                 MessageBus.Send(p);
             }
             else

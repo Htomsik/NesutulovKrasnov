@@ -112,6 +112,10 @@
     <Page Include="Resources\Model\MenuListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Model\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Model\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
