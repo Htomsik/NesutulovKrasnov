@@ -218,7 +218,7 @@ namespace Praktika.Views.Pages
                             return;
                         }
                         x = 1 / x;
-                        LabelCalc.Content = x;
+                        LabelCalc.Content =Math.Round( x,7).ToString().Replace(",",".");
                         break;
                     }
                 case "%":
@@ -328,6 +328,13 @@ namespace Praktika.Views.Pages
 
                     }
             }
+            try
+            {
+                LabelCalc.Content = Math.Round(Convert.ToDouble(LabelCalc.Content), 7);
+            }
+
+            catch (System.FormatException) { }
+
 
         }
         private bool Arefm(string c)
