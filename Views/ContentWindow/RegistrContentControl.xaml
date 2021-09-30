@@ -20,7 +20,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
-                
+                <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
+                <ResourceDictionary Source="/Resources/Model/Path.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -36,8 +38,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="60" />
-            <RowDefinition Height="360" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="432" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -53,18 +55,116 @@
             Fill="{DynamicResource 60Color}"
             Stretch="Fill" />
 
-        <Grid Grid.Row="2" Grid.Column="1" ColumnSpan="2">
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1"
+            ColumnSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Content="Регистрация" />
+
+            <!--  при начале ввода символов пропадают  -->
+            <TextBlock Grid.Row="1" Text="Логин">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Logintb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock Grid.Row="2" Text="Пароль">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Passwordtb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock Grid.Row="3" Text="ФИО">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=FIOtb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <TextBlock Grid.Row="4" Text="Роль">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=Roletb}" Value="">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+
+            <TextBox
+                x:Name="Logintb"
+                Grid.Row="1"
+                Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBox
+                x:Name="Passwordtb"
+                Grid.Row="2"
+                Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBox
+                x:Name="FIOtb"
+                Grid.Row="3"
+                Text="{Binding FIO, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBox
+                x:Name="Roletb"
+                Grid.Row="4"
+                Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Path Grid.Row="1" Style="{DynamicResource AuthRegPath}" />
+            <Path Grid.Row="2" Style="{DynamicResource AuthRegPath}" />
+            <Path Grid.Row="3" Style="{DynamicResource AuthRegPath}" />
+            <Path Grid.Row="4" Style="{DynamicResource AuthRegPath}" />
+
+            <Button
+                Grid.Row="5"
+                Margin="15,10"
+                Command="{Binding SendContentControlNumerCommand}"
+                CommandParameter="1">
+                <Label
+                    x:Name="label"
+                    Content="Зарегистрироваться"
+                    FontSize="24" />
+
+            </Button>
+
         </Grid>
 
-        
+
 
 
 

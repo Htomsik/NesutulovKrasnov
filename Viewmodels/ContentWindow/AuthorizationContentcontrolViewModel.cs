@@ -19,6 +19,9 @@ namespace Praktika.Viewmodels
         {
             SendContentControlNumerCommand =
                 new LambdaCommand(OnContentControlNumerExecuted, CanContentControlNumerExecute);
+
+            OpenRegistrationCommand =
+                new LambdaCommand(OnOpenRegistrationCommandExecuted, CanOpenRegistrationCommandExecute);
         }
 
         #region Отправка номера страницы
@@ -41,6 +44,19 @@ namespace Praktika.Viewmodels
                 //показ ошибки
                 ErrorVisibility = Visibility.Visible;
             }
+        }
+        #endregion
+
+        #region Переход на страницу регистрации
+
+        public ICommand OpenRegistrationCommand { get; }
+
+        private bool CanOpenRegistrationCommandExecute(object p) => true;
+
+        private void OnOpenRegistrationCommandExecuted(object p)
+        {
+
+            MessageBus.Send(p);
         }
         #endregion
 

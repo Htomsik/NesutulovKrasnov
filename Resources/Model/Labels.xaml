@@ -10,6 +10,7 @@
 
     </Style>
 
+    <!--Для ошибки при авторизации-->
     <Style
         x:Key="AuthErrorLabel"
         BasedOn="{StaticResource {x:Type Label}}"
@@ -43,6 +44,7 @@
                 </DataTrigger.Setters>
             </DataTrigger>
         </Style.Triggers>
-
     </Style>
+
+    
 </ResourceDictionary>

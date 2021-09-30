@@ -28,5 +28,8 @@
         <ContentWindow:AuthorizationContentControl />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewmodels:RegistContentControlViewModel}">
+        <ContentWindow:RegistrContentControl />
+    </DataTemplate>
 
 </ResourceDictionary>

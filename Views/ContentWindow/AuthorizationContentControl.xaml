@@ -23,6 +23,7 @@
                 <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
+                <ResourceDictionary Source="/Resources/Model/Path.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -38,8 +39,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="60" />
-            <RowDefinition Height="360" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="432" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -65,10 +66,12 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Label Grid.Row="1" Content="Авторизация" />
 
+            <!--  Окно об ошибках  -->
             <Border
                 Margin="15,10"
                 CornerRadius="10"
@@ -93,7 +96,6 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-
                 </TextBlock.Style>
             </TextBlock>
 
@@ -119,29 +121,8 @@
                 Grid.Row="3"
                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
 
-            <Path
-                Grid.Row="3"
-                Width="280"
-                Height="1"
-                Margin="15,61,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Data="M15,110 L297,110"
-                Fill="{DynamicResource 10Color}"
-                Stretch="Fill"
-                Stroke="{DynamicResource 10Color}" />
-
-            <Path
-                Grid.Row="2"
-                Width="280"
-                Height="1"
-                Margin="15,61,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Data="M15,110 L297,110"
-                Fill="{DynamicResource 10Color}"
-                Stretch="Fill"
-                Stroke="{DynamicResource 10Color}" />
+            <Path Grid.Row="2" Style="{DynamicResource AuthRegPath}" />
+            <Path Grid.Row="3" Style="{DynamicResource AuthRegPath}" />
 
             <Button
                 Grid.Row="4"
@@ -154,6 +135,44 @@
                     FontSize="24" />
 
             </Button>
+
+
+            <StackPanel
+                Grid.Row="5"
+                Margin="15,10"
+                Orientation="Horizontal">
+
+                <TextBlock Style="{DynamicResource AuthRegTextbloc}">
+                    Нет аккаунта?
+                </TextBlock>
+
+                <TextBlock Margin="5,0,0,0">
+                    Зарегистрироваться
+                    
+                    <TextBlock.Style>
+                        <Style BasedOn="{StaticResource AuthRegTextbloc}" TargetType="{x:Type TextBlock}">
+                            <Setter Property="Foreground" Value="{DynamicResource 30Color}" />
+                            <Style.Triggers>
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="TextDecorations" Value="UnderLine" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+
+                    <TextBlock.InputBindings>
+                        <MouseBinding Command="{Binding OpenRegistrationCommand}" CommandParameter="2" MouseAction="LeftClick"/>
+                    </TextBlock.InputBindings>
+                    
+
+                </TextBlock>
+
+            </StackPanel>
+
+
+
+            <Label />
         </Grid>
 
 

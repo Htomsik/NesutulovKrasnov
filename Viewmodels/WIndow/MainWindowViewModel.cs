@@ -19,7 +19,7 @@ namespace Praktika.Viewmodels
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
             //  DataWorker.CreateUser("JessJake","evilet","Customer","Nesutulov K.C");
-            
+
         }
 
         #region Выбор страниц

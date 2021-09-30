@@ -41,7 +41,8 @@ namespace Praktika.Infrastructures.Commands
         private readonly BaseViewModel[] _ViewModelArray =
         {
             new AuthorizationContentcontrolViewModel(),
-            new MainContentControlViewModel()
+            new MainContentControlViewModel(),
+            new RegistContentControlViewModel()
         };
 
         private  readonly  MainWindowViewModel viewModel;
