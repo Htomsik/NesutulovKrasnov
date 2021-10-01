@@ -121,7 +121,7 @@ namespace Praktika.Viewmodels
             //Если есть такой пользователь то открыть главную страницу
             if (DataWorker.Authorization(Login, Password))
             {
-
+                Thread.Sleep(1000);
                 MessageBus.Send(p);
             }
             else
@@ -145,12 +145,13 @@ namespace Praktika.Viewmodels
 
         private void EndLoading()
         {
-            Thread.Sleep(700);
+            Thread.Sleep(1000);
             MainGridVisibility = Visibility.Visible; //включает видимость грида с данными
             LoadingStatus = false; //выключает анимацию
         }
 
         #endregion
+
         #endregion
 
     }

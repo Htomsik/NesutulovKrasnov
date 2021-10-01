@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Praktika.Services;
 using Praktika.Infrastructures.Commands;
@@ -13,8 +15,6 @@ namespace Praktika.Viewmodels
 
             OpenAuthCommand = new LambdaCommand(OnOpenAuthCommandExecuted, CanOpenAuthCommandExecute);
 
-            
-
         }
 
         #region Commands
@@ -25,12 +25,11 @@ namespace Praktika.Viewmodels
 
         private bool CanCreateNewUserCommandExecute(object p) => CheckParametrs();
 
-        private void OnCreateNewUserCommandExecuted(object p)
+        private async void OnCreateNewUserCommandExecuted(object p)
         {
-            if (DataWorker.CreateUser(Login, Password, Fio, Role))
-            {
-                ModalStatus = true;
-            }
+            
+            StartLoading();
+            await Task.Run(() => Registrarion(p));
 
         }
 
@@ -90,9 +89,41 @@ namespace Praktika.Viewmodels
             set => Set(ref _ModalStatus, value);
         }
 
+        /// <summary>
+        /// Видимость грида с информацией
+        /// </summary>
+        private Visibility _MainGridVisibility = Visibility.Visible;
+        public Visibility MainGridVisibility
+        {
+            get => _MainGridVisibility;
+            set => Set(ref _MainGridVisibility, value);
+        }
+
+        /// <summary>
+        /// Статус видимости загрузки
+        /// </summary>
+        private bool _LoadingStatus = false;
+        public bool LoadingStatus
+        {
+            get => _LoadingStatus;
+            set => Set(ref _LoadingStatus, value);
+        }
+
+        /// <summary>
+        /// Видимость ошибки
+        /// </summary>
+        private Visibility _ErrorVisibility = Visibility.Hidden;
+        public Visibility ErrorVisibility
+        {
+            get => _ErrorVisibility;
+            set => Set(ref _ErrorVisibility, value);
+        }
+
         #endregion
 
         #region Методы
+
+        #region Проверка заполненности параметров
 
         /// <summary>
         /// Проверка заполненности всех параметров
@@ -102,9 +133,51 @@ namespace Praktika.Viewmodels
 
         #endregion
 
+        #region методы переключения видимости
 
+        private void StartLoading()
+        {
 
+            MainGridVisibility = Visibility.Collapsed; //выключаю видимость грида с данными
+            LoadingStatus = true; //включает анимацию
+        }
 
+        private void EndLoading(bool modalstatus=false)
+        {
+            Thread.Sleep(700);
+            MainGridVisibility = Visibility.Visible; //включает видимость грида с данными
+            LoadingStatus = false; //выключает анимацию
+            
+            if(modalstatus)
+                ModalStatus = true;
+        }
+
+        #endregion
+
+        #region Авторизация
+
+        private void Registrarion(object p)
+        {
+            //если нет такого пользователя то создать
+            if (DataWorker.CreateUser(Login, Password, Fio, Role))
+            {
+                Login = string.Empty;
+                Password = string.Empty;
+                Fio = string.Empty;
+                Role = string.Empty;
+                EndLoading(true);
+            }
+            else
+            {
+                ErrorVisibility = Visibility.Visible;
+                EndLoading();
+            }
+            
+        }
+
+        #endregion
+
+        #endregion
 
     }
 }

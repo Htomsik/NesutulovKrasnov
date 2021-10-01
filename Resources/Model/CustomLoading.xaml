@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomLoading="clr-namespace:LoadingCustom;assembly=LoadingCustom">
+
+
+
+    <!--  стиль для анимации загрузки  -->
+    <Style TargetType="{x:Type CustomLoading:LoadingCustom}">
+        <Setter Property="Cap" Value="Triangle" />
+        <Setter Property="Diameter" Value="200" />
+        <Setter Property="Thickness" Value="3" />
+        <Setter Property="Color" Value="{DynamicResource 30Color}" />
+    </Style>
+</ResourceDictionary>

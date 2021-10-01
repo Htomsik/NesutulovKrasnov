@@ -9,7 +9,7 @@
     xmlns:local="clr-namespace:Praktika.Views.ContentWindow"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
-    d:DesignHeight="600"
+    d:DesignHeight="700"
     d:DesignWidth="1000"
     mc:Ignorable="d">
 
@@ -25,6 +25,7 @@
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
                 <ResourceDictionary Source="/Resources/Model/Path.xaml" />
+                <ResourceDictionary Source="/Resources/Model/CustomLoading.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -40,7 +41,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="432" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -48,14 +49,7 @@
         <Path
             Grid.RowSpan="4"
             Grid.ColumnSpan="4"
-            Width="1018"
-            Height="696.501"
-            Margin="-1,-21.333,-17,-75.168"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Data="M552,598 L-0.5,601.5 -0.5,-0.5 995.5,3.5 999.5,265.5 C999.5,265.5 991,635.5 889,344.5 787,53.5 838,722.5 731.5,461.5 625,200.5 695.5,742 607,554.5 518.5,367 605,712 552,598 z"
-            Fill="{DynamicResource 60Color}"
-            Stretch="Fill" />
+            Style="{DynamicResource MainWindowPath}" />
 
         <!--  грид с данными  -->
         <Grid
@@ -73,20 +67,6 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="1" Content="Авторизация" />
-
-            <!--  Окно об ошибках  -->
-            <Border
-                Margin="15,10"
-                CornerRadius="10"
-                Visibility="{Binding ErrorVisibility}">
-                <Grid>
-                    <Border
-                        Background="#EC0C09"
-                        CornerRadius="10"
-                        Opacity="0.4" />
-                    <Label Content="Неверный логин или пароль" Style="{DynamicResource AuthErrorLabel}" />
-                </Grid>
-            </Border>
 
             <!--  при начале ввода символов пропадают  -->
             <TextBlock Grid.Row="2" Text="Логин">
@@ -139,7 +119,6 @@
 
             </Button>
 
-
             <StackPanel
                 Grid.Row="5"
                 Margin="15,10"
@@ -171,15 +150,23 @@
                             MouseAction="LeftClick" />
                     </TextBlock.InputBindings>
 
-
                 </TextBlock>
 
             </StackPanel>
 
-
-
-            <Label />
-
+            <!--  Окно об ошибках  -->
+            <Border
+                Margin="15,10"
+                CornerRadius="10"
+                Visibility="{Binding ErrorVisibility}">
+                <Grid>
+                    <Border
+                        Background="#EC0C09"
+                        CornerRadius="10"
+                        Opacity="0.4" />
+                    <Label Content="Неверный логин или пароль" Style="{DynamicResource AuthErrorLabel}" />
+                </Grid>
+            </Border>
 
         </Grid>
 
@@ -190,13 +177,7 @@
             ColumnSpan="2"
             Row="2">
 
-
-            <CustomLoading:LoadingCustom
-                Cap="Triangle"
-                Diameter="200"
-                IsLoading="{Binding LoadingStatus}"
-                Thickness="3"
-                Color="{DynamicResource 30Color}" />
+            <CustomLoading:LoadingCustom IsLoading="{Binding LoadingStatus}" />
 
         </Grid>
 

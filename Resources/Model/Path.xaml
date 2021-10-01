@@ -17,4 +17,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="MainWindowPath" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="{DynamicResource 60Color}" />
+        <Setter Property="Data" Value="M0,700 L0,700 0,0 1000,0 1000,350 C993.5,356.5 969.5,624.5 930.5,482.5 891.5,340.5 855.5,785.5 792.5,537.5 729.5,289.5 735.5,774.5 665.5,589.5 595.5,450 680,1000 0,700 z" />
+    </Style>
+
 </ResourceDictionary>
