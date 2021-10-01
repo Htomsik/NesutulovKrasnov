@@ -202,7 +202,7 @@
         </Grid>
 
         <!--  Кастомное модальное окно  -->
-        <Custom:CustomControl
+        <Custom:ModalCustom
             Grid.RowSpan="4"
             Grid.ColumnSpan="4"
             IsOpen="{Binding ModalStatus, UpdateSourceTrigger=PropertyChanged}">
@@ -242,7 +242,7 @@
                 </Button>
 
             </Grid>
-        </Custom:CustomControl>
+        </Custom:ModalCustom>
 
     </Grid>
 </UserControl>

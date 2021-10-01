@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using  Praktika.Services;
 using Praktika.Infrastructures.Commands;
@@ -24,26 +25,18 @@ namespace Praktika.Viewmodels
                 new LambdaCommand(OnOpenRegistrationCommandExecuted, CanOpenRegistrationCommandExecute);
         }
 
+        #region Команды
+
         #region Отправка номера страницы
 
         public ICommand SendContentControlNumerCommand { get; }
 
-        private bool CanContentControlNumerExecute(object p) => true;
+        private bool CanContentControlNumerExecute(object p) => CheckParametrs();
 
-        private void OnContentControlNumerExecuted(object p)
+        private async void OnContentControlNumerExecuted(object p)
         {
-            
-            //Если есть такой пользователь то открыть главную страницу
-            if (DataWorker.Authorization(Login, Password))
-            {
-                
-                MessageBus.Send(p);
-            }
-            else
-            {
-                //показ ошибки
-                ErrorVisibility = Visibility.Visible;
-            }
+            StartLoading();
+            await Task.Run(() => Authorisation(p));
         }
         #endregion
 
@@ -57,6 +50,8 @@ namespace Praktika.Viewmodels
         {
             MessageBus.Send(p);
         }
+        #endregion
+
         #endregion
 
         #region Данные с формы
@@ -76,15 +71,86 @@ namespace Praktika.Viewmodels
         }
 
 
-        //Видимость 
+        /// <summary>
+        /// Видимость ошибки
+        /// </summary>
         private Visibility _ErrorVisibility = Visibility.Hidden;
-
         public Visibility ErrorVisibility
         {
             get => _ErrorVisibility;
             set => Set(ref _ErrorVisibility, value);
         }
 
+        /// <summary>
+        /// Видимость грида с информацией
+        /// </summary>
+        private Visibility _MainGridVisibility = Visibility.Visible;
+        public Visibility MainGridVisibility
+        {
+            get => _MainGridVisibility;
+            set => Set(ref _MainGridVisibility, value);
+        }
+
+        /// <summary>
+        /// Статус видимости загрузки
+        /// </summary>
+        private bool _LoadingStatus = false;
+        public bool LoadingStatus
+        {
+            get => _LoadingStatus;
+            set => Set(ref _LoadingStatus, value);
+        }
+        #endregion
+
+        #region Методы
+
+        #region Проверка заполненности параметров
+
+        /// <summary>
+        /// Проверка заполненности всех параметров
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckParametrs() => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
+
+        #endregion
+
+        #region Авторизация
+
+        private void Authorisation(object p)
+        {
+            //Если есть такой пользователь то открыть главную страницу
+            if (DataWorker.Authorization(Login, Password))
+            {
+
+                MessageBus.Send(p);
+            }
+            else
+            {
+                //показ ошибки
+                ErrorVisibility = Visibility.Visible;
+            }
+            EndLoading();
+        }
+
+        #endregion
+
+        #region методы переключения видимости
+
+        private void StartLoading()
+        {
+            
+            MainGridVisibility = Visibility.Collapsed; //выключаю видимость грида с данными
+            LoadingStatus = true; //включает анимацию
+        }
+
+        private void EndLoading()
+        {
+            Thread.Sleep(700);
+            MainGridVisibility = Visibility.Visible; //включает видимость грида с данными
+            LoadingStatus = false; //выключает анимацию
+        }
+
+        #endregion
         #endregion
 
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
+using Praktika.Models.Data;
 using Praktika.Services;
 
 namespace Praktika.Viewmodels
@@ -18,7 +19,9 @@ namespace Praktika.Viewmodels
             WindowLoadedMessabeBusCommand =
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
-            //  DataWorker.CreateUser("JessJake","evilet","Customer","Nesutulov K.C");
+
+
+            AppDbCOntext db = new AppDbCOntext();
 
         }
 

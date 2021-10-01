@@ -230,6 +230,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LoadingCustom\LoadingCustom.csproj">
+      <Project>{3d99b53c-4af9-405b-a53b-646f60ad8780}</Project>
+      <Name>LoadingCustom</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModalCutom\ModalCutom.csproj">
       <Project>{59e17b05-b0f8-4cbf-881b-be75b89af7a4}</Project>
       <Name>ModalCutom</Name>

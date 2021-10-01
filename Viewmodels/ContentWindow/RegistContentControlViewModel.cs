@@ -17,6 +17,39 @@ namespace Praktika.Viewmodels
 
         }
 
+        #region Commands
+
+        #region создание нового пользователя
+
+        public ICommand CreateNewUserCommand { get; }
+
+        private bool CanCreateNewUserCommandExecute(object p) => CheckParametrs();
+
+        private void OnCreateNewUserCommandExecuted(object p)
+        {
+            if (DataWorker.CreateUser(Login, Password, Fio, Role))
+            {
+                ModalStatus = true;
+            }
+
+        }
+
+        #endregion
+
+        #region Переход на страницу Авторизации
+
+        public ICommand OpenAuthCommand { get; }
+
+        private bool CanOpenAuthCommandExecute(object p) => true;
+
+        private void OnOpenAuthCommandExecuted(object p)
+        {
+            MessageBus.Send(p);
+        }
+        #endregion
+
+        #endregion
+
         #region Данные с формы
 
         private string _Login;
@@ -59,37 +92,13 @@ namespace Praktika.Viewmodels
 
         #endregion
 
+        #region Методы
 
-        #region Commands
-
-        #region создание нового пользователя
-
-        public ICommand CreateNewUserCommand { get; }
-
-        private bool CanCreateNewUserCommandExecute(object p) => true;
-
-        private void OnCreateNewUserCommandExecuted(object p)
-        {
-            if (DataWorker.CreateUser(Login, Password, Fio, Role))
-            {
-                ModalStatus = true;
-            }
-
-        }
-
-        #endregion
-
-        #region Переход на страницу Авторизации
-
-        public ICommand OpenAuthCommand { get; }
-
-        private bool CanOpenAuthCommandExecute(object p) => true;
-
-        private void OnOpenAuthCommandExecuted(object p)
-        {
-            MessageBus.Send(p);
-        }
-        #endregion
+        /// <summary>
+        /// Проверка заполненности всех параметров
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckParametrs() => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Role) && !string.IsNullOrEmpty(Fio);
 
         #endregion
 
