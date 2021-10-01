@@ -13,6 +13,8 @@ namespace Praktika.Viewmodels
 
             OpenAuthCommand = new LambdaCommand(OnOpenAuthCommandExecuted, CanOpenAuthCommandExecute);
 
+            
+
         }
 
         #region Данные с формы
@@ -45,24 +47,33 @@ namespace Praktika.Viewmodels
             set => Set(ref _Role, value);
         }
 
-        private string _Errortext = "123";
-        public string Errortext
+        /// <summary>
+        /// Статус модального окна (открыт/заркыт)
+        /// </summary>
+        private bool _ModalStatus;
+        public bool ModalStatus
         {
-            get => _Errortext;
-            set => Set(ref _Errortext, value);
+            get => _ModalStatus;
+            set => Set(ref _ModalStatus, value);
         }
 
         #endregion
+
+
+        #region Commands
 
         #region создание нового пользователя
 
         public ICommand CreateNewUserCommand { get; }
 
-        private bool CanCreateNewUserCommandExecute (object p) => true;
+        private bool CanCreateNewUserCommandExecute(object p) => true;
 
-        private void OnCreateNewUserCommandExecuted (object p)
+        private void OnCreateNewUserCommandExecuted(object p)
         {
-            DataWorker.CreateUser(Login,Password,Fio,Role);
+            if (DataWorker.CreateUser(Login, Password, Fio, Role))
+            {
+                ModalStatus = true;
+            }
 
         }
 
@@ -79,6 +90,12 @@ namespace Praktika.Viewmodels
             MessageBus.Send(p);
         }
         #endregion
+
+        #endregion
+
+
+
+
 
     }
 }

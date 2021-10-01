@@ -2,6 +2,7 @@
     x:Class="Praktika.Views.ContentWindow.RegistrContentControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Custom="clr-namespace:ModalCutom;assembly=ModalCutom"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Praktika.Views.ContentWindow"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,7 +23,6 @@
                 <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
                 <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
                 <ResourceDictionary Source="/Resources/Model/Path.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -200,6 +200,49 @@
             </StackPanel>
 
         </Grid>
+
+        <!--  Кастомное модальное окно  -->
+        <Custom:CustomControl
+            Grid.RowSpan="4"
+            Grid.ColumnSpan="4"
+            IsOpen="{Binding ModalStatus, UpdateSourceTrigger=PropertyChanged}">
+            <Grid
+                Width="350"
+                Height="150"
+                Background="{DynamicResource Menucolor}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.ColumnSpan="3"
+                    xml:space="preserve"
+                    FontSize="20">
+Регистрация прошла успешно
+                </TextBlock>
+
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="12"
+                    BorderBrush="{DynamicResource DopColorIsFocused}"
+                    BorderThickness="2"
+                    Command="{Binding OpenAuthCommand}"
+                    CommandParameter="0"
+                    Style="{DynamicResource RectangleButtonStyle}">
+                    <Label FontSize="20">ОК</Label>
+                </Button>
+
+            </Grid>
+        </Custom:CustomControl>
 
     </Grid>
 </UserControl>

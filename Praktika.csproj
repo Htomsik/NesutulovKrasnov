@@ -226,7 +226,15 @@
   <ItemGroup>
     <Resource Include="Resources\Assets\engineer.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModalCutom\ModalCutom.csproj">
+      <Project>{59e17b05-b0f8-4cbf-881b-be75b89af7a4}</Project>
+      <Name>ModalCutom</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

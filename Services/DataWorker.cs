@@ -22,7 +22,7 @@ namespace Praktika.Services
         /// <param name="_Password"></param>
         /// <param name="_Role"></param>
         /// <param name="_FIO"></param>
-        public static void CreateUser(string _Login, string _Password,string _FIO, string _Role )
+        public static bool CreateUser(string _Login, string _Password,string _FIO, string _Role )
         {
 
             using (AppDbCOntext db = new AppDbCOntext())
@@ -40,11 +40,18 @@ namespace Praktika.Services
                     };
                     db.Users.Add(newUser);
                     db.SaveChanges();
+                    
+                }
+                else
+                {
+                    return false;
                 }
                 
 
             }
-            
+
+            return true;
+
         }
 
         #endregion
