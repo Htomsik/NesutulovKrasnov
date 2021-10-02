@@ -21,9 +21,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/ViewResources/ViewResources.xaml" />
                 <ResourceDictionary Source="/Resources/Animations/MainWindowAnimation.xaml" />
-                <ResourceDictionary Source="/Resources/Model/MenuListView.xaml" />
-                <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
-                <ResourceDictionary Source="/Resources/Model/ImageAwesome.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/MenuListView.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Labels.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ImageAwesome.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

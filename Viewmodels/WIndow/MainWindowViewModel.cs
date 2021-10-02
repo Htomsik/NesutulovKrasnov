@@ -19,10 +19,6 @@ namespace Praktika.Viewmodels
             WindowLoadedMessabeBusCommand =
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
-
-
-            AppDbCOntext db = new AppDbCOntext();
-
         }
 
         #region Выбор страниц

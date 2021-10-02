@@ -25,7 +25,7 @@ namespace Praktika.Services
         public static bool CreateUser(string _Login, string _Password,string _FIO, string _Role )
         {
 
-            using (AppDbCOntext db = new AppDbCOntext())
+            using (AppDbContext db = new AppDbContext())
             {
                 //check the user is exist
                 bool checkIsExist = db.Users.Any(el => el.Login == _Login);
@@ -61,7 +61,7 @@ namespace Praktika.Services
         public static bool Authorization(string _Login, string _Password)
         {
 
-            using (AppDbCOntext db = new AppDbCOntext())
+            using (AppDbContext db = new AppDbContext())
             {
                 return db.Users.Any(el => el.Login == _Login && el.Password == _Password);
             }

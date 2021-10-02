@@ -161,10 +161,10 @@ namespace Praktika.Viewmodels
             //если нет такого пользователя то создать
             if (DataWorker.CreateUser(Login, Password, Fio, Role))
             {
-                Login = string.Empty;
-                Password = string.Empty;
-                Fio = string.Empty;
-                Role = string.Empty;
+                Login = default;
+                Password = default;
+                Fio = default;
+                Role = default;
                 EndLoading(true);
             }
             else

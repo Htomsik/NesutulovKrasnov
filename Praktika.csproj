@@ -100,35 +100,35 @@
     <Page Include="Resources\Animations\MainWindowAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\Buttons.xaml">
+    <Page Include="Resources\Styles\Buttons.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\CustomLoading.xaml">
+    <Page Include="Resources\Styles\CustomLoading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\ImageAwesome.xaml">
+    <Page Include="Resources\Styles\ImageAwesome.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\CalcButton.xaml">
+    <Page Include="Resources\Styles\CalcButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\Labels.xaml">
+    <Page Include="Resources\Styles\Labels.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\MenuListView.xaml">
+    <Page Include="Resources\Styles\MenuListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\Path.xaml">
+    <Page Include="Resources\Styles\Path.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\TextBlock.xaml">
+    <Page Include="Resources\Styles\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Model\TextBox.xaml">
+    <Page Include="Resources\Styles\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\DefaultTheme.xaml">

@@ -9,9 +9,12 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Model/CalcButton.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CalcButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+
             <ImageBrush x:Key="tb_mouse_over" ImageSource="/Resources/Assets/tgBtn_MouseOver.png" />
 
             <Style x:Key="font_style" TargetType="TextBlock">

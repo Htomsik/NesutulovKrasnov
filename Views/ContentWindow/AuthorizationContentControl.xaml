@@ -21,11 +21,11 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Model/Labels.xaml" />
-                <ResourceDictionary Source="/Resources/Model/TextBox.xaml" />
-                <ResourceDictionary Source="/Resources/Model/TextBlock.xaml" />
-                <ResourceDictionary Source="/Resources/Model/Path.xaml" />
-                <ResourceDictionary Source="/Resources/Model/CustomLoading.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Labels.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBox.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Path.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CustomLoading.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

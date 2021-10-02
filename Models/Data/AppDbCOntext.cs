@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Praktika.Models.Data
 {
-    public class AppDbCOntext:DbContext
+    public class AppDbContext:DbContext
     {
 
-        public AppDbCOntext() : base("DBConnect"){}
+        public AppDbContext() : base("DBConnect"){}
         
         public DbSet<User> Users { get; set; }
 
