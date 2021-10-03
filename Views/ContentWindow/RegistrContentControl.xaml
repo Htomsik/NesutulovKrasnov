@@ -69,8 +69,8 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="15"></ColumnDefinition>
+                <ColumnDefinition />
+                <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="1" Content="Регистрация" />
@@ -102,7 +102,7 @@
                 </TextBlock.Style>
             </TextBlock>
 
-           <TextBlock Grid.Row="4" Text="Роль" >
+            <TextBlock Grid.Row="4" Text="Роль">
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed" />
@@ -113,7 +113,7 @@
                         </Style.Triggers>
                     </Style>
                 </TextBlock.Style>
-            </TextBlock> 
+            </TextBlock>
 
             <TextBlock Grid.Row="5" Text="ФИО">
                 <TextBlock.Style>
@@ -141,8 +141,8 @@
 
             <ComboBox
                 x:Name="RoleCB"
-                Grid.ColumnSpan="2"
                 Grid.Row="4"
+                Grid.ColumnSpan="2"
                 ItemsSource="{Binding Roles}"
                 SelectedItem="{Binding SelectedRole}">
                 <ComboBox.ItemTemplate>
@@ -230,7 +230,7 @@
         <!--  Кастомное модальное окно  -->
         <Custom:ModalCustom
             Grid.RowSpan="4"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="5"
             IsOpen="{Binding ModalStatus, UpdateSourceTrigger=PropertyChanged}">
             <Grid
                 Width="350"
