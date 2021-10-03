@@ -25,6 +25,7 @@
                 <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/Path.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/CustomLoading.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ComboBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -35,6 +36,7 @@
             <ColumnDefinition />
             <ColumnDefinition Width="156" />
             <ColumnDefinition Width="156" />
+            <ColumnDefinition Width="15" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -47,13 +49,13 @@
 
         <Path
             Grid.RowSpan="4"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="5"
             Style="{DynamicResource MainWindowPath}" />
 
         <Grid
             Grid.Row="2"
             Grid.Column="1"
-            ColumnSpan="2"
+            ColumnSpan="3"
             Visibility="{Binding MainGridVisibility, UpdateSourceTrigger=PropertyChanged}">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -65,6 +67,11 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="15"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
             <Label Grid.Row="1" Content="Регистрация" />
 
@@ -79,7 +86,6 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-
                 </TextBlock.Style>
             </TextBlock>
 
@@ -96,25 +102,25 @@
                 </TextBlock.Style>
             </TextBlock>
 
-            <TextBlock Grid.Row="4" Text="ФИО">
+           <TextBlock Grid.Row="4" Text="Роль" >
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed" />
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=FIOtb}" Value="">
+                            <DataTrigger Binding="{Binding Text, ElementName=RoleCB}" Value="">
                                 <Setter Property="Visibility" Value="Visible" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </TextBlock.Style>
-            </TextBlock>
+            </TextBlock> 
 
-            <TextBlock Grid.Row="5" Text="Роль">
+            <TextBlock Grid.Row="5" Text="ФИО">
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed" />
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=Roletb}" Value="">
+                            <DataTrigger Binding="{Binding Text, ElementName=FIOtb}" Value="">
                                 <Setter Property="Visibility" Value="Visible" />
                             </DataTrigger>
                         </Style.Triggers>
@@ -133,15 +139,24 @@
                 Grid.Row="3"
                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
 
-            <TextBox
-                x:Name="FIOtb"
+            <ComboBox
+                x:Name="RoleCB"
+                Grid.ColumnSpan="2"
                 Grid.Row="4"
-                Text="{Binding Fio, UpdateSourceTrigger=PropertyChanged}" />
+                ItemsSource="{Binding Roles}"
+                SelectedItem="{Binding SelectedRole}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <TextBox
-                x:Name="Roletb"
+                x:Name="FIOtb"
                 Grid.Row="5"
-                Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Fio, UpdateSourceTrigger=PropertyChanged}" />
+
 
             <Path Grid.Row="2" Style="{DynamicResource AuthRegPath}" />
             <Path Grid.Row="3" Style="{DynamicResource AuthRegPath}" />

@@ -15,7 +15,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Foreground" Value="White" />
+                 <Setter Property="Foreground" Value="White" />
             </Trigger>
         </Style.Triggers>
 

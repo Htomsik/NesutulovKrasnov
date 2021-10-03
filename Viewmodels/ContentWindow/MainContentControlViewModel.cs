@@ -19,7 +19,7 @@ namespace Praktika.Viewmodels
             };
         }
 
-        public ObservableCollection<Pages> Pages { get; set; }
+        public ObservableCollection<Pages> Pages { get; }
 
         #region Title
 

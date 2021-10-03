@@ -1,9 +1,11 @@
-﻿using System.Threading;
+﻿using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Praktika.Services;
 using Praktika.Infrastructures.Commands;
+using Praktika.Models;
 
 namespace Praktika.Viewmodels
 {
@@ -14,6 +16,12 @@ namespace Praktika.Viewmodels
             CreateNewUserCommand = new LambdaCommand(OnCreateNewUserCommandExecuted, CanCreateNewUserCommandExecute);
 
             OpenAuthCommand = new LambdaCommand(OnOpenAuthCommandExecuted, CanOpenAuthCommandExecute);
+
+            Roles = new ObservableCollection<Role>
+            {
+                new Role {Name = "Customer"},
+                new Role {Name = "Director"}
+            };
 
         }
 
@@ -51,6 +59,11 @@ namespace Praktika.Viewmodels
 
         #region Данные с формы
 
+        /// <summary>
+        /// Колекция (список) категорий
+        /// </summary>
+        public ObservableCollection<Role> Roles { get; }
+
         private string _Login;
         public string Login
         {
@@ -70,13 +83,6 @@ namespace Praktika.Viewmodels
         {
             get => _Fio;
             set => Set(ref _Fio, value);
-        }
-
-        private string _Role;
-        public string Role
-        {
-            get => _Role;
-            set => Set(ref _Role, value);
         }
 
         /// <summary>
@@ -119,6 +125,16 @@ namespace Praktika.Viewmodels
             set => Set(ref _ErrorVisibility, value);
         }
 
+        /// <summary>
+        /// Выбранная в данный момент роль
+        /// </summary>
+        private Role _SelectedRole;
+        public Role SelectedRole
+        {
+            get => _SelectedRole;
+            set => Set(ref _SelectedRole, value);
+        }
+
         #endregion
 
         #region Методы
@@ -129,7 +145,7 @@ namespace Praktika.Viewmodels
         /// Проверка заполненности всех параметров
         /// </summary>
         /// <returns></returns>
-        private bool CheckParametrs() => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Role) && !string.IsNullOrEmpty(Fio);
+        private bool CheckParametrs() => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Fio) && !(SelectedRole==default);
 
         #endregion
 
@@ -154,17 +170,18 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-        #region Авторизация
+        #region регистрация
 
         private void Registrarion(object p)
         {
+            Role role = SelectedRole;
             //если нет такого пользователя то создать
-            if (DataWorker.CreateUser(Login, Password, Fio, Role))
+            if (DataWorker.CreateUser(Login, Password, Fio, role.Name))
             {
                 Login = default;
                 Password = default;
                 Fio = default;
-                Role = default;
+                SelectedRole = default;
                 EndLoading(true);
             }
             else

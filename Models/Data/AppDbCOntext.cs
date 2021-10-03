@@ -14,6 +14,5 @@ namespace Praktika.Models.Data
         
         public DbSet<User> Users { get; set; }
 
-        
     }
 }
