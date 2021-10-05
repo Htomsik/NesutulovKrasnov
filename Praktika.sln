@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModalCutom", "..\ModalCutom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadingCustom", "..\LoadingCustom\LoadingCustom.csproj", "{3D99B53C-4AF9-405B-A53B-646F60AD8780}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Custom", "Custom", "{9C6ABE93-FA26-4E69-A64F-28622CC72B4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59E17B05-B0F8-4CBF-881B-BE75B89AF7A4} = {9C6ABE93-FA26-4E69-A64F-28622CC72B4B}
+		{3D99B53C-4AF9-405B-A53B-646F60AD8780} = {9C6ABE93-FA26-4E69-A64F-28622CC72B4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA5DFF49-2297-4830-BA65-172A485927C4}
