@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Praktika.Viewmodels.AuthorizationContentcontrolViewModel">
+    <Position X="0.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gBAABAAAACAgEUAAAAAAIAABAQCAEgACAAkQAAAAABA=</HashCode>
+      <FileName>Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Viewmodels.MainContentControlViewModel">
+    <Position X="3" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAEAwAAAAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodels\ContentWindow\MainContentControlViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Viewmodels.RegistContentControlViewModel">
+    <Position X="5.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABAABAAQAKigEESAAAAEIgAAAyEAEAACAAAQABAEABA=</HashCode>
+      <FileName>Viewmodels\ContentWindow\RegistContentControlViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Viewmodels.BaseViewModel">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodels\Base\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Praktika.Viewmodels.CalcPageViewModel">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodels\pages\CalcPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Viewmodels.HomapageViewmodel">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodels\pages\HomapageViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Viewmodels.MainWindowViewModel">
+    <Position X="8.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEBAAQAAAAAAAYIAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Viewmodels\WIndow\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Services.DataWorker">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\DataWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Services.MessageBus">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\MessageBus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Models.Pages">
+    <Position X="19.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Pages.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Models.Role">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Models.User">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgAAAEAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Infrastructures.Commands.Base.BaseCommand" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Commands\Base\BaseCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Praktika.Infrastructures.Commands.CloseApplicationCommand">
+    <Position X="10.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Commands\CloseApplicationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Infrastructures.Commands.LambdaCommand">
+    <Position X="12" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQCAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Commands\LamdaCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Infrastructures.Commands.UpdatePagesViewCommand">
+    <Position X="15.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAQAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Commands\UpdateViewCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Praktika.Infrastructures.Commands.UpdateWindowViewCommand">
+    <Position X="13.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAQAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Commands\UpdateViewCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

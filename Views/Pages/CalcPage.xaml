@@ -11,7 +11,7 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/CalcButton.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/CalcButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
 
@@ -301,8 +301,8 @@
                 MinHeight="110"
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Bottom"
-                FontSize="40"
                 Content="0"
+                FontSize="40"
                 Foreground="White" />
 
 

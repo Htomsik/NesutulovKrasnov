@@ -13,7 +13,7 @@ namespace Praktika.Viewmodels
     {
         public RegistContentControlViewModel()
         {
-            CreateNewUserCommand = new LambdaCommand(OnCreateNewUserCommandExecuted, CanCreateNewUserCommandExecute);
+            CreateNewUserCommand = new LambdaCommand(OnCreateNewUserCommandExecuted, CanCreateNewUserCommandExecute); 
 
             OpenAuthCommand = new LambdaCommand(OnOpenAuthCommandExecuted, CanOpenAuthCommandExecute);
 

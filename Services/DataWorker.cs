@@ -58,6 +58,12 @@ namespace Praktika.Services
 
         #region Авторизация
 
+        /// <summary>
+        /// Метод авторизации
+        /// </summary>
+        /// <param name="_Login"></param>
+        /// <param name="_Password"></param>
+        /// <returns></returns>
         public static bool Authorization(string _Login, string _Password)
         {
 

@@ -56,6 +56,8 @@ namespace Praktika.Viewmodels
 
         #region Данные с формы
 
+        
+
         private string _Login;
         public string Login
         {
