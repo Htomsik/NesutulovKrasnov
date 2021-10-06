@@ -27,6 +27,8 @@ namespace Praktika.Viewmodels
 
         #region Команды
 
+
+
         #region Отправка номера страницы
 
         public ICommand SendContentControlNumerCommand { get; }
@@ -35,8 +37,7 @@ namespace Praktika.Viewmodels
 
         private async void OnContentControlNumerExecuted(object p)
         {
-            StartLoading();
-            await Task.Run(() => Authorisation(p));
+            MessageBus.Send(p);
         }
         #endregion
 
