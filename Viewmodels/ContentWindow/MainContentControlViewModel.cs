@@ -19,23 +19,10 @@ namespace Praktika.Viewmodels
                 new Pages {URLicon = "Solid_calculator", NamePage = "Калькулятор", Number = 1}
             };
 
-            SendContentControlNumerCommand =
-                new LambdaCommand(OnContentControlNumerExecuted, CanContentControlNumerExecute);
+            
         }
 
         public ObservableCollection<Pages> Pages { get; }
-
-        #region Отправка номера страницы
-
-        public ICommand SendContentControlNumerCommand { get; }
-
-        private bool CanContentControlNumerExecute(object p) => true;
-
-        private async void OnContentControlNumerExecuted(object p)
-        {
-            MessageBus.Send(p);
-        }
-        #endregion
 
         #region Title
 

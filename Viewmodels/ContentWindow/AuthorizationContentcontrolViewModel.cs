@@ -37,7 +37,8 @@ namespace Praktika.Viewmodels
 
         private async void OnContentControlNumerExecuted(object p)
         {
-            MessageBus.Send(p);
+            StartLoading();
+            await Task.Run(() => Authorisation(p));
         }
         #endregion
 
