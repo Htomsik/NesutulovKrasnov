@@ -26,7 +26,7 @@
 
 ### Страница регистрации
 
-![Регистрация](https://raw.githubusercontent.com/Htomsik/Praktika4Kurs/master/ReadmyAssets/MainWindow.png)
+![Регистрация](https://raw.githubusercontent.com/Htomsik/Praktika4Kurs/master/ReadmyAssets/registrwindow.png)
 
 ### Главная страница приложения 
 ![Главное окно](https://raw.githubusercontent.com/Htomsik/Praktika4Kurs/master/ReadmyAssets/MainMenu.png)
