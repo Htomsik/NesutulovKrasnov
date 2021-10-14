@@ -23,11 +23,10 @@ namespace Praktika.Viewmodels
 
             OpenRegistrationCommand =
                 new LambdaCommand(OnOpenRegistrationCommandExecuted, CanOpenRegistrationCommandExecute);
+
         }
 
         #region Команды
-
-
 
         #region Отправка номера страницы
 

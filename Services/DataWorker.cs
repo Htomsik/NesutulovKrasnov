@@ -77,6 +77,8 @@ namespace Praktika.Services
                 if (_checkuser != default)
                 {
                     s1.CurrentUser = _checkuser;
+                    JsonWorker js = new JsonWorker();
+                    js.SaveUser();
                     return true;
                 }
                 
