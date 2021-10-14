@@ -18,13 +18,13 @@ namespace Praktika.Services
         
 
         private string UserPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "Praktika4Kurs/User.js");
+            @"Praktika4Kurs\User.js");
 
         private string SettingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "Praktika4Kurs/Settings.js");
+            @"Praktika4Kurs\Settings.js");
 
         private string DirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "Praktika4Kurs");
+            @"Praktika4Kurs");
 
 
         bool CheckDirectory()
@@ -55,7 +55,9 @@ namespace Praktika.Services
         /// </summary>
         public void GetUser()
         {
-            if (File.Exists(UserPath)&&CheckDirectory())
+            CheckDirectory();
+
+            if (File.Exists(UserPath) )
             {
                 UserSingltonViewmodel.Initialize.CurrentUser =
                     JsonConvert.DeserializeObject<User>(File.ReadAllText(UserPath));
@@ -79,7 +81,9 @@ namespace Praktika.Services
         /// </summary>
         public bool GetSettings()
         {
-            if (File.Exists(SettingsPath) && CheckDirectory())
+
+            CheckDirectory();//проверка директории (нужна при первом запуске)
+            if (File.Exists(SettingsPath))
             {
                
                   return JsonConvert.DeserializeObject<bool>(File.ReadAllText(SettingsPath));
