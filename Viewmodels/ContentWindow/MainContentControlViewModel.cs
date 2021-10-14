@@ -19,7 +19,6 @@ namespace Praktika.Viewmodels
                 new Pages {URLicon = "Solid_calculator", NamePage = "Калькулятор", Number = 1}
             };
 
-            
         }
 
         public ObservableCollection<Pages> Pages { get; }

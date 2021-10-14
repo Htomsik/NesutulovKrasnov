@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Praktika.Viewmodels;
 
 namespace Praktika.Models
 {
@@ -34,8 +36,7 @@ namespace Praktika.Models
         public string FIO { get; set; }
     }
 
-    public static class CurrentUser
-    {
-        public static User _CurrentUser;
-    }
+    
+
+    
 }

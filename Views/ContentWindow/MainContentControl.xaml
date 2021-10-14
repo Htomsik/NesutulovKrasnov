@@ -7,6 +7,7 @@
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
+    xmlns:currentuser ="clr-namespace:Praktika.Models"
     d:DesignHeight="600"
     d:DesignWidth="1000"
     mc:Ignorable="d">
@@ -50,7 +51,6 @@
 
     <Grid>
 
-
         <Grid.Background>
 
             <!--
@@ -93,6 +93,38 @@
             Background="Transparent"
             Content="{Binding SelectedViewModel}" />
 
+        <!--Показ пользователя-->
+        <Border 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            MinWidth="100"
+            Height="40"
+            Background="{DynamicResource Menucolor}"
+            Grid.Column="2"
+            Grid.Row="1"
+            CornerRadius="10 0 0 10 ">
+
+            <StackPanel
+                Margin="5 0 0 0"
+                Background="Transparent"
+                Orientation="Horizontal"
+                ToolTip="{Binding NamePage}">
+
+                <fa:ImageAwesome Icon="Regular_User" Style="{DynamicResource MenuFaImageStyle}" />
+
+                <Label
+
+                    Margin="5,0,0,0"
+                    Content="{Binding cu}"
+                    Style="{DynamicResource MainMenuLabelStyle}" >
+                    <Label.DataContext>
+                        <currentuser:User></currentuser:User>
+                    </Label.DataContext>
+                </Label>
+
+            </StackPanel>
+
+        </Border>
         <!--  Меню  -->
         <Grid
             x:Name="grid"
