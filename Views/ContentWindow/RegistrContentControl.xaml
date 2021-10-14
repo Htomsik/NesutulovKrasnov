@@ -153,6 +153,7 @@
             </ComboBox>
 
             <TextBox
+                MaxLength="25"
                 x:Name="FIOtb"
                 Grid.Row="5"
                 Text="{Binding Fio, UpdateSourceTrigger=PropertyChanged}" />

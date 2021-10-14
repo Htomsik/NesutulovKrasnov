@@ -33,4 +33,9 @@ namespace Praktika.Models
         /// </summary>
         public string FIO { get; set; }
     }
+
+    public static class CurrentUser
+    {
+        public static User _CurrentUser;
+    }
 }

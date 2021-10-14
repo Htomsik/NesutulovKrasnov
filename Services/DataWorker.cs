@@ -69,8 +69,17 @@ namespace Praktika.Services
 
             using (AppDbContext db = new AppDbContext())
             {
-                return db.Users.Any(el => el.Login == _Login && el.Password == _Password);
+
+                User _checkuser = db.Users.FirstOrDefault(el => el.Login == _Login && el.Password == _Password);
+
+                if (_checkuser != default)
+                {
+                    CurrentUser._CurrentUser = _checkuser;
+                    return true;
+                }
+                
             }
+            return false;
         }
 
 
@@ -78,7 +87,6 @@ namespace Praktika.Services
 
 
         #endregion
-
 
     }
 }
