@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using  Praktika.Services;
+using Praktika.Services;
 using Praktika.Infrastructures.Commands;
+using Praktika.Properties;
 
 
 namespace Praktika.Viewmodels
@@ -24,9 +25,37 @@ namespace Praktika.Viewmodels
             OpenRegistrationCommand =
                 new LambdaCommand(OnOpenRegistrationCommandExecuted, CanOpenRegistrationCommandExecute);
 
+            JsInicializeCommand = new LambdaCommand(OnJsInicializeExecuted, CanJsInicializeExecute);
+
+            Js = new JsonWorker();
+
+
         }
 
+        private JsonWorker Js;
+
         #region Команды
+
+        #region Инициализация текущего пользователя при авторизации
+
+
+        public ICommand JsInicializeCommand { get; }
+
+        private bool CanJsInicializeExecute(object p) => true;
+
+        private async void OnJsInicializeExecuted(object p)
+        {
+
+            if (Js.GetSettings())
+            {
+                StartLoading();
+                Js.GetUser();
+                await Task.Run(() => Authorisation());
+            }
+
+        }
+
+        #endregion
 
         #region Отправка номера страницы
 
@@ -56,8 +85,6 @@ namespace Praktika.Viewmodels
         #endregion
 
         #region Данные с формы
-
-        
 
         private string _Login;
         public string Login
@@ -103,6 +130,17 @@ namespace Praktika.Viewmodels
             get => _LoadingStatus;
             set => Set(ref _LoadingStatus, value);
         }
+
+        private bool _checkedstatus;
+        /// <summary>
+        /// Запоминает статус
+        /// </summary>
+        public bool checkedstatus
+        {
+            get => _checkedstatus;
+            set => Set(ref _checkedstatus, value);
+        }
+
         #endregion
 
         #region Методы
@@ -117,15 +155,36 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-        #region Авторизация
+        #region Авторизация с формы
 
-        private void Authorisation(object p)
+        private async void Authorisation(object p)
         {
             //Если есть такой пользователь то открыть главную страницу
             if (DataWorker.Authorization(Login, Password))
             {
+                await Task.Run(() => Js.SaveSettings(checkedstatus));
                 Thread.Sleep(1000);
                 MessageBus.Send(p);
+            }
+            else
+            {
+                //показ ошибки
+                ErrorVisibility = Visibility.Visible;
+            }
+            EndLoading();
+        }
+
+        #endregion
+
+        #region Авторизация с файла
+
+        private void Authorisation()
+        {
+            //Если есть такой пользователь то открыть главную страницу
+            if (DataWorker.Authorization())
+            {
+                Thread.Sleep(1000);
+                MessageBus.Send(1);
             }
             else
             {

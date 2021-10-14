@@ -30,6 +30,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding JsInicializeCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="{DynamicResource 30Color}">
 
         <Grid.ColumnDefinitions>
@@ -42,7 +47,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="432" />
+            <RowDefinition Height="462" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -62,6 +67,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="30" />
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -107,8 +113,30 @@
             <Path Grid.Row="2" Style="{DynamicResource AuthRegPath}" />
             <Path Grid.Row="3" Style="{DynamicResource AuthRegPath}" />
 
-            <Button
+
+            <!--  Запомнить меня  -->
+            <StackPanel
                 Grid.Row="4"
+                Margin="15,0,0,0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <CheckBox
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsChecked="{Binding checkedstatus, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    Style="{DynamicResource AuthRegTextbloc}">
+                    Запомнить меня
+                </TextBlock>
+
+            </StackPanel>
+
+            <Button
+                Grid.Row="5"
                 Margin="15,10"
                 Command="{Binding SendContentControlNumerCommand}"
                 CommandParameter="1">
@@ -120,7 +148,7 @@
             </Button>
 
             <StackPanel
-                Grid.Row="5"
+                Grid.Row="6"
                 Margin="15,10"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal">
@@ -153,6 +181,7 @@
                 </TextBlock>
 
             </StackPanel>
+
 
             <!--  Окно об ошибках  -->
             <Border

@@ -20,10 +20,7 @@ namespace Praktika.Viewmodels
             WindowLoadedMessabeBusCommand =
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
-            
         }
-
-        
 
         #region Выбор страниц
 
@@ -61,6 +58,8 @@ namespace Praktika.Viewmodels
 
         #endregion
 
-        
+       
+
+
     }
 }

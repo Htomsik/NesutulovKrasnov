@@ -22,10 +22,8 @@ namespace Praktika.Viewmodels
 
         private static UserSingltonViewmodel initialize;
 
-        public UserSingltonViewmodel()
-        {
-
-        }
+        public UserSingltonViewmodel(){}
+        
 
         public static UserSingltonViewmodel Initialize
         {

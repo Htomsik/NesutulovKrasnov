@@ -60,7 +60,7 @@ namespace Praktika.Services
         #region Авторизация
 
         /// <summary>
-        /// Метод авторизации
+        /// Метод авторизации с формы
         /// </summary>
         /// <param name="_Login"></param>
         /// <param name="_Password"></param>
@@ -82,6 +82,26 @@ namespace Praktika.Services
                     return true;
                 }
                 
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Метод авторизации с файла
+        /// </summary>
+        /// <param name="_Login"></param>
+        /// <param name="_Password"></param>
+        /// <returns></returns>
+        public static bool Authorization()
+        {
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                UserSingltonViewmodel s1 = UserSingltonViewmodel.Initialize;
+
+                return db.Users.Any(el =>
+                    el.Login == s1.CurrentUser.Login && el.Password == s1.CurrentUser.Password);
+
             }
             return false;
         }
