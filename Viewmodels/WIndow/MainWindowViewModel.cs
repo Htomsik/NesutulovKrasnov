@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
+using Praktika.Models;
 using Praktika.Models.Data;
 using Praktika.Services;
 
@@ -19,7 +20,10 @@ namespace Praktika.Viewmodels
             WindowLoadedMessabeBusCommand =
                 new LambdaCommand(OnWindowLoadedMessabeBusExecuted, CanWindowLoadedMessabeBusExecute);
 
+            
         }
+
+        
 
         #region Выбор страниц
 

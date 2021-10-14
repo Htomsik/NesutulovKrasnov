@@ -90,6 +90,7 @@
     <Compile Include="Services\MessageBus.cs" />
     <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
     <Compile Include="Viewmodels\ContentWindow\RegistContentControlViewModel.cs" />
+    <Compile Include="Viewmodels\CurrentUser\UserSingltonViewmodel.cs" />
     <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">
       <DependentUpon>AuthorizationContentControl.xaml</DependentUpon>
     </Compile>

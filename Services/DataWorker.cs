@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Praktika.Models;
 using Praktika.Models.Data;
+using Praktika.Viewmodels;
 
 namespace Praktika.Services
 {
@@ -69,12 +70,13 @@ namespace Praktika.Services
 
             using (AppDbContext db = new AppDbContext())
             {
+                UserSingltonViewmodel s1 = UserSingltonViewmodel.Initialize;
 
                 User _checkuser = db.Users.FirstOrDefault(el => el.Login == _Login && el.Password == _Password);
 
                 if (_checkuser != default)
                 {
-                    CurrentUser._CurrentUser = _checkuser;
+                    s1.CurrentUser = _checkuser;
                     return true;
                 }
                 

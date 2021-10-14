@@ -36,7 +36,4 @@ namespace Praktika.Models
         public string FIO { get; set; }
     }
 
-    
-
-    
 }
