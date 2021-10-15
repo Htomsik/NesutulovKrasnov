@@ -17,6 +17,10 @@ namespace Praktika.Viewmodels
         {
             Videocards = new ObservableCollection<Videocard>(DataWorker.GetAllVideocards());
 
+            OpenAddModalCommand = new LambdaCommand(OnOpenAddModalExecuted, CanOpenAddModalExecute);
+
+            AddNewVideocardCommand = new LambdaCommand(OnAddNewVideocardExecuted, CanAddNewVideocardExecute);
+
             Companys = new List<Company>
             {
                 new Company{Name = "Amd"},
@@ -58,9 +62,52 @@ namespace Praktika.Viewmodels
 
         public List<Interface> Interfaces { get; }
 
+        #region Команды
+
+        #region Открытие модального окна для добавления
+
+        /// <summary>
+        /// Открытие модального окна для добавления
+        /// </summary>
+        public ICommand OpenAddModalCommand { get; }
+
+        private bool CanOpenAddModalExecute(object p) => true;
+
+        private void OnOpenAddModalExecuted(object p)
+        {
+            AddVisibility = true;
+        }
+
+        #endregion
+
+        #region Добавление новой видеокарты
+
+
+        public ICommand AddNewVideocardCommand { get; }
+
+        private bool CanAddNewVideocardExecute(object p) => CheckParametrs();
+
+        private void OnAddNewVideocardExecuted(object p)
+        {
+
+            var ResultVideocardID = DataWorker.CreateVideocard(_SelectedCompany.Name, _VideocardName, _VideocardCore,
+                _VideocardTechProcess,
+                _SelectedMemoryType.Name, _SelectedInterface.Name);
+
+            if (ResultVideocardID!=default)
+            {
+                Videocards.Add( new Videocard() {Company = _SelectedCompany.Name,Core = VideocardCore, Interface = _SelectedInterface.Name,ID = ResultVideocardID,MemoryType = _SelectedMemoryType.Name,Name = VideocardName,TechProcess = VideocardTechProcess});
+                AddVisibility = false;
+            }
+
+            
+        }
+
+        #endregion
+
+        #endregion
 
         #region Данные с формы
-
 
         private Videocard _SelectedCard;
         /// <summary>
@@ -71,6 +118,21 @@ namespace Praktika.Viewmodels
             get => _SelectedCard;
             set => Set(ref _SelectedCard, value);
         }
+
+        private bool _AddVisibility = false;
+        /// <summary>
+        /// Видимость окна добавления новой видеокарты
+        /// </summary>
+        public bool AddVisibility
+        {
+            get => _AddVisibility;
+            set => Set(ref _AddVisibility, value);
+        }
+
+
+        #endregion
+
+        #region Данные для добавления новой карты
 
         private Company _SelectedCompany;
         /// <summary>
@@ -132,6 +194,19 @@ namespace Praktika.Viewmodels
             get => _VideocardTechProcess;
             set => Set(ref _VideocardTechProcess, value);
         }
+
+        #endregion
+
+        #region Методы
+
+        /// <summary>
+        /// Проверка заполненности всех параметров
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckParametrs() => !string.IsNullOrEmpty(VideocardName) && !string.IsNullOrEmpty(VideocardCore) &&
+                                         !(VideocardTechProcess == default) && !(SelectedCompany == default) &&
+                                         !(SelectedMemoryType == default) &&
+                                         !(SelectedInterface == default);
 
         #endregion
     }

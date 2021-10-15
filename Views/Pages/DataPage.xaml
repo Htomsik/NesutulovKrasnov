@@ -79,12 +79,12 @@
 
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Core}"
+                    Binding="{Binding Name}"
                     Header="Название" />
 
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Interface}"
+                    Binding="{Binding Core}"
                     Header="Ядро" />
 
                 <DataGridTextColumn
@@ -99,7 +99,7 @@
 
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Intarface}"
+                    Binding="{Binding Interface}"
                     Header="Тип интерфейса" />
 
 
@@ -110,14 +110,15 @@
                 <ContextMenu>
 
                     <MenuItem Header="Удалить" />
-                    <MenuItem Header="Добавить" />
+                    <MenuItem Command="{Binding OpenAddModalCommand}" Header="Добавить" />
 
                 </ContextMenu>
             </DataGrid.ContextMenu>
 
         </DataGrid>
 
-        <ModalCustom:ModalCustom Grid.RowSpan="2" IsOpen="True">
+        <!--  Окно добавления новой видеокарты  -->
+        <ModalCustom:ModalCustom Grid.RowSpan="2" IsOpen="{Binding AddVisibility}">
 
             <Grid
                 MinWidth="300"
@@ -242,7 +243,10 @@
 
 
                     <!--  Данные для ввода  -->
-                    <ComboBox x:Name="Company" ItemsSource="{Binding Companys}">
+                    <ComboBox
+                        x:Name="Company"
+                        ItemsSource="{Binding Companys}"
+                        SelectedItem="{Binding SelectedCompany}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -250,16 +254,29 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <TextBox x:Name="Name" Grid.Row="1" />
+                    <TextBox
+                        x:Name="Name"
+                        Grid.Row="1"
+                        MaxLength="25"
+                        Text="{Binding VideocardName, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBox x:Name="Core" Grid.Row="2" />
+                    <TextBox
+                        x:Name="Core"
+                        Grid.Row="2"
+                        MaxLength="25"
+                        Text="{Binding VideocardCore, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBox x:Name="TechProcess" Grid.Row="3" />
+                    <TextBox
+                        x:Name="TechProcess"
+                        Grid.Row="3"
+                        MaxLength="2"
+                        Text="{Binding VideocardTechProcess, UpdateSourceTrigger=PropertyChanged}" />
 
                     <ComboBox
                         x:Name="Memory"
                         Grid.Row="4"
-                        ItemsSource="{Binding MemoryTypes}">
+                        ItemsSource="{Binding MemoryTypes}"
+                        SelectedItem="{Binding SelectedMemoryType}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -270,7 +287,8 @@
                     <ComboBox
                         x:Name="Interface"
                         Grid.Row="5"
-                        ItemsSource="{Binding Interfaces}">
+                        ItemsSource="{Binding Interfaces}"
+                        SelectedItem="{Binding SelectedInterface}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -286,7 +304,7 @@
                     Margin="12"
                     BorderBrush="{DynamicResource DopColorIsFocused}"
                     BorderThickness="2"
-                    Command="{Binding OpenAuthCommand}"
+                    Command="{Binding AddNewVideocardCommand}"
                     Style="{DynamicResource RectangleButtonStyle}">
                     <Label FontSize="20">Добавить</Label>
                 </Button>

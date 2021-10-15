@@ -20,8 +20,6 @@ namespace Praktika.Viewmodels
                 new Pages {URLicon = "Solid_table", NamePage="Видеокарты", Number = 2}
             };
 
-           
-
         }
 
         public ObservableCollection<Pages> Pages { get; }
