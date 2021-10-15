@@ -9,7 +9,8 @@ namespace Praktika.Infrastructures.Commands
         private readonly BaseViewModel[] _ViewModelArray =
         {
             new HomapageViewmodel(),
-            new CalcPageViewModel()
+            new CalcPageViewModel(),
+            new DataPageViewModel()
         };
 
         private readonly MainContentControlViewModel viewModel;

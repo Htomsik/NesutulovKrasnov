@@ -18,6 +18,10 @@
         <viewsPage:CalcPage />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewmodels:DataPageViewModel}">
+        <viewsPage:DataPage />
+    </DataTemplate>
+
     <!--  Главные окна (авторизация/Окно с меню)  -->
 
     <DataTemplate DataType="{x:Type viewmodels:MainContentControlViewModel}">
@@ -31,5 +35,7 @@
     <DataTemplate DataType="{x:Type viewmodels:RegistContentControlViewModel}">
         <ContentWindow:RegistrContentControl />
     </DataTemplate>
+
+
 
 </ResourceDictionary>

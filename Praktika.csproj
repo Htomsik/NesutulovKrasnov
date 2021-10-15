@@ -94,11 +94,15 @@
     <Compile Include="Viewmodels\ContentWindow\AuthorizationContentcontrolViewModel.cs" />
     <Compile Include="Viewmodels\ContentWindow\RegistContentControlViewModel.cs" />
     <Compile Include="Viewmodels\CurrentUser\UserSingltonViewmodel.cs" />
+    <Compile Include="Viewmodels\pages\DataPageViewModel.cs" />
     <Compile Include="Views\ContentWindow\AuthorizationContentControl.xaml.cs">
       <DependentUpon>AuthorizationContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ContentWindow\RegistrContentControl.xaml.cs">
       <DependentUpon>RegistrContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\DataPage.xaml.cs">
+      <DependentUpon>DataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -164,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\CalcPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\DataPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\HomePage.xaml">
