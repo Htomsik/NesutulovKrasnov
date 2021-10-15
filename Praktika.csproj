@@ -88,6 +88,7 @@
     <Compile Include="Models\Data\AppDbCOntext.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Videocard.cs" />
     <Compile Include="Services\DataWorker.cs" />
     <Compile Include="Services\JsonWorker.cs" />
     <Compile Include="Services\MessageBus.cs" />
@@ -118,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\CustomLoading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Datagrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

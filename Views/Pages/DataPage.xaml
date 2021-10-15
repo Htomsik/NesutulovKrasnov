@@ -3,16 +3,97 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.com/icons/"
     xmlns:local="clr-namespace:Praktika.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
     MinWidth="700"
     MinHeight="500"
     d:DesignHeight="565"
     d:DesignWidth="900"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock>Тут будут данные из таблицы</TextBlock>
+    <UserControl.DataContext>
+        <viewmodels:DataPageViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/ImageAwesome.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Datagrid.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.RowSpan="2"
+            Background="{DynamicResource 60Color}"
+            CornerRadius="15"
+            Opacity="0.7">
+            <Border.Effect>
+                <BlurEffect Radius="15" />
+
+            </Border.Effect>
+        </Border>
+
+        <StackPanel Orientation="Horizontal">
+            <fa:ImageAwesome Margin="5" Icon="Solid_gamepad" />
+            <TextBlock FontSize="18" Text="Всего видеокарт: " />
+            <TextBlock FontSize="18" Text="{Binding Videocards.Count}" />
+        </StackPanel>
+
+        <DataGrid
+            Grid.Row="1"
+            Margin="5"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Videocards}">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Company}"
+                    Header="Производитель" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="Название" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding TechProcess}"
+                    Header="Техпроцесс (нм)" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding MemoryType}"
+                    Header="Тип памяти" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Intarface}"
+                    Header="Тип интерфейса" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding RealeaseDate}"
+                    Header="Дата выпуска" />
+
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
     </Grid>
-    
+
 </UserControl>

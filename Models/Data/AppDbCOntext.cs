@@ -14,5 +14,7 @@ namespace Praktika.Models.Data
         
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Videocard> Videocards { get; set; }
+
     }
 }

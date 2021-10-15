@@ -17,7 +17,7 @@ namespace Praktika.Viewmodels
             {
                 new Pages {URLicon = "Solid_home", NamePage = "Главная страница", Number = 0},
                 new Pages {URLicon = "Solid_calculator", NamePage = "Калькулятор", Number = 1},
-                new Pages {URLicon = "Solid_table", NamePage="Данные из базы", Number = 2}
+                new Pages {URLicon = "Solid_table", NamePage="Видеокарты", Number = 2}
             };
 
            
