@@ -59,6 +59,8 @@
         <Setter Property="CanUserAddRows" Value="False" />
         <Setter Property="CanUserDeleteRows" Value="False" />
         <Setter Property="CanUserSortColumns" Value="False" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DopColorIsFocused}" />
+        <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
 
     </Style>
 

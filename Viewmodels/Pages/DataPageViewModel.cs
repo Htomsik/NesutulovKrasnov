@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Praktika.Models;
+using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {
@@ -12,40 +13,8 @@ namespace Praktika.Viewmodels
     {
         public DataPageViewModel()
         {
-            Videocards = new ObservableCollection<Videocard>
-            {
-                new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                },
-                new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                },
-                new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                }, new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                },
-                new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                },
-                new Videocard
-                {
-                    ID = 1, Company = "Nvidia", Name = "GeForce RTX 3090", Intarface = "PCI-E 4.0",
-                    MemoryType = "GDDR6X", TechProcess = 8, RealeaseDate = new DateTime(2020, 09, 24)
-                }
+            Videocards = new ObservableCollection<Videocard>(DataWorker.GetAllVideocards());
 
-
-            };
         }
 
         public ObservableCollection<Videocard> Videocards { get; set; }

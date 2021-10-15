@@ -92,6 +92,15 @@
 
             </DataGrid.Columns>
 
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem Header="Удалить" />
+                    <MenuItem Header="Добавить" />
+
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
         </DataGrid>
 
     </Grid>

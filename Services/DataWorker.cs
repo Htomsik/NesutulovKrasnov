@@ -87,10 +87,8 @@ namespace Praktika.Services
         }
 
         /// <summary>
-        /// Метод авторизации с файла
+        /// Авторизация из файла
         /// </summary>
-        /// <param name="_Login"></param>
-        /// <param name="_Password"></param>
         /// <returns></returns>
         public static bool Authorization()
         {
@@ -106,6 +104,62 @@ namespace Praktika.Services
             return false;
         }
 
+
+        #endregion
+
+        #region Работа с тиблицами
+
+        #region Вывод списка видеокарт (list)
+
+        //получить все видеокарты
+        public static List<Videocard> GetAllVideocards()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+               return db.Videocards.ToList();
+                
+            }
+        }
+
+        #endregion
+
+        #region Создать видеокарту
+
+        public static bool CreateVideocard(string _Company, string _Name, byte _TechProcess, string _MemoryType, string _Interface, DateTime _RealeseDate)
+        {
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                bool checkIsExist = db.Videocards.Any(el => el.Name == _Name);
+
+                if (!checkIsExist)
+                {
+                    Videocard newVideocard = new Videocard()
+                    {
+                        Company = _Company,
+                        Name = _Name,
+                        TechProcess = _TechProcess,
+                        MemoryType = _MemoryType,
+                        Intarface = _Interface,
+                        RealeaseDate = _RealeseDate
+                    };
+
+                    db.Videocards.Add(newVideocard);
+                    db.SaveChanges();
+                    
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+
+            return true;
+
+        }
+
+        #endregion
 
         #endregion
 
