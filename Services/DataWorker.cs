@@ -124,7 +124,7 @@ namespace Praktika.Services
 
         #region Создать видеокарту
 
-        public static bool CreateVideocard(string _Company, string _Name, byte _TechProcess, string _MemoryType, string _Interface, DateTime _RealeseDate)
+        public static bool CreateVideocard(string _Company, string _Name, string _Core, byte _TechProcess, string _MemoryType, string _Interface)
         {
 
             using (AppDbContext db = new AppDbContext())
@@ -137,10 +137,10 @@ namespace Praktika.Services
                     {
                         Company = _Company,
                         Name = _Name,
+                        Core = _Core,
                         TechProcess = _TechProcess,
                         MemoryType = _MemoryType,
-                        Intarface = _Interface,
-                        RealeaseDate = _RealeseDate
+                        Interface = _Interface
                     };
 
                     db.Videocards.Add(newVideocard);

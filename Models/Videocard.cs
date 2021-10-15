@@ -25,6 +25,11 @@ namespace Praktika.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Дата релиза
+        /// </summary>
+        public string Core { get; set; }
+
+        /// <summary>
         /// Техпроцесс видеокарты
         /// </summary>
         public byte TechProcess { get; set; }
@@ -37,13 +42,8 @@ namespace Praktika.Models
         /// <summary>
         /// Интерйфес подключения видеокарты
         /// </summary>
-        public string Intarface { get; set; }
+        public string Interface { get; set; }
 
-        /// <summary>
-        /// Дата релиза
-        /// </summary>
-        public DateTime RealeaseDate { get; set; }
-
-
+        
     }
 }

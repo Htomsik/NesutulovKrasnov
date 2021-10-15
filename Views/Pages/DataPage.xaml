@@ -2,15 +2,16 @@
     x:Class="Praktika.Views.Pages.DataPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ModalCustom="clr-namespace:ModalCutom;assembly=ModalCutom"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fa="http://schemas.fontawesome.com/icons/"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:Praktika.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     MinWidth="700"
-    MinHeight="500"
-    d:DesignHeight="565"
+    MinHeight="700"
+    d:DesignHeight="576"
     d:DesignWidth="900"
     mc:Ignorable="d">
 
@@ -24,6 +25,10 @@
                 <ResourceDictionary Source="/Resources/Styles/ImageAwesome.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/Datagrid.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Labels.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBox.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Path.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -55,14 +60,15 @@
         <StackPanel Orientation="Horizontal">
             <fa:ImageAwesome Margin="5" Icon="Solid_gamepad" />
             <TextBlock FontSize="18" Text="Всего видеокарт: " />
-            <TextBlock FontSize="18" Text="{Binding Videocards.Count}" />
+            <TextBlock FontSize="18" Text="{Binding SelectedCard.Name}" />
         </StackPanel>
 
         <DataGrid
             Grid.Row="1"
             Margin="5"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Videocards, UpdateSourceTrigger=PropertyChanged}">
+            ItemsSource="{Binding Videocards, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedCard}">
 
             <DataGrid.Columns>
 
@@ -73,8 +79,13 @@
 
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Name}"
+                    Binding="{Binding Core}"
                     Header="Название" />
+
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Interface}"
+                    Header="Ядро" />
 
                 <DataGridTextColumn
                     Width="*"
@@ -91,10 +102,6 @@
                     Binding="{Binding Intarface}"
                     Header="Тип интерфейса" />
 
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding RealeaseDate}"
-                    Header="Дата выпуска" />
 
 
             </DataGrid.Columns>
@@ -109,6 +116,183 @@
             </DataGrid.ContextMenu>
 
         </DataGrid>
+
+        <ModalCustom:ModalCustom Grid.RowSpan="2" IsOpen="True">
+
+            <Grid
+                MinWidth="300"
+                MinHeight="576"
+                Background="{DynamicResource Menucolor}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition />
+                    <RowDefinition Height="72" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="45" />
+                </Grid.ColumnDefinitions>
+
+
+
+                <TextBlock Grid.Column="1">Новая видеокарта</TextBlock>
+
+                <Grid Column="1" Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+
+                    </Grid.RowDefinitions>
+
+
+                    <!--  Исчезающие панели  -->
+
+                    <TextBlock Text="Производитель">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=Company}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="1" Text="Название">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=Name}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+
+                    <TextBlock Grid.Row="2" Text="Ядро">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=Core}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="3" Text="Техпроцес (нм)">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TechProcess}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="4" Text="Тип памяти">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=Memory}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="5" Text="Тип интерфейса">
+                        <TextBlock.Style>
+                            <Style BasedOn="{StaticResource 'Textblock down Textbox'}" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=Interface}" Value="">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <Path Style="{DynamicResource AuthRegPath}" />
+                    <Path Grid.Row="1" Style="{DynamicResource AuthRegPath}" />
+                    <Path Grid.Row="2" Style="{DynamicResource AuthRegPath}" />
+                    <Path Grid.Row="3" Style="{DynamicResource AuthRegPath}" />
+                    <Path Grid.Row="4" Style="{DynamicResource AuthRegPath}" />
+                    <Path Grid.Row="5" Style="{DynamicResource AuthRegPath}" />
+
+
+                    <!--  Данные для ввода  -->
+                    <ComboBox x:Name="Company" ItemsSource="{Binding Companys}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBox x:Name="Name" Grid.Row="1" />
+
+                    <TextBox x:Name="Core" Grid.Row="2" />
+
+                    <TextBox x:Name="TechProcess" Grid.Row="3" />
+
+                    <ComboBox
+                        x:Name="Memory"
+                        Grid.Row="4"
+                        ItemsSource="{Binding MemoryTypes}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox
+                        x:Name="Interface"
+                        Grid.Row="5"
+                        ItemsSource="{Binding Interfaces}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                </Grid>
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="12"
+                    BorderBrush="{DynamicResource DopColorIsFocused}"
+                    BorderThickness="2"
+                    Command="{Binding OpenAuthCommand}"
+                    Style="{DynamicResource RectangleButtonStyle}">
+                    <Label FontSize="20">Добавить</Label>
+                </Button>
+
+            </Grid>
+        </ModalCustom:ModalCustom>
 
     </Grid>
 

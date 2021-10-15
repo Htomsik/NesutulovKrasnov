@@ -89,6 +89,9 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Videocard.cs" />
+    <Compile Include="Models\VideocardParametrs\Company.cs" />
+    <Compile Include="Models\VideocardParametrs\Intarfeces.cs" />
+    <Compile Include="Models\VideocardParametrs\MemoryType.cs" />
     <Compile Include="Services\DataWorker.cs" />
     <Compile Include="Services\JsonWorker.cs" />
     <Compile Include="Services\MessageBus.cs" />
