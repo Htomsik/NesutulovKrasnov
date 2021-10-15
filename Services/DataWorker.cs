@@ -48,7 +48,6 @@ namespace Praktika.Services
                     return false;
                 }
                 
-
             }
 
             return true;

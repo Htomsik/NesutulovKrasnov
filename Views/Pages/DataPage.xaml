@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Praktika.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:Praktika.Viewmodels"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     MinWidth="700"
     MinHeight="500"
     d:DesignHeight="565"
@@ -26,6 +27,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding AddNewCardCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
@@ -55,7 +62,7 @@
             Grid.Row="1"
             Margin="5"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Videocards}">
+            ItemsSource="{Binding Videocards, UpdateSourceTrigger=PropertyChanged}">
 
             <DataGrid.Columns>
 
