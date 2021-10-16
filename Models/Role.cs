@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Praktika.Models
 {
-    public class Role
+    public sealed class Role
     {
-        /// <summary>
-        /// Роли пользователей в системе
-        /// </summary>
         public string Name { get; set; }
     }
 }

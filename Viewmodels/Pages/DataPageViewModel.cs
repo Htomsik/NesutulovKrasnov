@@ -135,9 +135,7 @@ namespace Praktika.Viewmodels
         #region Данные для добавления новой карты
 
         private Company _SelectedCompany;
-        /// <summary>
-        /// Текущий выбранный производитель видеокарты
-        /// </summary>
+        
         public Company SelectedCompany
         {
             get => _SelectedCompany;
@@ -145,9 +143,7 @@ namespace Praktika.Viewmodels
         }
 
         private MemoryType _SelectedMemoryType;
-        /// <summary>
-        /// Текущий выбранный тип памяти видеокарты
-        /// </summary>
+        
         public MemoryType SelectedMemoryType
         {
             get => _SelectedMemoryType;
@@ -156,9 +152,7 @@ namespace Praktika.Viewmodels
 
 
         private Interface _SelectedInterface;
-        /// <summary>
-        /// Текущий выбранный интерфейс видеокарты
-        /// </summary>
+        
         public Interface SelectedInterface
         {
             get => _SelectedInterface;
@@ -166,9 +160,7 @@ namespace Praktika.Viewmodels
         }
 
         private string _VideocardName;
-        /// <summary>
-        /// Имя видеокарты для создания
-        /// </summary>
+       
         public string VideocardName
         {
             get => _VideocardName;
@@ -176,9 +168,7 @@ namespace Praktika.Viewmodels
         }
 
         private string _VideocardCore;
-        /// <summary>
-        /// Ядро видеокарты для создания
-        /// </summary>
+        
         public string VideocardCore
         {
             get => _VideocardCore;
@@ -186,9 +176,7 @@ namespace Praktika.Viewmodels
         }
 
         private byte _VideocardTechProcess;
-        /// <summary>
-        /// Техпроцесс видеокарты для создания
-        /// </summary>
+        
         public byte VideocardTechProcess
         {
             get => _VideocardTechProcess;

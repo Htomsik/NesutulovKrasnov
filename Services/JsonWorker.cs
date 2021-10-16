@@ -39,9 +39,6 @@ namespace Praktika.Services
         }
 
 
-        /// <summary>
-        /// Сохранение юзера в файле
-        /// </summary>
         public  void SaveUser()
         {
 
@@ -50,9 +47,7 @@ namespace Praktika.Services
             File.WriteAllText(UserPath, save);
         }
 
-        /// <summary>
-        /// Получение текущего пользователя
-        /// </summary>
+      
         public void GetUser()
         {
             CheckDirectory();
@@ -65,9 +60,7 @@ namespace Praktika.Services
            
         }
 
-        /// <summary>
-        /// Сохранение настроек в файле
-        /// </summary>
+        
         public void SaveSettings(bool checkstatus)
         {
 
@@ -76,9 +69,7 @@ namespace Praktika.Services
             File.WriteAllText(SettingsPath, save);
         }
 
-        /// <summary>
-        /// Получение текущих настроек
-        /// </summary>
+        
         public bool GetSettings()
         {
 

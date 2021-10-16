@@ -3,7 +3,7 @@ using Praktika.Infrastructures.Commands.Base;
 
 namespace Praktika.Infrastructures.Commands
 {
-    internal class CloseApplicationCommand : BaseCommand
+    public sealed class CloseApplicationCommand : BaseCommand
     {
         public override bool CanExecute(object parameter)
         {

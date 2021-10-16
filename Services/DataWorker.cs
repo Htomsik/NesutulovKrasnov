@@ -59,7 +59,7 @@ namespace Praktika.Services
         #region Авторизация
 
         /// <summary>
-        /// Метод авторизации с формы
+        /// Авторизация вручную
         /// </summary>
         /// <param name="_Login"></param>
         /// <param name="_Password"></param>
@@ -110,7 +110,7 @@ namespace Praktika.Services
 
         #region Вывод списка видеокарт (list)
 
-        //получить все видеокарты
+        
         public static List<Videocard> GetAllVideocards()
         {
             using (AppDbContext db = new AppDbContext())
@@ -125,7 +125,7 @@ namespace Praktika.Services
         #region Создать видеокарту
 
         /// <summary>
-        /// Принимает данные видеокарты, если видеокарта успешно создана то возвращает ее id в базе
+        /// Если видеокарта успешно создана то возвращает ее id в базе
         /// </summary>
         /// <param name="_Company"></param>
         /// <param name="_Name"></param>
@@ -134,6 +134,7 @@ namespace Praktika.Services
         /// <param name="_MemoryType"></param>
         /// <param name="_Interface"></param>
         /// <returns></returns>
+        /// 
         public static int CreateVideocard(string _Company, string _Name, string _Core, byte _TechProcess, string _MemoryType, string _Interface)
         {
 

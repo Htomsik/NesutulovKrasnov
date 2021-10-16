@@ -6,6 +6,5 @@ namespace Praktika.Models
     {
         public string Name { get; set; }
 
-        
     }
 }

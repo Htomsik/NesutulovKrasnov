@@ -8,9 +8,7 @@ namespace Praktika.Models
 {
     public class Company
     {
-        /// <summary>
-        /// Имя производителя видеокарты
-        /// </summary>
+        
         public string Name { get; set; }
     }
 }

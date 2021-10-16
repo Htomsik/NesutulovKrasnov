@@ -53,5 +53,7 @@ namespace Praktika.Viewmodels
         public ICommand UpdatePagesViewCommand { get; set; }
 
         #endregion
+
+       
     }
 }

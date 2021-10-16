@@ -4,7 +4,7 @@ using Praktika.Viewmodels;
 
 namespace Praktika.Infrastructures.Commands
 {
-    public class UpdatePagesViewCommand : BaseCommand
+    public sealed class UpdatePagesViewCommand : BaseCommand
     {
         private readonly BaseViewModel[] _ViewModelArray =
         {
@@ -37,7 +37,7 @@ namespace Praktika.Infrastructures.Commands
 
 
 
-    public class UpdateWindowViewCommand : BaseCommand
+    public sealed class UpdateWindowViewCommand : BaseCommand
     {
         private readonly BaseViewModel[] _ViewModelArray =
         {
