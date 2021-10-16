@@ -1,13 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
 using Praktika.Models;
-using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {
-    public class MainContentControlViewModel : BaseViewModel
+    public sealed class MainContentControlViewModel : BaseViewModel
     {
         public MainContentControlViewModel()
         {
@@ -17,9 +15,8 @@ namespace Praktika.Viewmodels
             {
                 new Pages {URLicon = "Solid_home", NamePage = "Главная страница", Number = 0},
                 new Pages {URLicon = "Solid_calculator", NamePage = "Калькулятор", Number = 1},
-                new Pages {URLicon = "Solid_table", NamePage="Видеокарты", Number = 2}
+                new Pages {URLicon = "Solid_table", NamePage = "Видеокарты", Number = 2}
             };
-
         }
 
         public ObservableCollection<Pages> Pages { get; }
@@ -53,7 +50,5 @@ namespace Praktika.Viewmodels
         public ICommand UpdatePagesViewCommand { get; set; }
 
         #endregion
-
-       
     }
 }

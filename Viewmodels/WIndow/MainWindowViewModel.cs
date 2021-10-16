@@ -11,7 +11,7 @@ using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {
-    public class MainWindowViewModel:BaseViewModel
+    public sealed class MainWindowViewModel:BaseViewModel
     {
         public MainWindowViewModel()
         {

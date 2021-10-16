@@ -1,6 +1,6 @@
 ﻿namespace Praktika.Viewmodels
 {
-    public class CalcPageViewModel : BaseViewModel
+    public sealed class CalcPageViewModel : BaseViewModel
     {
     }
 }

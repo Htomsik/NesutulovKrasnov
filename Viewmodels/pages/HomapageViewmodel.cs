@@ -1,6 +1,6 @@
 ﻿namespace Praktika.Viewmodels
 {
-    public class HomapageViewmodel : BaseViewModel
+    public sealed class HomapageViewmodel : BaseViewModel
     {
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
 using Praktika.Models;
@@ -11,7 +7,7 @@ using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {
-    public class DataPageViewModel:BaseViewModel
+    public sealed class DataPageViewModel : BaseViewModel
     {
         public DataPageViewModel()
         {
@@ -23,9 +19,9 @@ namespace Praktika.Viewmodels
 
             Companys = new List<Company>
             {
-                new Company{Name = "Amd"},
-                new Company{Name = "Nvidia"},
-                new Company{Name = "Intel"}
+                new Company {Name = "Amd"},
+                new Company {Name = "Nvidia"},
+                new Company {Name = "Intel"}
             };
 
             MemoryTypes = new List<MemoryType>
@@ -38,7 +34,6 @@ namespace Praktika.Viewmodels
                 new MemoryType {Name = "GDDR6X"},
                 new MemoryType {Name = "HBM2"},
                 new MemoryType {Name = "HBM3"}
-
             };
 
             Interfaces = new List<Interface>
@@ -50,7 +45,7 @@ namespace Praktika.Viewmodels
                 new Interface {Name = "PCI-e 4.0 x4"},
                 new Interface {Name = "PCI-e 4.0 x16"},
                 new Interface {Name = "PCI-e 5.0 x4"},
-                new Interface {Name = "PCI-e 5.0 x16"},
+                new Interface {Name = "PCI-e 5.0 x16"}
             };
         }
 
@@ -62,16 +57,28 @@ namespace Praktika.Viewmodels
 
         public List<Interface> Interfaces { get; }
 
+        #region Методы
+
+        private bool CheckParametrs()
+        {
+            return !string.IsNullOrEmpty(VideocardName) && !string.IsNullOrEmpty(VideocardCore) &&
+                   !(VideocardTechProcess == default) && !(SelectedCompany == default) &&
+                   !(SelectedMemoryType == default) &&
+                   !(SelectedInterface == default);
+        }
+
+        #endregion
+
         #region Команды
 
         #region Открытие модального окна для добавления
 
-        /// <summary>
-        /// Открытие модального окна для добавления
-        /// </summary>
         public ICommand OpenAddModalCommand { get; }
 
-        private bool CanOpenAddModalExecute(object p) => true;
+        private bool CanOpenAddModalExecute(object p)
+        {
+            return true;
+        }
 
         private void OnOpenAddModalExecuted(object p)
         {
@@ -82,25 +89,29 @@ namespace Praktika.Viewmodels
 
         #region Добавление новой видеокарты
 
-
         public ICommand AddNewVideocardCommand { get; }
 
-        private bool CanAddNewVideocardExecute(object p) => CheckParametrs();
+        private bool CanAddNewVideocardExecute(object p)
+        {
+            return CheckParametrs();
+        }
 
         private void OnAddNewVideocardExecuted(object p)
         {
-
             var ResultVideocardID = DataWorker.CreateVideocard(_SelectedCompany.Name, _VideocardName, _VideocardCore,
                 _VideocardTechProcess,
                 _SelectedMemoryType.Name, _SelectedInterface.Name);
 
-            if (ResultVideocardID!=default)
+            if (ResultVideocardID != default)
             {
-                Videocards.Add( new Videocard() {Company = _SelectedCompany.Name,Core = VideocardCore, Interface = _SelectedInterface.Name,ID = ResultVideocardID,MemoryType = _SelectedMemoryType.Name,Name = VideocardName,TechProcess = VideocardTechProcess});
+                Videocards.Add(new Videocard
+                {
+                    Company = _SelectedCompany.Name, Core = VideocardCore, Interface = _SelectedInterface.Name,
+                    ID = ResultVideocardID, MemoryType = _SelectedMemoryType.Name, Name = VideocardName,
+                    TechProcess = VideocardTechProcess
+                });
                 AddVisibility = false;
             }
-
-            
         }
 
         #endregion
@@ -110,32 +121,27 @@ namespace Praktika.Viewmodels
         #region Данные с формы
 
         private Videocard _SelectedCard;
-        /// <summary>
-        /// Текущая выбранная карта в датагриде
-        /// </summary>
+
         public Videocard SelectedCard
         {
             get => _SelectedCard;
             set => Set(ref _SelectedCard, value);
         }
 
-        private bool _AddVisibility = false;
-        /// <summary>
-        /// Видимость окна добавления новой видеокарты
-        /// </summary>
+        private bool _AddVisibility;
+
         public bool AddVisibility
         {
             get => _AddVisibility;
             set => Set(ref _AddVisibility, value);
         }
 
-
         #endregion
 
         #region Данные для добавления новой карты
 
         private Company _SelectedCompany;
-        
+
         public Company SelectedCompany
         {
             get => _SelectedCompany;
@@ -143,7 +149,7 @@ namespace Praktika.Viewmodels
         }
 
         private MemoryType _SelectedMemoryType;
-        
+
         public MemoryType SelectedMemoryType
         {
             get => _SelectedMemoryType;
@@ -152,7 +158,7 @@ namespace Praktika.Viewmodels
 
 
         private Interface _SelectedInterface;
-        
+
         public Interface SelectedInterface
         {
             get => _SelectedInterface;
@@ -160,7 +166,7 @@ namespace Praktika.Viewmodels
         }
 
         private string _VideocardName;
-       
+
         public string VideocardName
         {
             get => _VideocardName;
@@ -168,7 +174,7 @@ namespace Praktika.Viewmodels
         }
 
         private string _VideocardCore;
-        
+
         public string VideocardCore
         {
             get => _VideocardCore;
@@ -176,25 +182,12 @@ namespace Praktika.Viewmodels
         }
 
         private byte _VideocardTechProcess;
-        
+
         public byte VideocardTechProcess
         {
             get => _VideocardTechProcess;
             set => Set(ref _VideocardTechProcess, value);
         }
-
-        #endregion
-
-        #region Методы
-
-        /// <summary>
-        /// Проверка заполненности всех параметров
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckParametrs() => !string.IsNullOrEmpty(VideocardName) && !string.IsNullOrEmpty(VideocardCore) &&
-                                         !(VideocardTechProcess == default) && !(SelectedCompany == default) &&
-                                         !(SelectedMemoryType == default) &&
-                                         !(SelectedInterface == default);
 
         #endregion
     }

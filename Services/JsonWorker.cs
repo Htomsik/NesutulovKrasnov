@@ -12,7 +12,7 @@ using Praktika.Viewmodels;
 
 namespace Praktika.Services
 {
-    public class JsonWorker
+    public sealed class JsonWorker
     {
 
         

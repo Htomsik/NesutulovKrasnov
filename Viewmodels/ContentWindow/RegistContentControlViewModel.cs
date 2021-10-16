@@ -9,7 +9,7 @@ using Praktika.Models;
 
 namespace Praktika.Viewmodels
 {
-    public class RegistContentControlViewModel:BaseViewModel
+    public sealed class RegistContentControlViewModel:BaseViewModel
     {
         public RegistContentControlViewModel()
         {

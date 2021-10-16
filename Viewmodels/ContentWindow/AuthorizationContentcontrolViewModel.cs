@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using Praktika.Services;
 using Praktika.Infrastructures.Commands;
-using Praktika.Properties;
-
+using Praktika.Services;
 
 namespace Praktika.Viewmodels
 {
-    public class AuthorizationContentcontrolViewModel:BaseViewModel
+    public sealed class AuthorizationContentcontrolViewModel : BaseViewModel
     {
+        private readonly JsonWorker Js;
 
         public AuthorizationContentcontrolViewModel()
         {
@@ -28,31 +22,27 @@ namespace Praktika.Viewmodels
             JsInicializeCommand = new LambdaCommand(OnJsInicializeExecuted, CanJsInicializeExecute);
 
             Js = new JsonWorker();
-
-
         }
-
-        private JsonWorker Js;
 
         #region Команды
 
         #region Инициализация текущего пользователя при авторизации
 
-
         public ICommand JsInicializeCommand { get; }
 
-        private bool CanJsInicializeExecute(object p) => true;
+        private bool CanJsInicializeExecute(object p)
+        {
+            return true;
+        }
 
         private async void OnJsInicializeExecuted(object p)
         {
-
             if (Js.GetSettings())
             {
                 StartLoading();
                 Js.GetUser();
                 await Task.Run(() => Authorisation());
             }
-
         }
 
         #endregion
@@ -61,25 +51,33 @@ namespace Praktika.Viewmodels
 
         public ICommand SendContentControlNumerCommand { get; }
 
-        private bool CanContentControlNumerExecute(object p) => CheckParametrs();
+        private bool CanContentControlNumerExecute(object p)
+        {
+            return CheckParametrs();
+        }
 
         private async void OnContentControlNumerExecuted(object p)
         {
             StartLoading();
             await Task.Run(() => Authorisation(p));
         }
+
         #endregion
 
         #region Переход на страницу регистрации
 
         public ICommand OpenRegistrationCommand { get; }
 
-        private bool CanOpenRegistrationCommandExecute(object p) => true;
+        private bool CanOpenRegistrationCommandExecute(object p)
+        {
+            return true;
+        }
 
         private void OnOpenRegistrationCommandExecuted(object p)
         {
             MessageBus.Send(p);
         }
+
         #endregion
 
         #endregion
@@ -87,6 +85,7 @@ namespace Praktika.Viewmodels
         #region Данные с формы
 
         private string _Login;
+
         public string Login
         {
             get => _Login;
@@ -94,6 +93,7 @@ namespace Praktika.Viewmodels
         }
 
         private string _Password;
+
         public string Password
         {
             get => _Password;
@@ -101,30 +101,27 @@ namespace Praktika.Viewmodels
         }
 
 
-        /// <summary>
-        /// Видимость ошибки
-        /// </summary>
+       
         private Visibility _ErrorVisibility = Visibility.Hidden;
+
         public Visibility ErrorVisibility
         {
             get => _ErrorVisibility;
             set => Set(ref _ErrorVisibility, value);
         }
 
-        /// <summary>
-        /// Видимость грида с информацией
-        /// </summary>
+        
         private Visibility _MainGridVisibility = Visibility.Visible;
+
         public Visibility MainGridVisibility
         {
             get => _MainGridVisibility;
             set => Set(ref _MainGridVisibility, value);
         }
 
-        /// <summary>
-        /// Статус видимости загрузки
-        /// </summary>
-        private bool _LoadingStatus = false;
+        
+        private bool _LoadingStatus;
+
         public bool LoadingStatus
         {
             get => _LoadingStatus;
@@ -132,8 +129,9 @@ namespace Praktika.Viewmodels
         }
 
         private bool _checkedstatus;
+
         /// <summary>
-        /// Запоминает статус
+        ///     Запоминает статус
         /// </summary>
         public bool checkedstatus
         {
@@ -148,10 +146,13 @@ namespace Praktika.Viewmodels
         #region Проверка заполненности параметров
 
         /// <summary>
-        /// Проверка заполненности всех параметров
+        ///     Проверка заполненности всех параметров
         /// </summary>
         /// <returns></returns>
-        private bool CheckParametrs() => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
+        private bool CheckParametrs()
+        {
+            return !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
+        }
 
         #endregion
 
@@ -171,6 +172,7 @@ namespace Praktika.Viewmodels
                 //показ ошибки
                 ErrorVisibility = Visibility.Visible;
             }
+
             EndLoading();
         }
 
@@ -191,6 +193,7 @@ namespace Praktika.Viewmodels
                 //показ ошибки
                 ErrorVisibility = Visibility.Visible;
             }
+
             EndLoading();
         }
 
@@ -200,7 +203,6 @@ namespace Praktika.Viewmodels
 
         private void StartLoading()
         {
-            
             MainGridVisibility = Visibility.Collapsed; //выключаю видимость грида с данными
             LoadingStatus = true; //включает анимацию
         }
@@ -215,6 +217,5 @@ namespace Praktika.Viewmodels
         #endregion
 
         #endregion
-
     }
 }
