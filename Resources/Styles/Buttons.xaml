@@ -48,6 +48,16 @@
 
     </Style>
 
+    <!--  Кнопки в добавлении новой видеокарты  -->
+    <Style
+        x:Key="AddNewVideocardButtons"
+        BasedOn="{StaticResource ResourceKey=RectangleButtonStyle}"
+        TargetType="{x:Type Button}">
+
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DopColorIsFocused}" />
+    </Style>
+
     <!--  Для всех продинутых кнопок  -->
     <Style TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="{DynamicResource DopColor}" />

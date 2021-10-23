@@ -94,7 +94,7 @@ namespace Praktika.Services
 
         #endregion
 
-        #region Работа с таблицами
+        #region Работа с видеокартами
 
         #region Вывод списка видеокарт (list)
 
@@ -110,16 +110,6 @@ namespace Praktika.Services
 
         #region Создать видеокарту
 
-        /// <summary>
-        ///     Если видеокарта успешно создана то возвращает ее id в базе
-        /// </summary>
-        /// <param name="_Company"></param>
-        /// <param name="_Name"></param>
-        /// <param name="_Core"></param>
-        /// <param name="_TechProcess"></param>
-        /// <param name="_MemoryType"></param>
-        /// <param name="_Interface"></param>
-        /// <returns></returns>
         public static int CreateVideocard(string _Company, string _Name, string _Core, byte _TechProcess,
             string _MemoryType, string _Interface)
         {
@@ -147,6 +137,27 @@ namespace Praktika.Services
 
                 return default;
             }
+        }
+
+        #endregion
+
+        #region Удалить видеокату
+
+        public static bool DeleteVideoCard(Videocard DelVideocard)
+        {
+            using (var db = new AppDbContext())
+            {
+                var checkIsExist = db.Videocards.FirstOrDefault(el => el.ID == DelVideocard.ID && el.Name == DelVideocard.Name);
+
+                if (checkIsExist!=default)
+                {
+                    db.Videocards.Remove(checkIsExist);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         #endregion

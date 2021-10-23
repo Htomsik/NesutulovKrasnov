@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Praktika.Infrastructures.Commands;
@@ -13,9 +14,11 @@ namespace Praktika.Viewmodels
         {
             Videocards = new ObservableCollection<Videocard>(DataWorker.GetAllVideocards());
 
-            OpenAddModalCommand = new LambdaCommand(OnOpenAddModalExecuted, CanOpenAddModalExecute);
+            StatusModalCommand = new LambdaCommand(OnStatusModalCommandExecuted, CanStatusModalCommandExecute);
 
             AddNewVideocardCommand = new LambdaCommand(OnAddNewVideocardExecuted, CanAddNewVideocardExecute);
+
+            DeleteVideocardCommand = new LambdaCommand(OnDeleteVideocardExecuted, CanDeleteVideocardExecute);
 
             Companys = new List<Company>
             {
@@ -67,22 +70,35 @@ namespace Praktika.Viewmodels
                    !(SelectedInterface == default);
         }
 
+        private void removeparametrs()
+        {
+            if (!AddVisibility)
+            {
+                SelectedCompany = default;
+                SelectedInterface = default;
+                SelectedMemoryType = default;
+                VideocardName = null;
+                VideocardTechProcess = default;
+                VideocardCore = null;
+            }
+        }
+
         #endregion
 
         #region Команды
 
         #region Открытие модального окна для добавления
 
-        public ICommand OpenAddModalCommand { get; }
+       
+        public ICommand StatusModalCommand { get; }
 
-        private bool CanOpenAddModalExecute(object p)
+        private bool CanStatusModalCommandExecute(object p) => true;
+        
+        private void OnStatusModalCommandExecuted(object p)
         {
-            return true;
-        }
-
-        private void OnOpenAddModalExecuted(object p)
-        {
-            AddVisibility = true;
+            
+            AddVisibility = Convert.ToBoolean(p);
+            removeparametrs();
         }
 
         #endregion
@@ -111,6 +127,24 @@ namespace Praktika.Viewmodels
                     TechProcess = VideocardTechProcess
                 });
                 AddVisibility = false;
+                removeparametrs();
+            }
+        }
+
+        #endregion
+
+        #region Удаление видеокарты
+
+
+        public ICommand DeleteVideocardCommand { get; }
+
+        private bool CanDeleteVideocardExecute(object p) => p is Videocard;
+
+        private void OnDeleteVideocardExecuted(object p)
+        {
+            if (DataWorker.DeleteVideoCard(_SelectedCard))
+            {
+                Videocards.Remove(_SelectedCard);
             }
         }
 
@@ -135,6 +169,7 @@ namespace Praktika.Viewmodels
             get => _AddVisibility;
             set => Set(ref _AddVisibility, value);
         }
+
 
         #endregion
 

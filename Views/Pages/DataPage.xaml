@@ -109,8 +109,14 @@
             <DataGrid.ContextMenu>
                 <ContextMenu>
 
-                    <MenuItem Header="Удалить" />
-                    <MenuItem Command="{Binding OpenAddModalCommand}" Header="Добавить" />
+                    <MenuItem
+                        Command="{Binding DeleteVideocardCommand}"
+                        CommandParameter="{Binding SelectedCard}"
+                        Header="Удалить" />
+                    <MenuItem
+                        Command="{Binding StatusModalCommand}"
+                        CommandParameter="true"
+                        Header="Добавить" />
 
                 </ContextMenu>
             </DataGrid.ContextMenu>
@@ -244,9 +250,10 @@
 
                     <!--  Данные для ввода  -->
                     <ComboBox
+                       
                         x:Name="Company"
                         ItemsSource="{Binding Companys}"
-                        SelectedItem="{Binding SelectedCompany}">
+                        SelectedItem="{Binding SelectedCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -258,25 +265,25 @@
                         x:Name="Name"
                         Grid.Row="1"
                         MaxLength="25"
-                        Text="{Binding VideocardName, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding VideocardName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBox
                         x:Name="Core"
                         Grid.Row="2"
                         MaxLength="25"
-                        Text="{Binding VideocardCore, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding VideocardCore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBox
                         x:Name="TechProcess"
                         Grid.Row="3"
                         MaxLength="2"
-                        Text="{Binding VideocardTechProcess, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding VideocardTechProcess, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <ComboBox
                         x:Name="Memory"
                         Grid.Row="4"
                         ItemsSource="{Binding MemoryTypes}"
-                        SelectedItem="{Binding SelectedMemoryType}">
+                        SelectedItem="{Binding SelectedMemoryType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -288,7 +295,7 @@
                         x:Name="Interface"
                         Grid.Row="5"
                         ItemsSource="{Binding Interfaces}"
-                        SelectedItem="{Binding SelectedInterface}">
+                        SelectedItem="{Binding SelectedInterface, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Style="{StaticResource 'Textblock down Textbox'}" Text="{Binding Name}" />
@@ -298,15 +305,27 @@
 
                 </Grid>
 
+                <!--  кнопка добавления  -->
                 <Button
                     Grid.Row="2"
                     Grid.Column="1"
                     Margin="12"
-                    BorderBrush="{DynamicResource DopColorIsFocused}"
-                    BorderThickness="2"
                     Command="{Binding AddNewVideocardCommand}"
-                    Style="{DynamicResource RectangleButtonStyle}">
+                    Style="{DynamicResource AddNewVideocardButtons}">
                     <Label FontSize="20">Добавить</Label>
+                </Button>
+
+                <!--  Кнопка выхода  -->
+                <Button
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Command="{Binding StatusModalCommand}"
+                    CommandParameter="false"
+                    Style="{DynamicResource IMGButton}">
+                    <Button.Resources>
+                        <ImageSource x:Key="Img">/Resources/Assets/Icons/CloseApp.png</ImageSource>
+                    </Button.Resources>
                 </Button>
 
             </Grid>
