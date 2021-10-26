@@ -35,6 +35,7 @@
             <i:InvokeCommandAction Command="{Binding JsInicializeCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
     <Grid Background="{DynamicResource 30Color}">
 
         <Grid.ColumnDefinitions>

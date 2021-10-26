@@ -9,6 +9,7 @@ namespace Praktika.Viewmodels
 {
     public sealed class AuthorizationContentcontrolViewModel : BaseViewModel
     {
+   
         private readonly JsonWorker Js;
 
         public AuthorizationContentcontrolViewModel()
