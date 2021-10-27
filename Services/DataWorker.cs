@@ -84,10 +84,10 @@ namespace Praktika.Services
         {
             using (var db = new AppDbContext())
             {
-                var s1 = UserSingltonViewmodel.Initialize;
+                var JsUser = UserSingltonViewmodel.Initialize;
 
                 return db.Users.Any(el =>
-                    el.Login == s1.CurrentUser.Login && el.Password == s1.CurrentUser.Password);
+                    el.Login == JsUser.CurrentUser.Login && el.Password == JsUser.CurrentUser.Password);
             }
 
         }

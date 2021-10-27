@@ -174,9 +174,8 @@ namespace Praktika.Viewmodels
 
         private void Registrarion(object p)
         {
-            Role role = SelectedRole;
-            //если нет такого пользователя то создать
-            if (DataWorker.CreateUser(Login, Password, Fio, role.Name))
+           //Если создан то обнулить
+            if (DataWorker.CreateUser(Login, Password, Fio, _SelectedRole.Name))
             {
                 Login = default;
                 Password = default;

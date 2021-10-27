@@ -89,7 +89,6 @@ namespace Praktika.Viewmodels
 
         #region Открытие модального окна для добавления
 
-       
         public ICommand StatusModalCommand { get; }
 
         private bool CanStatusModalCommandExecute(object p) => true;
@@ -118,12 +117,17 @@ namespace Praktika.Viewmodels
                 _VideocardTechProcess,
                 _SelectedMemoryType.Name, _SelectedInterface.Name);
 
+            //Временная заплатка чтобы сильной нагрузки не было
             if (ResultVideocardID != default)
             {
                 Videocards.Add(new Videocard
                 {
-                    Company = _SelectedCompany.Name, Core = VideocardCore, Interface = _SelectedInterface.Name,
-                    ID = ResultVideocardID, MemoryType = _SelectedMemoryType.Name, Name = VideocardName,
+                    Company = _SelectedCompany.Name,
+                    Core = VideocardCore,
+                    Interface = _SelectedInterface.Name,
+                    ID = ResultVideocardID, 
+                    MemoryType = _SelectedMemoryType.Name, 
+                    Name = VideocardName,
                     TechProcess = VideocardTechProcess
                 });
                 AddVisibility = false;

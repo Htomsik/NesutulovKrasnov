@@ -100,8 +100,6 @@ namespace Praktika.Viewmodels
             set => Set(ref _Password, value);
         }
 
-
-       
         private Visibility _ErrorVisibility = Visibility.Hidden;
 
         public Visibility ErrorVisibility
