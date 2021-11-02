@@ -61,9 +61,11 @@
             <fa:ImageAwesome Margin="5" Icon="Solid_gamepad" />
             <TextBlock FontSize="18" Text="Всего видеокарт: " />
             <TextBlock FontSize="18" Text="{Binding SelectedCard.Name}" />
+            
         </StackPanel>
 
         <DataGrid
+            
             Grid.Row="1"
             Margin="5"
             AutoGenerateColumns="False"
@@ -123,8 +125,9 @@
 
         </DataGrid>
 
+        <!--IsOpen="{Binding AddVisibility}"-->
         <!--  Окно добавления новой видеокарты  -->
-        <ModalCustom:ModalCustom Grid.RowSpan="2" IsOpen="{Binding AddVisibility}">
+        <ModalCustom:ModalCustom Grid.RowSpan="2" IsOpen="{Binding AddVisibility}" >
 
             <Grid
                 MinWidth="300"
@@ -144,7 +147,7 @@
                 </Grid.ColumnDefinitions>
 
 
-
+               
                 <TextBlock Grid.Column="1">Новая видеокарта</TextBlock>
 
                 <Grid Column="1" Row="1">
@@ -155,7 +158,6 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
-
                     </Grid.RowDefinitions>
 
 

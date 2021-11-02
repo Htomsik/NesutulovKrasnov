@@ -20,6 +20,8 @@ namespace Praktika.Viewmodels
 
             DeleteVideocardCommand = new LambdaCommand(OnDeleteVideocardExecuted, CanDeleteVideocardExecute);
 
+            
+
             Companys = new List<Company>
             {
                 new Company {Name = "Amd"},
@@ -153,6 +155,7 @@ namespace Praktika.Viewmodels
         }
 
         #endregion
+
 
         #endregion
 
