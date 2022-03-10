@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="DarrenLee.LiveStream">
+      <HintPath>..\Mic\Mic\DarrenLee.LiveStream.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\Mic\Mic\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NSpeex">
+      <HintPath>..\Mic\Mic\NSpeex.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
